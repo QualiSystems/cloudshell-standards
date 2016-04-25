@@ -3,8 +3,7 @@
 # Supports both L2 (Switch) and L3 (Router)
 # More Info: https://support.qualisystems.com/entries/98793728--General-Networking-Shell-Standard
 ---
-tosca_definitions_version: cloudshell_networking_standards_1_1_0
-
+tosca_definitions_version: tosca_simple_yaml_1_0
 imports:
   - cloudshell_base_standard.yaml
   
@@ -44,7 +43,7 @@ node_types:
         type: string
       SNMP Version:
         type: string
-        description: Possible values – v1, v2c, v3
+        description: Possible values  v1, v2c, v3
         constraints:
           - valid_values: [ v1, v2c, v3]
       Console Server IP Address:
@@ -57,10 +56,10 @@ node_types:
         type: string
       CLI Connection Type:
         type: string
-        description: Possible values – Auto, Console, SSH, Telnet, TCP
+        description: Possible values Auto, Console, SSH, Telnet, TCP
       Power Management:
         type: string
-        description: Possible values – True, False
+        description: Possible values True, False
       Backup Location:
         type: string
 #		-------------------		#
@@ -156,9 +155,9 @@ node_types:
       Adjacent:
         type: string
         description: System or Port
-      Protocol Type:			
-        type: string			
-        description: Default values is Transparent (=”0”)
+      Protocol Type:
+        type: string
+        description: Default values is Transparent 0
         default: 0
       Auto Negotiation:
         type: string
@@ -168,7 +167,7 @@ node_types:
     properties:
       Associated Ports:
         type: string
-        description: value in the form “[portResourceName],…”, for example “GE0-0-0-1,GE0-0-0-2”
+        description: value in the form [portResourceName]
       IPv4 Address:
         type: string
       IPv6 Address:
@@ -177,7 +176,7 @@ node_types:
         type: string
       Protocol Type:
         type: string
-        description: Default values is Transparent (=”0”)
+        description: Default values is Transparent 0
         default: 0
 
   cloudshell.networking.nodes.GenericPowerPort:
@@ -203,9 +202,6 @@ capabilities:
   cloudshell.networking.families.Router:
     properties:
       Searchable: true
-      Locked By Default: true	  
+      Locked By Default: true
       Admin Only: false
       Connectable: true
-
-    
----

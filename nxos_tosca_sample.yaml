@@ -11,12 +11,10 @@ node_types:
 
   cloudshell.switch.NXOS:
   derived_from: cloudshell.networking.nodes.NetworkDevice
-    properties:
-      Device Owner:
-        type: string
-    interfaces:      
+  properties:
+    Device Owner:
+       type: string
+  interfaces:      
         notify_device_owner: {}
-    capabilities:
-      cloudshell.networking.families.Switch:	
-	  
----
+  capabilities:
+    cloudshell.networking.families.Switch:	

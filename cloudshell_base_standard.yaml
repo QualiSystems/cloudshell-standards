@@ -1,6 +1,3 @@
-# CloudShell Base Standard
-# Suitable for modeling CloudShell Shells - 
----
 tosca_definitions_version: cloudshell_standards_1_1_0
 
 node_types:
@@ -17,5 +14,3 @@ node_types:
         cleanup: {}
         backup: {}
         restore: {}
-
----

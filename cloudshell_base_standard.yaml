@@ -1,4 +1,6 @@
-tosca_definitions_version: cloudshell_standards_1_1_0
+# CloudShell Base Standard
+# Suitable for modeling CloudShell Shells 
+tosca_definitions_version: tosca_simple_yaml_1_0
 
 node_types:
 

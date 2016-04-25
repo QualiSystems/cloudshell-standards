@@ -1,0 +1,211 @@
+# CloudShell Networking Standard
+# Suitable for modeling network devices
+# Supports both L2 (Switch) and L3 (Router)
+# More Info: https://support.qualisystems.com/entries/98793728--General-Networking-Shell-Standard
+---
+tosca_definitions_version: cloudshell_networking_standards_1_1_0
+
+imports:
+  - cloudshell_base_standard.yaml
+  
+node_types:
+
+  cloudshell.networking.nodes.NetworkDevice:
+    derived_from: cloudshell.standard.Shell
+    properties:
+      User:
+        description: User with administrative privileges
+        type: string
+      Password:
+        type: string
+      Enable Password:
+        type: string
+      System Name:
+        type: string
+      Contact Name:
+        type: string
+      OS Version:
+        type: string
+      Vendor:
+        type: string
+      Location:
+        type: string
+      Model:
+        type: string
+      SNMP Read Community:
+        type: string
+      SNMP Write Community:
+        type: string
+      SNMP V3 User:
+        type: string
+      SNMP V3 Password:
+        type: string
+      SNMP V3 Private Key:
+        type: string
+      SNMP Version:
+        type: string
+        description: Possible values – v1, v2c, v3
+        constraints:
+          - valid_values: [ v1, v2c, v3]
+      Console Server IP Address:
+        type: string
+      Console User:
+        type: string
+      Console Port:
+        type: integer
+      Console Password:
+        type: string
+      CLI Connection Type:
+        type: string
+        description: Possible values – Auto, Console, SSH, Telnet, TCP
+      Power Management:
+        type: string
+        description: Possible values – True, False
+      Backup Location:
+        type: string
+#		-------------------		#
+      Chassis:
+        type: list
+        entry_schema:
+          type: cloudshell.nodes.GenericChassis
+      Port Channels:
+        type: map
+        entry_schema:
+          type: cloudshell.nodes.GenericPortChannel
+    interfaces:
+      cloudshell.networking.networking_resource_driver_interface:
+        remove_vlan: {}
+        add_vlan: {}
+        apply_connectivity_changes: {}
+        send_custom_command: {}
+        send_custom_config_command: {}
+        shutdown: {}
+
+  cloudshell.networking.nodes.GenericChassis:
+    properties:
+      Model:
+        type: string
+      Serial Number:
+        type: string
+#		-------------------		#
+      Modules:
+        type: list
+        entry_schema:
+          type: cloudshell.nodes.GenericModule
+      Ports:
+        type: list
+        entry_schema:
+          type: cloudshell.nodes.GenericPort
+      Power Ports:
+        type: list
+        entry_schema:
+          type: cloudshell.nodes.GenericPowerPort
+
+  cloudshell.networking.nodes.GenericModule:
+    properties:
+      Model:
+        type: string
+      Version:
+        type: string
+      Serial Number:
+        type: string
+#		-------------------		#
+      Ports:
+        type: list
+        entry_schema:
+          type: cloudshell.nodes.GenericPort
+      Sub Modules:
+          type: list
+          entry_schema:
+            type: cloudshell.nodes.GenericSubModule
+
+  cloudshell.networking.nodes.GenericSubModule:
+    properties:
+      Model:
+        type: string
+      Version:
+        type: string
+      Serial Number:
+        type: string
+#		-------------------		#
+      Ports:
+        type: list
+        entry_schema:
+          type: cloudshell.nodes.GenericPort
+
+  cloudshell.networking.nodes.GenericPort:
+    properties:
+      MAC Address:
+        type: string
+      L2 Protocol Type:
+        type: string
+        description: Such as POS, Serial
+      IPv4 Address:
+        type: string
+      IPv6 Address:
+        type: string
+      Port Description:
+        type: string
+      Bandwidth:
+        type: integer
+      MTU:
+        type: integer
+      Duplex:
+        type: string
+        description: Half or Full
+      Adjacent:
+        type: string
+        description: System or Port
+      Protocol Type:			
+        type: string			
+        description: Default values is Transparent (=”0”)
+        default: 0
+      Auto Negotiation:
+        type: string
+        description: True or False
+
+  cloudshell.networking.nodes.GenericPortChannel:
+    properties:
+      Associated Ports:
+        type: string
+        description: value in the form “[portResourceName],…”, for example “GE0-0-0-1,GE0-0-0-2”
+      IPv4 Address:
+        type: string
+      IPv6 Address:
+        type: string
+      Port Description:
+        type: string
+      Protocol Type:
+        type: string
+        description: Default values is Transparent (=”0”)
+        default: 0
+
+  cloudshell.networking.nodes.GenericPowerPort:
+    properties:
+      Model:
+        type: string
+      Serial Number:
+        type: string
+      Version:
+        type: string
+      Port Description:
+        type: string
+
+capabilities:
+
+  cloudshell.networking.families.Switch:
+    properties:
+      Searchable: true
+      Locked By Default: true
+      Admin Only: false
+      Connectable: true
+
+  cloudshell.networking.families.Router:
+    properties:
+      Searchable: true
+      Locked By Default: true	  
+      Admin Only: false
+      Connectable: true
+
+    
+---

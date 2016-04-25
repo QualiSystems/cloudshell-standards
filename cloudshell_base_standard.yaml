@@ -1,0 +1,21 @@
+# CloudShell Base Standard
+# Suitable for modeling CloudShell Shells - 
+---
+tosca_definitions_version: cloudshell_standards_1_1_0
+
+node_types:
+
+  cloudshell.standard.Shell:
+    properties:
+      ip:
+        type: string
+        default: ''
+    interfaces:
+      cloudshell.shell.core.resource_driver_interface:
+        get_inventory: {}
+        initialize: {}
+        cleanup: {}
+        backup: {}
+        restore: {}
+
+---

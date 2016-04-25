@@ -1,0 +1,22 @@
+# NXOS Switch
+# This is an example of a shell implementation: 
+# 1) It declares following the 'NetworkDevice' standard 
+# 2) It associates the NXOS shell to the standard 'Switch' family 
+# 3) It expands the standard capabilities with additional property and additional function
+---
+imports:
+  - cloudshell_networking_standard.yaml
+  
+node_types:
+
+  cloudshell.switch.NXOS:
+  derived_from: cloudshell.networking.nodes.NetworkDevice
+    properties:
+      Device Owner:
+        type: string
+    interfaces:      
+        notify_device_owner: {}
+    capabilities:
+      cloudshell.networking.families.Switch:	
+	  
+---

@@ -1,10 +1,10 @@
 # CloudShell Base Standard
-# Suitable for modeling CloudShell Shells 
+# Suitable for modeling CloudShell Shells - 
 tosca_definitions_version: tosca_simple_yaml_1_0
 
 node_types:
 
-  cloudshell.standard.Shell:
+  cloudshell.nodes.Shell:
     properties:
       ip:
         type: string
@@ -16,3 +16,12 @@ node_types:
         cleanup: {}
         backup: {}
         restore: {}
+
+capability_types:
+  cloudshell.capabilities.CloudshellType:
+    derived_from: tosca.capabilities.Root
+    properties:
+      Searchable: true
+      Locked By Default: true
+      Admin Only: false
+      Connectable: true

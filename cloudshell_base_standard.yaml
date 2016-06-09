@@ -21,7 +21,60 @@ capability_types:
   cloudshell.capabilities.CloudshellType:
     derived_from: tosca.capabilities.Root
     properties:
-      Searchable: true
-      Locked By Default: true
-      Admin Only: false
-      Connectable: true
+      Description:
+        type: string
+        default: This is a default description for a family
+      Image Path:
+        type: string
+        default: \\cloudshell-type.png
+      Searchable:
+        type: boolean
+        default: false
+      Locked By Default:
+        type: boolean
+        default: false
+      Admin Only:
+        type: boolean
+        default: false
+      Connectable:
+        type: boolean
+        default: false
+      Act As Group:
+        type: boolean
+        default: false
+      Sandbox Function:
+        default: resource
+        constraints:
+          - valid_values: [service,resource]
+      Type:
+        default: physical
+        description: for resources - physical,application. for services- deployment,installation
+        constraints:
+          - valid_values: [physical,application,deployment,installation]
+      Is Mappable:
+        type: boolean
+        default: false
+      Is Mappable Container:
+        type: boolean
+        default: false
+      Is All Connected Container:
+        type: boolean
+        default: false
+      Accepts Multiple Connections:
+        type: boolean
+        default: false
+      Supports Multicast Mapping:
+        type: boolean
+        default: false
+      Supports Loopback Mapping:
+        type: boolean
+        default: false
+      Is Power Switch:
+        type: boolean
+        default: false
+      Is Console Server:
+        type: boolean
+        default: false
+      Is License Check Required:
+        type: boolean
+        default: false

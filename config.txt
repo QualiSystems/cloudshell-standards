@@ -1,0 +1,93 @@
+{
+  "Details": {
+    "Name": "My Shell",
+    "Description": "just a dummy shell",
+    "Author": "Me",
+    "Version": "1.0",
+    "ImageName": "",
+    "StandardType": "Dummy Standard",
+    "StandardVersion": "1.0"
+  },
+  "Components":[
+    {
+      "AllModels":[
+        {
+          "Details": {
+            "ResourceFamilyName":"Bridge",
+            "Name":"My Shell Root Model",
+            "Description":"",
+            "ImageData":null,
+            "SupportsConcurrentCommands":false
+          },
+          "AttachedAttributes":[
+            {
+              "AttributeName":"My Attribute",
+              "IsLocal":true,
+              "IsOverridable":false,
+              "IsRequired":false,
+              "AllowedValues":[],
+              "Value":"b"
+            }
+          ]
+        }
+      ],
+      "RootModelNode": {
+          "ModelName": "My Shell Root Model",
+          "ChildModels": []
+      },
+      "Attributes":[
+        {
+          "Name":"My Attribute",
+          "Description":"",
+          "DefaultValue":"a",
+          "AttributeType":"String",
+          "IsReadOnly":false,
+          "IsCommand":false,
+          "Tags":["Setting", "Configuration"],
+          "LookupValues":[]
+        }
+      ],
+      "Driver": {
+        "FileName":"Sample Resource Driver.zip",
+        "Data":null
+      },
+      "ResourceTemplate": {
+        "Name":"",
+        "Description":"",
+        "UseDriver":true,
+        "Attributes": {
+            "My Attribute":"c"
+          },
+        "EnableAutoLoad":true,
+        "AutoLoadDescription":""
+      }
+    }
+  ],
+  "ResourceFamiliesDefinition": [
+    {
+      "Details":{
+        "StandardVersion": "1.0",
+        "Name": "Bridge",
+        "Description": "",
+        "ImageData":null,
+        "Searchable": false,
+        "IsConnectable":false,
+        "IsLockedByDefault":false,
+        "IsAdminOnly":false,
+        "ActsAsGroup":false,
+        "IsService":false,
+        "ServiceType":"None",
+        "ResourceType": "Resource",
+        "IsMappable":false,
+        "IsMappableContainer":false,
+        "IsAllConnectedContainer":false,
+        "AcceptsMultipleConnections":false,
+        "SupportsMulticastMapping":false,
+        "SupportsLoopbackMapping":false,
+        "IsPowerSwitch":false,
+        "IsConsoleServer":false,
+        "IsLicenseCheckRequired":false
+      }
+    }
+  ]
+}

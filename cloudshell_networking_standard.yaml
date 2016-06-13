@@ -6,8 +6,8 @@
 tosca_definitions_version: tosca_simple_yaml_1_0
 
 imports:
-  - cloudshell_base_standard.yaml
-  
+  - cloudshell base: cloudshell_base_standard.yaml
+
 node_types:
 
   cloudshell.networking.nodes.NetworkDevice:
@@ -62,6 +62,11 @@ node_types:
         send_custom_config_command: {}
         shutdown: {}
 
+
+
+  #------------------------------------#
+  # Network device hierarchy
+  #------------------------------------#
   cloudshell.networking.nodes.GenericChassis:
     properties:
       Model:
@@ -84,6 +89,10 @@ node_types:
             node: cloudshell.nodes.GenericPowerPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
+    capabilities:
+     cloudshell_type:
+        type: cloudshell.networking.types.Chassis
+
 
   cloudshell.networking.nodes.GenericModule:
     properties:
@@ -104,6 +113,9 @@ node_types:
             node: cloudshell.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
+    capabilities:
+     cloudshell_type:
+        type: cloudshell.networking.types.Module
 
   cloudshell.networking.nodes.GenericSubModule:
     properties:
@@ -119,6 +131,9 @@ node_types:
         node: cloudshell.nodes.GenericPort
         relationship: tosca.relationships.AttachesTo
         occurrences: [0, UNBOUNDED]
+    capabilities:
+     cloudshell_type:
+        type: cloudshell.networking.types.SubModule
 
   cloudshell.networking.nodes.GenericPort:
     properties:
@@ -150,6 +165,9 @@ node_types:
       Auto Negotiation:
         type: string
         description: True or False
+    capabilities:
+     cloudshell_type:
+        type: cloudshell.networking.types.Port
 
   cloudshell.networking.nodes.GenericPortChannel:
     properties:
@@ -166,6 +184,9 @@ node_types:
         type: string
         description: Default values is Transparent (="0")
         default: 0
+    capabilities:
+     cloudshell_type:
+        type: cloudshell.networking.types.PortChannel
 
   cloudshell.networking.nodes.GenericPowerPort:
     properties:
@@ -177,21 +198,24 @@ node_types:
         type: string
       Port Description:
         type: string
+    capabilities:
+      cloudshell_type:
+        type: cloudshell.networking.types.PowerPort
 
 capability_types:
 #------------------------------------#
 # CloudShell Types (Families)
 #------------------------------------#
-  cloudshell.networking.types.Switch:
+  cloudshell.types.Switch:
    derived_from: cloudshell.capabilities.CloudshellType
 
-  cloudshell.networking.types.Router:
+  cloudshell.types.Router:
     derived_from: cloudshell.capabilities.CloudshellType
+
 
 #------------------------------------#
 # Networking Capabilities
 #------------------------------------#
-
   cloudshell.networking.capabilities.SupportsSNMP:
     properties:
       SNMP Read Community:
@@ -223,3 +247,24 @@ capability_types:
       CLI Connection Type:
         type: string
         description: Possible values - Auto, Console, SSH, Telnet, TCP
+
+#------------------------------------#
+# CloudShell Internals
+#------------------------------------#
+  cloudshell.types.Chassis:
+    derived_from: cloudshell.capabilities.CloudshellType
+
+  cloudshell.types.Module:
+    derived_from: cloudshell.capabilities.CloudshellType
+
+  cloudshell.types.Port:
+    derived_from: cloudshell.capabilities.CloudshellType
+
+  cloudshell.types.SubModule:
+    derived_from: cloudshell.capabilities.CloudshellType
+
+  cloudshell.types.PowerPort:
+    derived_from: cloudshell.capabilities.CloudshellType
+
+  cloudshell.types.PortChannel:
+    derived_from: cloudshell.capabilities.CloudshellType

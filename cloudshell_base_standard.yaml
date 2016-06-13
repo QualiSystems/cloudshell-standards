@@ -43,6 +43,7 @@ capability_types:
         type: boolean
         default: false
       Sandbox Function:
+        type: string
         default: resource
         constraints:
           - valid_values: [service,resource]
@@ -78,3 +79,13 @@ capability_types:
       Is License Check Required:
         type: boolean
         default: false
+
+  cloudshell.capabilities.InventoryResource:
+    derived_from: tosca.capabilities.Root
+    properties:
+      Inventory Description:
+        type: string
+      Enable Auto Discovery:
+        type: boolean
+      Auto Discovery Description:
+        type: string

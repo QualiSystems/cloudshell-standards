@@ -43,10 +43,12 @@ capability_types:
         type: boolean
         default: false
       Sandbox Function:
+        type: string
         default: resource
         constraints:
           - valid_values: [service,resource]
       Type:
+        type: string
         default: physical
         description: for resources - physical,application. for services- deployment,installation
         constraints:

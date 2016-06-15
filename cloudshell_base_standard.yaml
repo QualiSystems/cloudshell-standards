@@ -48,6 +48,7 @@ capability_types:
         constraints:
           - valid_values: [service,resource]
       Type:
+        type: string
         default: physical
         description: for resources - physical,application. for services- deployment,installation
         constraints:

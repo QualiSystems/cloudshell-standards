@@ -32,7 +32,7 @@ node_types:
 # ----------------- ------------------ -----------------#
 
 capability_types:
-  cloudshell.capabilities.CloudshellType:
+  cloudshell.capabilities.CloudshellFamily:
     derived_from: tosca.capabilities.Root
     properties:
       description:

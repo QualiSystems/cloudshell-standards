@@ -19,7 +19,9 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: Switch
+          family_name:
+            type: string
+            default: Switch
 
   cloudshell.nodes.Router:
     derived_from:  cloudshell.networking.NetworkDevice
@@ -27,7 +29,9 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: Router
+          family_name:
+            type: string
+            default: Router
 # ----------------- ------------------ -----------------#
 
   cloudshell.networking.NetworkDevice:
@@ -103,7 +107,9 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: Chassis
+          family_name:
+            type: string
+            default: Chassis
 
   cloudshell.networking.nodes.GenericModule:
     properties:
@@ -128,7 +134,9 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: Module
+          family_name:
+            type: string
+            default: Module
 
   cloudshell.networking.nodes.GenericSubModule:
     properties:
@@ -148,7 +156,9 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: SubModule
+          family_name:
+            type: string
+            default: SubModule
 
   cloudshell.networking.nodes.GenericPort:
     properties:
@@ -184,7 +194,9 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: Port
+          family_name:
+            type: string
+            default: Port
       cloudshell_endpoint:
         type: cloudshell.capabilities.CloudShellEndPoint
 
@@ -207,7 +219,9 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: PortChannel
+          family_name:
+            type: string
+            default: PortChannel
 
   cloudshell.networking.nodes.GenericPowerPort:
     properties:
@@ -223,6 +237,8 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: PowerPort
+          family_name:
+            type: string
+            default: PowerPort
       cloudshell_endpoint:
         type: cloudshell.capabilities.CloudShellEndPoint

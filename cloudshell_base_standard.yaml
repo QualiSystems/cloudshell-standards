@@ -51,10 +51,6 @@ capability_types:
         default: all
         constraints:
           - valid_values: [admin_only,all]
-    artifacts:
-     image:
-       file: image.png
-       type: tosca.artifacts.File
 
   cloudshell.capabilities.CloudShellEndPoint:
     derived_from: tosca.capabilities.Root

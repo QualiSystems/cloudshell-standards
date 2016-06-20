@@ -1,12 +1,25 @@
-# CloudShell Base Standard
-# Suitable for modeling CloudShell Shells - 
+# CloudShell Base Standard 1.0.0
+
 tosca_definitions_version: tosca_simple_yaml_1_0
 
-node_types:
+description: Suitable for modeling CloudShell Shells
 
+
+node_types:
+# ----------------- CLOUDSHELL NODES -----------------#
   cloudshell.nodes.Shell:
+    derived_from: tosca.nodes.Root
     properties:
-      ip:
+      address:
+        type: string
+        default: ''
+      vendor:
+        type: string
+        default: ''
+      model:
+        type: string
+        default: ''
+      location:
         type: string
         default: ''
     interfaces:
@@ -16,77 +29,78 @@ node_types:
         cleanup: {}
         backup: {}
         restore: {}
+# ----------------- ------------------ -----------------#
 
 capability_types:
   cloudshell.capabilities.CloudshellType:
     derived_from: tosca.capabilities.Root
     properties:
-      Description:
+      description:
         type: string
         default: This is a default description for a family
-      Image Path:
+      searchable:
+        type: boolean
+        default: false
+      default_share_level:
         type: string
-        default: \\cloudshell-type.png
-      Searchable:
-        type: boolean
-        default: false
-      Locked By Default:
-        type: boolean
-        default: false
-      Admin Only:
-        type: boolean
-        default: false
-      Connectable:
-        type: boolean
-        default: false
-      Act As Group:
-        type: boolean
-        default: false
-      Sandbox Function:
-        type: string
-        default: resource
+        default: shared
         constraints:
-          - valid_values: [service,resource]
-      Type:
+          - valid_values: [exclusive,shared]
+      permissions:
         type: string
-        default: physical
-        description: for resources - physical,application. for services- deployment,installation
+        default: all
         constraints:
-          - valid_values: [physical,application,deployment,installation]
-      Is Mappable:
+          - valid_values: [admin_only,all]
+    artifacts:
+     image:
+       file: image.png
+       type: tosca.artifacts.File
+
+  cloudshell.capabilities.CloudShellEndPoint:
+    derived_from: tosca.capabilities.Root
+    properties:
+      connectable:
         type: boolean
-        default: false
-      Is Mappable Container:
-        type: boolean
-        default: false
-      Is All Connected Container:
-        type: boolean
-        default: false
-      Accepts Multiple Connections:
-        type: boolean
-        default: false
-      Supports Multicast Mapping:
-        type: boolean
-        default: false
-      Supports Loopback Mapping:
-        type: boolean
-        default: false
-      Is Power Switch:
-        type: boolean
-        default: false
-      Is Console Server:
-        type: boolean
-        default: false
-      Is License Check Required:
-        type: boolean
-        default: false
+        default: true
 
   cloudshell.capabilities.InventoryResource:
     derived_from: tosca.capabilities.Root
     properties:
-      Inventory Description:
+      inventory_description:
         type: string
-      Enable Auto Discovery:
+      enable_auto_discovery:
         type: boolean
-      Auto Discovery Description:
+      auto_discovery_description:
         type: string
+
+  cloudshell.capabilities.SNMP:
+    properties:
+      SNMP_read_community:
+        type: string
+      SNMP_write_community:
+        type: string
+      SNMP_v3_user:
+        type: string
+      SNMP_v3_password:
+        type: string
+      SNMP_v3_private_key:
+        type: string
+      SNMP_version:
+        type: string
+        description: Possible values - v1, v2c, v3
+        constraints:
+          - valid_values: [ v1, v2c, v3]
+
+  cloudshell.capabilities.ConsoleConnection:
+    properties:
+      console_server_IP_address:
+        type: string
+      console_user:
+        type: string
+      console_port:
+        type: integer
+      console_password:
+        type: string
+      CLI_connection_type:
+        type: string
+        description: Possible values - Auto, Console, SSH, Telnet, TCP

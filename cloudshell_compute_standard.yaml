@@ -1,0 +1,69 @@
+# CloudShell Compute Standard 1.0.0
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+description: Suitable for modeling Compute nodes
+
+imports:
+  - cloudshell base: cloudshell_base_standard.yaml
+
+node_types:
+
+# ----------------- CLOUDSHELL NODES -----------------#
+  cloudshell.nodes.Compute:
+    derived_from:  cloudshell.compute.ComputeDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: Compute
+# ----------------- ------------------ -----------------#
+
+  cloudshell.compute.ComputeDevice:
+    derived_from: cloudshell.nodes.Shell
+    properties:
+      storage_capacity:
+        type: string
+    requirements:
+      - NICs:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.compute.NIC
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+    capabilities:
+      OS:
+        type: CloudShell.capabilities.OperatingSystem
+
+  cloudshell.compute.NIC:
+    derived_from: cloudshell.standard.Shell
+    properties:
+      name:
+        type: string
+    capabilities:
+     cloudshell_type:
+        type: cloudshell.networking.types.Module
+    capabilities:
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: NIC
+      cloudshell_endpoint:
+        type: cloudshell.capabilities.CloudShellEndPoint
+
+capability_types:
+  CloudShell.capabilities.OperatingSystem:
+    derived_from: tosca.capabilities.Root
+    properties:
+      OS_architecture:
+        type: string
+        required: false
+      OS_type:
+        type: string
+        required: false
+      OS_distribution:
+        type: string
+        required: false
+      OS_version:
+        type: version
+        required: false

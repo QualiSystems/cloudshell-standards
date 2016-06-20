@@ -5,43 +5,57 @@
 
 tosca_definitions_version: tosca_simple_yaml_1_0
 
+description: Suitable for modeling network devices, Supports both L2 (Switch) and L3 (Router)
+
 imports:
-  - cloudshell base: cloudshell_base_standard.yaml
+  - cloudshell_standard: cloudshell_base_standard.yaml
 
 node_types:
 
-  cloudshell.networking.nodes.NetworkDevice:
-    derived_from: cloudshell.standard.Shell
+# ----------------- CLOUDSHELL NODES -----------------#
+  cloudshell.nodes.Switch:
+    derived_from:  cloudshell.networking.NetworkDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: Switch
+
+  cloudshell.nodes.Router:
+    derived_from:  cloudshell.networking.NetworkDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: Router
+# ----------------- ------------------ -----------------#
+
+  cloudshell.networking.NetworkDevice:
+    derived_from: cloudshell.nodes.Shell
     properties:
-      User:
+      user:
         description: User with administrative privileges
         type: string
-      Password:
+      password:
         type: string
-      Enable Password:
+      enable_password:
         type: string
-      System Name:
+      system_name:
         type: string
-      Contact Name:
+      contact_name:
         type: string
-      OS Version:
+      OS_version:
         type: string
-      Vendor:
-        type: string
-      Location:
-        type: string
-      Model:
-        type: string
-      Power Management:
+      power_management:
         type: string
         description: Possible values - True, False
-      Backup Location:
+      backup_location:
         type: string
     capabilities:
-      SupportsSNMP:
-        type: cloudshell.networking.capabilities.SupportsSNMP
-      SupportsConsoleConnection:
-        type: cloudshell.networking.capabilities.SupportsConsoleConnection
+      SNMP:
+        type: cloudshell.capabilities.SNMP
+      ConsoleConnection:
+        type: cloudshell.capabilities.ConsoleConnection
     requirements:
       - Chassis:
             capability: tosca.capabilities.Attachment
@@ -62,209 +76,153 @@ node_types:
         send_custom_config_command: {}
         shutdown: {}
 
-
-
-  #------------------------------------#
-  # Network device hierarchy
-  #------------------------------------#
-  cloudshell.networking.nodes.GenericChassis:
+  cloudshell.networking.GenericChassis:
+    derived_from: cloudshell.networking.Chassis
     properties:
-      Model:
+      model:
         type: string
-      Serial Number:
+      serial_number:
         type: string
     requirements:
-      - Modules:
+      - modules:
             capability: tosca.capabilities.Attachment
             node: cloudshell.nodes.GenericModule
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
-      - Ports:
+      - ports:
             capability: tosca.capabilities.Attachment
             node: cloudshell.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
-      - Power Ports:
+      - power_ports:
             capability: tosca.capabilities.Attachment
             node: cloudshell.nodes.GenericPowerPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
     capabilities:
-     cloudshell_type:
-        type: cloudshell.networking.types.Chassis
-
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: Chassis
 
   cloudshell.networking.nodes.GenericModule:
     properties:
-      Model:
+      model:
         type: string
-      Version:
+      version:
         type: string
-      Serial Number:
+      serial_number:
         type: string
     requirements:
-      - SubModules:
+      - sub_modules:
             capability: tosca.capabilities.Attachment
             node: cloudshell.nodes.GenericSubModule
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
-      - Ports:
+      - ports:
             capability: tosca.capabilities.Attachment
             node: cloudshell.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
     capabilities:
-     cloudshell_type:
-        type: cloudshell.networking.types.Module
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: Module
 
   cloudshell.networking.nodes.GenericSubModule:
     properties:
-      Model:
+      model:
         type: string
-      Version:
+      version:
         type: string
-      Serial Number:
+      serial_number:
         type: string
     requirements:
-      - Ports:
+      - ports:
           capability: tosca.capabilities.Attachment
           node: cloudshell.nodes.GenericPort
           relationship: tosca.relationships.AttachesTo
           occurrences: [0, UNBOUNDED]
     capabilities:
-     cloudshell_type:
-        type: cloudshell.networking.types.SubModule
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: SubModule
 
   cloudshell.networking.nodes.GenericPort:
     properties:
-      MAC Address:
+      mac_address:
         type: string
-      L2 Protocol Type:
+      l2_protocol_type:
         type: string
         description: Such as POS, Serial
-      IPv4 Address:
+      IPv4_address:
         type: string
-      IPv6 Address:
+      IPv6_address:
         type: string
-      Port Description:
+      port_description:
         type: string
-      Bandwidth:
+      bandwidth:
         type: integer
-      MTU:
+      mtu:
         type: integer
-      Duplex:
+      duplex:
         type: string
         description: Half or Full
-      Adjacent:
+      adjacent:
         type: string
         description: System or Port
-      Protocol Type:
+      protocol_type:
         type: string
         description: Default values is Transparent (="0")
         default: 0
-      Auto Negotiation:
+      auto_negotiation:
         type: string
         description: True or False
     capabilities:
-     cloudshell_type:
-        type: cloudshell.networking.types.Port
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: Port
+      cloudshell_endpoint:
+        type: cloudshell.capabilities.CloudShellEndPoint
 
   cloudshell.networking.nodes.GenericPortChannel:
     properties:
-      Associated Ports:
+      associated_ports:
         type: string
         description: value in the form "[portResourceName],...". For example "GE0-0-0-1,GE0-0-0-2"
-      IPv4 Address:
+      IPv4_address:
         type: string
-      IPv6 Address:
+      IPv6_address:
         type: string
-      Port Description:
+      port_description:
         type: string
-      Protocol Type:
+      protocol_type:
         type: string
         description: Default values is Transparent (="0")
         default: 0
     capabilities:
-     cloudshell_type:
-        type: cloudshell.networking.types.PortChannel
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: PortChannel
 
   cloudshell.networking.nodes.GenericPowerPort:
     properties:
-      Model:
+      model:
         type: string
-      Serial Number:
+      serial_number:
         type: string
-      Version:
+      version:
         type: string
-      Port Description:
+      port_description:
         type: string
     capabilities:
-      cloudshell_type:
-        type: cloudshell.networking.types.PowerPort
-
-capability_types:
-#------------------------------------#
-# CloudShell Types (Families)
-#------------------------------------#
-  cloudshell.types.Switch:
-   derived_from: cloudshell.capabilities.CloudshellType
-
-  cloudshell.types.Router:
-    derived_from: cloudshell.capabilities.CloudshellType
-
-
-#------------------------------------#
-# Networking Capabilities
-#------------------------------------#
-  cloudshell.networking.capabilities.SupportsSNMP:
-    properties:
-      SNMP Read Community:
-        type: string
-      SNMP Write Community:
-        type: string
-      SNMP V3 User:
-        type: string
-      SNMP V3 Password:
-        type: string
-      SNMP V3 Private Key:
-        type: string
-      SNMP Version:
-        type: string
-        description: Possible values - v1, v2c, v3
-        constraints:
-          - valid_values: [ v1, v2c, v3]
-
-  cloudshell.networking.capabilities.SupportsConsoleConnection:
-    properties:
-      Console Server IP Address:
-        type: string
-      Console User:
-        type: string
-      Console Port:
-        type: integer
-      Console Password:
-        type: string
-      CLI Connection Type:
-        type: string
-        description: Possible values - Auto, Console, SSH, Telnet, TCP
-
-#------------------------------------#
-# CloudShell Internals
-#------------------------------------#
-  cloudshell.types.Chassis:
-    derived_from: cloudshell.capabilities.CloudshellType
-
-  cloudshell.types.Module:
-    derived_from: cloudshell.capabilities.CloudshellType
-
-  cloudshell.types.Port:
-    derived_from: cloudshell.capabilities.CloudshellType
-
-  cloudshell.types.SubModule:
-    derived_from: cloudshell.capabilities.CloudshellType
-
-  cloudshell.types.PowerPort:
-    derived_from: cloudshell.capabilities.CloudshellType
-
-  cloudshell.types.PortChannel:
-    derived_from: cloudshell.capabilities.CloudshellType
+      cloudshell_family:
+        type: cloudshell.capabilities.CloudshellFamily
+        properties:
+          family_name: PowerPort
+      cloudshell_endpoint:
+        type: cloudshell.capabilities.CloudShellEndPoint

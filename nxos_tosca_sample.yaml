@@ -1,23 +1,26 @@
-# NXOS Switch
-# This is an example of a shell implementation: 
-# 1) It declares following the 'NetworkDevice' standard 
-# 2) It associates the NXOS shell to the standard 'Switch' family 
-# 3) It expands the standard capabilities with additional property and additional function
-
+# An example of an NXOS Switch Shell
 tosca_definitions_version: tosca_simple_yaml_1_0
 
+metadata:
+  template_name: NXOS Shell
+  template_author: Meni Besso
+  template_version: 1.0.0
+
+description: >
+  This is an example of a shell implementation
+  1) It declares following the 'NetworkDevice' standard
+  2) It associates the NXOS shell to the standard 'Switch' family
+  3) It expands the standard capabilities with additional property and additional function
+
 imports:
-  - cloudshell standard: cloudshell_networking_standard.yaml
- 
+  - cloudshell_standard: cloudshell_networking_standard.yaml
+
 node_types:
 
   cloudshell.switch.NXOS:
-    derived_from: cloudshell.networking.nodes.NetworkDevice
+    derived_from: cloudshell.nodes.Switch
     properties:
-      Device Owner:
+      device_owner:
         type: string
     interfaces:      
       notify_device_owner: {}
-    capabilities:
-       cloudshell_type:
-        type: cloudshell.networking.types.Switch

@@ -16,7 +16,7 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: 
+          family_name:
             type: string
             default: Compute
 # ----------------- ------------------ -----------------#
@@ -49,7 +49,9 @@ node_types:
       cloudshell_family:
         type: cloudshell.capabilities.CloudshellFamily
         properties:
-          family_name: NIC
+          family_name:
+            type: string
+            default: NIC
       cloudshell_endpoint:
         type: cloudshell.capabilities.CloudShellEndPoint
 

@@ -81,7 +81,6 @@ node_types:
         shutdown: {}
 
   cloudshell.networking.GenericChassis:
-    derived_from: cloudshell.networking.Chassis
     properties:
       model:
         type: string

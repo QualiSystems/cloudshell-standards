@@ -46,10 +46,13 @@ node_types:
         type: string
       system_name:
         type: string
+        tags: configuration, setting, search_filter, abstract, bi_filter
       contact_name:
         type: string
+        tags: configuration, setting, search_filter, abstract, bi_filter
       OS_version:
         type: string
+        tags: configuration, setting, search_filter, abstract, bi_filter
       power_management:
         type: string
         description: Possible values - True, False
@@ -84,8 +87,12 @@ node_types:
     properties:
       model:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter, abstract, bi_filter
       serial_number:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter
     requirements:
       - modules:
             capability: tosca.capabilities.Attachment
@@ -114,10 +121,16 @@ node_types:
     properties:
       model:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter, abstract, bi_filter
       version:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter, abstract, bi_filter
       serial_number:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter
     requirements:
       - sub_modules:
             capability: tosca.capabilities.Attachment
@@ -141,10 +154,16 @@ node_types:
     properties:
       model:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter, abstract, bi_filter
       version:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter, abstract, bi_filter
       serial_number:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter
     requirements:
       - ports:
           capability: tosca.capabilities.Attachment
@@ -163,6 +182,8 @@ node_types:
     properties:
       mac_address:
         type: string
+        default: ''
+        tags: configuration, setting, search_filter
       l2_protocol_type:
         type: string
         description: Such as POS, Serial

@@ -1,4 +1,6 @@
 # CloudShell Base Standard 1.0.0
+# TOSCA extension: tags for properties with the following values:
+# tags: configuration, setting, search_filter, abstract, bi_filter, admin_only
 
 tosca_definitions_version: tosca_simple_yaml_1_0
 
@@ -16,12 +18,15 @@ node_types:
       vendor:
         type: string
         default: ''
+        tags: configuration, setting, search_filter, abstract, bi_filter
       model:
         type: string
         default: ''
+        tags: configuration, setting, search_filter, abstract, bi_filter
       location:
         type: string
         default: ''
+        tags: configuration, setting, search_filter, abstract, bi_filter
     interfaces:
       cloudshell.shell.core.resource_driver_interface:
         get_inventory: {}
@@ -100,3 +105,4 @@ capability_types:
       CLI_connection_type:
         type: string
         description: Possible values - Auto, Console, SSH, Telnet, TCP
+

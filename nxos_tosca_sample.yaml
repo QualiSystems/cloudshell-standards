@@ -24,3 +24,7 @@ node_types:
         type: string
     interfaces:      
       notify_device_owner: {}
+    artifacts:
+      icon:
+        file: NXOS.png
+        type: tosca.artifacts.File

@@ -46,13 +46,13 @@ node_types:
         type: string
       system_name:
         type: string
-        tags: [configuration, setting, search_filter, abstract, bi_filter]
+        tags: [configuration, setting, search_filter, abstract, insight]
       contact_name:
         type: string
-        tags: [configuration, setting, search_filter, abstract, bi_filter]
+        tags: [configuration, setting, search_filter, abstract, insight]
       OS_version:
         type: string
-        tags: [configuration, setting, search_filter, abstract, bi_filter]
+        tags: [configuration, setting, search_filter, abstract, insight]
       power_management:
         type: string
         description: Possible values - True, False
@@ -88,7 +88,7 @@ node_types:
       model:
         type: string
         default: ''
-        tags: [configuration, setting, search_filter, abstract, bi_filter]
+        tags: [configuration, setting, search_filter, abstract, insight]
       serial_number:
         type: string
         default: ''
@@ -122,11 +122,11 @@ node_types:
       model:
         type: string
         default: ''
-        tags: [configuration, setting, search_filter, abstract, bi_filter]
+        tags: [configuration, setting, search_filter, abstract, insight]
       version:
         type: string
         default: ''
-        tags: [configuration, setting, search_filter, abstract, bi_filter]
+        tags: [configuration, setting, search_filter, abstract, insight]
       serial_number:
         type: string
         default: ''
@@ -155,11 +155,11 @@ node_types:
       model:
         type: string
         default: ''
-        tags: [configuration, setting, search_filter, abstract, bi_filter]
+        tags: [configuration, setting, search_filter, abstract, insight]
       version:
         type: string
         default: ''
-        tags: [configuration, setting, search_filter, abstract, bi_filter]
+        tags: [configuration, setting, search_filter, abstract, insight]
       serial_number:
         type: string
         default: ''

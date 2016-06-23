@@ -1,6 +1,6 @@
 # CloudShell Base Standard 1.0.0
 # TOSCA extension: tags for properties with the following values:
-# tags: configuration, setting, search_filter, abstract, insight, admin_only
+# tags: configuration, setting, search_filter, abstract, insight, admin_only, diagram_display
 
 tosca_definitions_version: tosca_simple_yaml_1_0
 

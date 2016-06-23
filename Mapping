@@ -52,3 +52,9 @@ is_license_check_required: (default) false
 Attribute mapping: cloudshell.capabilities.CloudShellEndPoint
 ---------------------------------------------------------
 connectable = false
+
+
+
+
+# tags: configuration, setting, search_filter, abstract, insight, admin_only
+TBD

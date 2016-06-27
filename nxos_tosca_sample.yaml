@@ -17,10 +17,14 @@ imports:
 
 node_types:
 
-  cloudshell.switch.NXOS:
+  vendor.switch.NXOS:
     derived_from: cloudshell.nodes.Switch
     properties:
       device_owner:
         type: string
     interfaces:      
       notify_device_owner: {}
+    artifacts:
+      icon:
+        file: NXOS.png
+        type: tosca.artifacts.File

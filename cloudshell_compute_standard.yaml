@@ -37,7 +37,6 @@ node_types:
         type: CloudShell.capabilities.OperatingSystem
 
   cloudshell.compute.NIC:
-    derived_from: cloudshell.standard.Shell
     properties:
       name:
         type: string

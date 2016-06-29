@@ -28,3 +28,6 @@ node_types:
       icon:
         file: NXOS.png
         type: tosca.artifacts.File
+      driver:
+        file: NXOS.zip
+        type: tosca.artifacts.File

@@ -31,3 +31,11 @@ node_types:
       driver:
         file: NXOS.zip
         type: tosca.artifacts.File
+    capabilities:
+      auto_discovery:
+        type: cloudshell.capabilities.InventoryResource
+        properties:
+          user_name:
+            type: string
+          password:
+            type: boolean

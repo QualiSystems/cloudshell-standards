@@ -17,21 +17,13 @@ node_types:
     derived_from:  cloudshell.networking.NetworkDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.capabilities.CloudshellFamily
-        properties:
-          family_name:
-            type: string
-            default: Switch
+        type: cloudshell.families.Switch
 
   cloudshell.nodes.Router:
     derived_from:  cloudshell.networking.NetworkDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.capabilities.CloudshellFamily
-        properties:
-          family_name:
-            type: string
-            default: Router
+        type: cloudshell.families.Router
 # ----------------- ------------------ -----------------#
 
   cloudshell.networking.NetworkDevice:
@@ -71,20 +63,21 @@ node_types:
             node: cloudshell.nodes.GenericPortChannel
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
-    interfaces:
-      cloudshell.networking.networking_resource_driver_interface:
-        remove_vlan: {}
-        add_vlan: {}
-        apply_connectivity_changes: {}
-        send_custom_command: {}
-        send_custom_config_command: {}
-        shutdown: {}
+#    interfaces:
+#      cloudshell.networking.networking_resource_driver_interface:
+#        remove_vlan: {}
+#        add_vlan: {}
+#        apply_connectivity_changes: {}
+#        send_custom_command: {}
+#        send_custom_config_command: {}
+#        shutdown: {}
 
   cloudshell.networking.GenericChassis:
     properties:
       model:
         type: string
         default: ''
+        tags: [configuration, setting, abstract_filter]
       serial_number:
         type: string
         default: ''
@@ -106,17 +99,15 @@ node_types:
             occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.capabilities.CloudshellFamily
-        properties:
-          family_name:
-            type: string
-            default: Chassis
+        type: cloudshell.families.Chassis
+
 
   cloudshell.networking.nodes.GenericModule:
     properties:
       model:
         type: string
         default: ''
+        tags: [configuration, setting, abstract_filter]
       version:
         type: string
         default: ''
@@ -136,17 +127,14 @@ node_types:
             occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.capabilities.CloudshellFamily
-        properties:
-          family_name:
-            type: string
-            default: Module
+        type: cloudshell.families.Module
 
   cloudshell.networking.nodes.GenericSubModule:
     properties:
       model:
         type: string
         default: ''
+        tags: [configuration, abstract_filter]
       version:
         type: string
         default: ''
@@ -161,11 +149,7 @@ node_types:
           occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.capabilities.CloudshellFamily
-        properties:
-          family_name:
-            type: string
-            default: SubModule
+        type: cloudshell.families.SubModule
 
   cloudshell.networking.nodes.GenericPort:
     properties:
@@ -200,13 +184,8 @@ node_types:
         description: True or False
     capabilities:
       cloudshell_family:
-        type: cloudshell.capabilities.CloudshellFamily
-        properties:
-          family_name:
-            type: string
-            default: Port
-      cloudshell_endpoint:
-        type: cloudshell.capabilities.CloudShellEndPoint
+        type: cloudshell.families.Port
+
 
   cloudshell.networking.nodes.GenericPortChannel:
     properties:
@@ -225,16 +204,14 @@ node_types:
         default: 0
     capabilities:
       cloudshell_family:
-        type: cloudshell.capabilities.CloudshellFamily
-        properties:
-          family_name:
-            type: string
-            default: PortChannel
+        type: cloudshell.families.PortChannel
+
 
   cloudshell.networking.nodes.GenericPowerPort:
     properties:
       model:
         type: string
+        tags: [configuration, setting, abstract_filter]
       serial_number:
         type: string
       version:
@@ -243,10 +220,114 @@ node_types:
         type: string
     capabilities:
       cloudshell_family:
-        type: cloudshell.capabilities.CloudshellFamily
-        properties:
-          family_name:
-            type: string
-            default: PowerPort
-      cloudshell_endpoint:
-        type: cloudshell.capabilities.CloudShellEndPoint
+        type: cloudshell.families.PortChannel
+
+
+
+capability_types:
+
+# ----------------- CLOUDSHELL Families  -----------------#
+  cloudshell.families.Switch:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location, system_name, OS_version]
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Router:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location, system_name, OS_version]
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Chassis:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Module:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.SubModule:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Port:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: true
+
+  cloudshell.families.PortChannel:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.PowerPort:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: true
+# ----------------- ------------------ -----------------#

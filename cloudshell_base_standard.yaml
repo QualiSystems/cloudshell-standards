@@ -15,62 +15,41 @@ node_types:
       address:
         type: string
         default: ''
-        tags: []
       vendor:
         type: string
         default: ''
+        tags: [configuration, setting, abstract_filter]
       model:
         type: string
         default: ''
+        tags: [configuration, setting, abstract_filter]
       location:
         type: string
         default: ''
-    interfaces:
-      cloudshell.shell.core.resource_driver_interface:
-        get_inventory: {}
-        initialize: {}
-        cleanup: {}
-        backup: {}
-        restore: {}
+        tags: [configuration, setting, abstract_filter]
+
+#    interfaces:
+#      cloudshell.shell.core.resource_driver_interface:
+#        get_inventory: {}
+#        initialize: {}
+#        cleanup: {}
+#        backup: {}
+#        restore: {}
 # ----------------- ------------------ -----------------#
 
 capability_types:
-  cloudshell.capabilities.CloudshellFamily:
-    derived_from: tosca.capabilities.Root
-    properties:
-      description:
-        type: string
-        default: This is a default description for a family
-      searchable:
-        type: boolean
-        default: false
-      default_share_level:
-        type: string
-        default: shared
-        constraints:
-          - valid_values: [exclusive,shared]
-      permissions:
-        type: string
-        default: all
-        constraints:
-          - valid_values: [admin_only,all]
-
-  cloudshell.capabilities.CloudShellEndPoint:
-    derived_from: tosca.capabilities.Root
-    properties:
-      connectable:
-        type: boolean
-        default: true
-
-  cloudshell.capabilities.InventoryResource:
+  cloudshell.capabilities.AutoDiscovery:
     derived_from: tosca.capabilities.Root
     properties:
       inventory_description:
         type: string
+        default: ''
       enable_auto_discovery:
         type: boolean
+        default: true
       auto_discovery_description:
         type: string
+        default: ''
 
   cloudshell.capabilities.SNMP:
     properties:
@@ -105,3 +84,28 @@ capability_types:
         type: string
         description: Possible values - Auto, Console, SSH, Telnet, TCP
 
+  cloudshell.families.Root:
+    derived_from: tosca.capabilities.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      searchable:
+        type: boolean
+        default: false
+      default_share_level:
+        type: string
+        default: shared
+        constraints:
+          - valid_values: [exclusive,shared]
+      permissions:
+        type: string
+        default: all
+        constraints:
+          - valid_values: [admin_only,all]
+      connectable:
+        type: boolean
+        default: true
+      attribute_list:
+        type: list
+        default: []

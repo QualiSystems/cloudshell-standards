@@ -24,18 +24,18 @@ node_types:
         type: string
     interfaces:      
       notify_device_owner: {}
-    artifacts:
-      icon:
-        file: NXOS.png
-        type: tosca.artifacts.File
-      driver:
-        file: NXOS.zip
-        type: tosca.artifacts.File
     capabilities:
       auto_discovery:
-        type: cloudshell.capabilities.InventoryResource
+        type: cloudshell.capabilities.AutoDiscovery
         properties:
           user_name:
             type: string
           password:
             type: boolean
+    artifacts:
+      driver:
+        file: NXOS.zip
+        type: tosca.artifacts.File
+      icon:
+        file: NXOS.png
+        type: tosca.artifacts.File

@@ -74,19 +74,19 @@
         "IsConnectable":false,
         "IsLockedByDefault":false,
         "IsAdminOnly":false,
-        "ActsAsGroup":false,
-        "IsService":false,
-        "ServiceType":"None",
+        *"ActsAsGroup":false,
+        *"IsService":false,
+        *"ServiceType":"None",
         "ResourceType": "Resource",
-        "IsMappable":false,
-        "IsMappableContainer":false,
-        "IsAllConnectedContainer":false,
-        "AcceptsMultipleConnections":false,
-        "SupportsMulticastMapping":false,
-        "SupportsLoopbackMapping":false,
+        *"IsMappable":false,
+        *"IsMappableContainer":false,
+        *"IsAllConnectedContainer":false,
+        *"AcceptsMultipleConnections":false,
+        *"SupportsMulticastMapping":false,
+        *"SupportsLoopbackMapping":false,
         "IsPowerSwitch":false,
-        "IsConsoleServer":false,
-        "IsLicenseCheckRequired":false
+        *"IsConsoleServer":false,
+        *"IsLicenseCheckRequired":false
       }
     }
   ]

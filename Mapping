@@ -56,5 +56,22 @@ connectable = false
 
 
 
-# tags: configuration, setting, search_filter, abstract, insight, admin_only
-TBD
+tags: [t1,t2,t3...]
+
+
+# tags list [translation to CloudShell]:
+
+configuration = [Configuration == true]
+setting = [Setting == true]
+not_searchable = [Displayed In Search Filters == false]
+abstract_filter = [Available For Abstract Resources == true]
+include_in_insight = [Displayed In insight == true]
+readonly_to_users = [Admin Only == true]
+display_in_diagram = [Displayed In Diagram == true]
+connection_attribute = [Link Configuration == true]
+
+
+# default if not specified:
+[configuration, setting] - all the rest are false
+
+[configuration, setting, abstract_filter]

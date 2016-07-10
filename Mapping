@@ -74,4 +74,5 @@ connection_attribute = [Link Configuration == true]
 # default if not specified:
 [configuration, setting] - all the rest are false
 
-[configuration, setting, abstract_filter]
+if specified - override default behavior:
+tags: [configuration, setting, abstract_filter]

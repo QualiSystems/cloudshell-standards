@@ -69,10 +69,14 @@ include_in_insight = [Displayed In insight == true]
 readonly_to_users = [Admin Only == true]
 display_in_diagram = [Displayed In Diagram == true]
 connection_attribute = [Link Configuration == true]
+read_only
 
+// TBD - Services: user_input [only for services - IsRequired]
 
 # default if not specified:
 [configuration, setting] - all the rest are false
+
+
 
 if specified - override default behavior:
 tags: [configuration, setting, abstract_filter]

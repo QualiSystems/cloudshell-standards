@@ -61,23 +61,3 @@ capability_types:
         required: false
 
 
-# ----------------- CLOUDSHELL Families  -----------------#
-  cloudshell.families.Compute:
-    derived_from: cloudshell.families.Root
-    properties:
-      description:
-        type: string
-        default: This is a default description for a family
-      attribute_list:
-        type: list
-        default: [vendor, model, location]
-
-  cloudshell.families.NIC:
-    derived_from: cloudshell.families.Root
-    properties:
-      description:
-        type: string
-        default: This is a default description for a family
-      attribute_list:
-        type: list
-        default: [vendor, model, location]

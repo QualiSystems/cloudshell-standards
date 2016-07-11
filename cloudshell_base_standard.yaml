@@ -83,29 +83,3 @@ capability_types:
       CLI_connection_type:
         type: string
         description: Possible values - Auto, Console, SSH, Telnet, TCP
-
-  cloudshell.families.Root:
-    derived_from: tosca.capabilities.Root
-    properties:
-      description:
-        type: string
-        default: This is a default description for a family
-      searchable:
-        type: boolean
-        default: false
-      default_share_level:
-        type: string
-        default: shared
-        constraints:
-          - valid_values: [exclusive,shared]
-      permissions:
-        type: string
-        default: all
-        constraints:
-          - valid_values: [admin_only,all]
-      connectable:
-        type: boolean
-        default: true
-      attribute_list:
-        type: list
-        default: []

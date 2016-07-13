@@ -5,6 +5,7 @@ metadata:
   template_name: NXOS Shell
   template_author: Meni Besso
   template_version: 1.0.0
+  # compatible_with:  TBD (Ronen / Roni)
 
 description: >
   This is an example of a shell implementation

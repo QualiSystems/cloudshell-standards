@@ -25,14 +25,14 @@ node_types:
     requirements:
       - NICs:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.compute.NIC
+            node: cloudshell.compute.GenericNIC
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
     capabilities:
       OS:
         type: CloudShell.capabilities.OperatingSystem
 
-  cloudshell.compute.NIC:
+  cloudshell.compute.GenericNIC:
     properties:
       name:
         type: string

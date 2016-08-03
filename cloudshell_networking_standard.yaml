@@ -61,12 +61,12 @@ node_types:
     requirements:
       - Chassis:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.nodes.GenericChassis
+            node: cloudshell.networking.GenericChassis
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - Port Channels:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.nodes.GenericPortChannel
+            node: cloudshell.networking.nodes.GenericPortChannel
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
 #    interfaces:
@@ -90,17 +90,17 @@ node_types:
     requirements:
       - modules:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.nodes.GenericModule
+            node: cloudshell.networking.nodes.GenericModule
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - ports:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.nodes.GenericPort
+            node: cloudshell.networking.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - power_ports:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.nodes.GenericPowerPort
+            node: cloudshell.networking.nodes.GenericPowerPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
     capabilities:
@@ -123,12 +123,12 @@ node_types:
     requirements:
       - sub_modules:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.nodes.GenericSubModule
+            node: cloudshell.networking.nodes.GenericSubModule
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - ports:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.nodes.GenericPort
+            node: cloudshell.networking.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
     capabilities:
@@ -150,7 +150,7 @@ node_types:
     requirements:
       - ports:
           capability: tosca.capabilities.Attachment
-          node: cloudshell.nodes.GenericPort
+          node: cloudshell.networking.nodes.GenericPort
           relationship: tosca.relationships.AttachesTo
           occurrences: [0, UNBOUNDED]
     capabilities:

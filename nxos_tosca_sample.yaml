@@ -14,7 +14,7 @@ description: >
   3) It expands the standard capabilities with additional property and additional function
 
 imports:
-  - cloudshell_standard: cloudshell_networking_standard.yaml
+  - cloudshell_standard: cloudshell_networking_standard-1_1_0.yaml
 
 node_types:
 

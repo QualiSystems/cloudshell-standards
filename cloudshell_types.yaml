@@ -36,7 +36,9 @@ capability_types:
       attribute_list:
         type: list
         default: []
-
+      family_type:
+        type: string
+        default: Resource
 
 # ----------------- CLOUDSHELL Families  -----------------#
   cloudshell.families.Switch:

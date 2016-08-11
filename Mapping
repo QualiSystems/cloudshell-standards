@@ -27,7 +27,7 @@ act_as_group: (default) false
 
 is_service: (default) false
 
-resource_type: (default) physical
+resource_type: (default) Resource, if family_type = 'Application' -> Application
 
 is_mappable: (default) false
 

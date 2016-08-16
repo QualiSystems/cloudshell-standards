@@ -29,7 +29,7 @@ node_types:
       auto_discovery:
         type: cloudshell.capabilities.AutoDiscovery
         properties:
-          user_name:
+          user:
             type: string
           password:
             type: boolean

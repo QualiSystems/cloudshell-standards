@@ -1,0 +1,219 @@
+# CloudShell Networking Standard
+# Suitable for modeling network devices
+# Supports both L2 (Switch) and L3 (Router)
+# More Info: https://support.qualisystems.com/entries/98793728--General-Networking-Shell-Standard
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+metadata:
+  template_name: Networking Standard
+  template_author: Meni Besso
+  template_version: 4.0.1
+
+description: Suitable for modeling network devices, Supports both L2 (Switch) and L3 (Router)
+
+imports:
+  - cloudshell_standard: cloudshell_resource_standard_1_0_0.yaml
+  - cloudshell_types: cloudshell_types_1_0_0.yaml
+
+node_types:
+
+# ----------------- CLOUDSHELL NODES -----------------#
+  cloudshell.nodes.Switch:
+    derived_from:  cloudshell.networking.NetworkDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.Switch
+
+  cloudshell.nodes.Router:
+    derived_from:  cloudshell.networking.NetworkDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.Router
+
+  cloudshell.nodes.WirelessController:
+    derived_from:  cloudshell.networking.NetworkDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.Router
+# ----------------- ------------------ -----------------#
+
+  cloudshell.networking.NetworkDevice:
+    derived_from: cloudshell.nodes.Shell
+    properties:
+      contact_name:
+        description: The name of a contact registered in the device.
+        type: string
+      OS_version:
+        description: Version of the Operating System.
+        type: string
+      backup_location:
+        description: The location in which configuration files will be saved in case no backup location input is passed to the Save command.
+        type: string
+      backup_type:
+        type: string
+        description: Supported protocols for saving and restoring of configuration and firmware files. Possible values are "File System", "FTP" and "TFTP". Default value is "File System"
+        default: File System
+        constraints:
+          - valid_values: [ File System, FTP, TFTP]
+      backup_user:
+        description: Username for the storage server used for saving and restoring of configuration and firmware files.
+        type: string
+      backup_password:
+        description: Password for the storage server used for saving and restoring of configuration and firmware files.
+        type: cloudshell.datatypes.Password
+      vrf_management_name:
+        description: The default VRF Management to use if configured in the network and no such input was passed to the Save or Restore command.
+        type: string
+    requirements:
+      - Chassis:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.networking.GenericChassis
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+      - Port Channels:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.networking.nodes.GenericPortChannel
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+
+  cloudshell.networking.GenericChassis:
+    properties:
+      model:
+        type: string
+        default: ''
+        tags: [configuration, setting, abstract_filter]
+      serial_number:
+        type: string
+        default: ''
+    requirements:
+      - modules:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.networking.nodes.GenericModule
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+      - ports:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.networking.nodes.GenericPort
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+      - power_ports:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.resource.nodes.GenericPowerPort
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.Chassis
+
+
+  cloudshell.networking.nodes.GenericModule:
+    properties:
+      model:
+        type: string
+        default: ''
+        tags: [configuration, setting, abstract_filter]
+      version:
+        type: string
+        default: ''
+      serial_number:
+        type: string
+        default: ''
+    requirements:
+      - sub_modules:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.networking.nodes.GenericSubModule
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+      - ports:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.networking.nodes.GenericPort
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.Module
+
+  cloudshell.networking.nodes.GenericSubModule:
+    properties:
+      model:
+        type: string
+        default: ''
+        tags: [configuration, abstract_filter]
+      version:
+        type: string
+        default: ''
+      serial_number:
+        type: string
+        default: ''
+    requirements:
+      - ports:
+          capability: tosca.capabilities.Attachment
+          node: cloudshell.networking.nodes.GenericPort
+          relationship: tosca.relationships.AttachesTo
+          occurrences: [0, UNBOUNDED]
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.SubModule
+
+  cloudshell.networking.nodes.GenericPort:
+    properties:
+      mac_address:
+        type: string
+        default: ''
+      l2_protocol_type:
+        description: The L2 protocol type configured on the interface. For example POS, Serial.
+        type: string
+        description: Such as POS, Serial
+      IPv4_address:
+        type: string
+      IPv6_address:
+        type: string
+      port_description:
+        description: The description of the port as configured in the device.
+        type: string
+      bandwidth:
+        description: The current interface bandwidth, in MB.
+        type: integer
+      mtu:
+        description: The current MTU configured on the interface.
+        type: integer
+      duplex:
+        description: The current duplex configuration on the interface. Possible values are Half or Full.
+        type: string
+        constraints:
+          - valid_values: [ Half, Full]
+      adjacent:
+        type: string
+        description: The adjacent device (system name) and port, based on LLDP or CDP protocol.
+      protocol_type:
+        type: string
+        description: Default values is Transparent (="0")
+        default: 0
+      auto_negotiation:
+        type: boolean
+        description: The current auto negotiation configuration on the interface.
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.Port
+
+
+  cloudshell.networking.nodes.GenericPortChannel:
+    properties:
+      associated_ports:
+        type: string
+        description: Ports associated with this port channel. The value is in the format “[portResourceName],…”, for example “GE0-0-0-1,GE0-0-0-2”
+      IPv4_address:
+        type: string
+      IPv6_address:
+        type: string
+      port_description:
+        description: The description of the port as configured in the device.
+        type: string
+      protocol_type:
+        type: string
+        description: Default values is Transparent (="0")
+        default: 0
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.PortChannel

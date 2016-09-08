@@ -1,0 +1,254 @@
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+metadata:
+  template_name: CloudShell families
+  template_author: Meni Besso
+  template_version: 1.0.0
+
+description: Suitable for modeling network devices, Supports both L2 (Switch) and L3 (Router)
+
+
+capability_types:
+
+# ----------------- CLOUDSHELL Families  -----------------#
+  cloudshell.families.GenericResource:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location, system_name]
+      connectable:
+        type: boolean
+        default: false
+      default_share_level:
+        type: string
+        default: exclusive
+
+  cloudshell.families.Switch:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location, system_name, OS_version]
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Router:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location, system_name, OS_version]
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.WirelessController:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location, system_name, OS_version]
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Firewall:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location, system_name, OS_version]
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Chassis:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Module:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.SubModule:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.Port:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: true
+      default_share_level:
+        type: string
+        default: exclusive
+
+  cloudshell.families.PortChannel:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: true
+      default_share_level:
+        type: string
+        default: exclusive
+
+  cloudshell.families.PowerPort:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: true
+      default_share_level:
+        type: string
+        default: exclusive
+
+  cloudshell.families.ComputeServer:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location]
+      connectable:
+        type: boolean
+        default: false
+
+  cloudshell.families.GenericAppFamily:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      connectable:
+        type: boolean
+        default: false
+      default_share_level:
+        type: string
+        default: exclusive
+
+
+  cloudshell.families.PDU:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [vendor, model, location, system_name, OS_version]
+      is_power_switch:
+        type: boolean
+        default: true
+
+  cloudshell.families.PowerSocket:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: true
+      default_share_level:
+        type: string
+        default: exclusive
+# ----------------- ------------------ -----------------#
+
+  cloudshell.families.Root:
+    derived_from: tosca.capabilities.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      searchable:
+        type: boolean
+        default: true
+      default_share_level:
+        type: string
+        default: shared
+        constraints:
+          - valid_values: [exclusive,shared]
+      permissions:
+        type: string
+        default: all
+        constraints:
+          - valid_values: [admin_only,all]
+      connectable:
+        type: boolean
+        default: true
+      attribute_list:
+        type: list
+        default: []
+      family_type:
+        type: string
+        default: Resource

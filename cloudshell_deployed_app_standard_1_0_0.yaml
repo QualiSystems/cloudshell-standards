@@ -1,0 +1,35 @@
+# CloudShell Deployed App Standard
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+description: Suitable for modeling deployed apps
+
+metadata:
+  template_name: Deployed App Standard
+  template_author: Meni Besso
+  template_version: 1.0.0
+
+imports:
+  - cloudshell_types: cloudshell_types_1_0_0.yaml
+
+node_types:
+
+# ----------------- CLOUDSHELL NODES -----------------#
+  cloudshell.nodes.DeployedApp:
+    derived_from:  cloudshell.apps.GenericDeployedApp
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.GenericAppFamily
+# ----------------- ------------------ -----------------#
+
+  cloudshell.apps.GenericDeployedApp:
+    properties:
+      user:
+        description: User with administrative privileges
+        type: string
+      password:
+        type: cloudshell.datatypes.Password
+      public_ip:
+        type: string
+
+

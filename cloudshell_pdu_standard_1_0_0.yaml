@@ -1,0 +1,39 @@
+# CloudShell PDU Standard 1.0.0
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+metadata:
+  template_name: CloudShell PDU Standard
+  template_author: Meni Besso
+  template_version: 1.0.0
+
+description: Suitable for modeling Power Device Units
+
+imports:
+  - cloudshell_types: cloudshell_types_1_0_0.yaml
+
+
+node_types:
+
+# ----------------- CLOUDSHELL NODES -----------------#
+  cloudshell.nodes.PDU:
+    derived_from:  cloudshell.pdu.GenericPDU
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.PDU
+# ----------------- ------------------ -----------------#
+
+  cloudshell.pdu.GenericPDU:
+    derived_from: cloudshell.nodes.Shell
+    properties:
+    requirements:
+      - PowerSockets:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.pdu.PowerSocket
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+
+  cloudshell.pdu.PowerSocket:
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.PowerSocket

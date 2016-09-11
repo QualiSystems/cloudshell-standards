@@ -180,6 +180,23 @@ capability_types:
         type: boolean
         default: false
 
+
+  cloudshell.families.NIC:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: []
+      connectable:
+        type: boolean
+        default: true
+      default_share_level:
+        type: string
+        default: exclusive
+
   cloudshell.families.GenericAppFamily:
     derived_from: cloudshell.families.Root
     properties:

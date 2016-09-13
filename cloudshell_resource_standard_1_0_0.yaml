@@ -65,6 +65,17 @@ node_types:
         description: The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency).
         type: integer
         default: 1
+    requirements:
+     - ports:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.resource.nodes.ResourcePort
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+     - power_ports:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.resource.nodes.GenericPowerPort
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
     capabilities:
       SNMP:
         type: cloudshell.capabilities.SNMP
@@ -88,7 +99,7 @@ node_types:
         type: string
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.PortChannel
+        type: cloudshell.families.PowerPortss
 
 
   cloudshell.resource.nodes.ResourcePort:

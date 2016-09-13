@@ -43,16 +43,6 @@ node_types:
       OS:
         type: CloudShell.capabilities.OperatingSystem
 
-  cloudshell.compute.GenericNIC:
-    properties:
-      NIC_name:
-        type: string
-    capabilities:
-     cloudshell_type:
-        type: cloudshell.networking.types.Module
-    capabilities:
-      cloudshell_family:
-              type: cloudshell.families.NIC
 
 capability_types:
   CloudShell.capabilities.OperatingSystem:

@@ -99,7 +99,7 @@ node_types:
         type: string
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.PowerPortss
+        type: cloudshell.families.PowerPort
 
 
   cloudshell.resource.nodes.ResourcePort:

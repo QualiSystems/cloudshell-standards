@@ -20,7 +20,7 @@ node_types:
     derived_from:  cloudshell.firewall.FirewallDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Firewall
+        type: cloudshell.families.CS_Firewall
 # ----------------- ------------------ -----------------#
 
   cloudshell.firewall.FirewallDevice:
@@ -77,7 +77,7 @@ node_types:
             occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Chassis
+        type: cloudshell.families.CS_Chassis
 
 
   cloudshell.firewall.nodes.GenericModule:
@@ -105,7 +105,7 @@ node_types:
             occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Module
+        type: cloudshell.families.CS_Module
 
   cloudshell.firewall.nodes.GenericSubModule:
     properties:
@@ -127,7 +127,7 @@ node_types:
           occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.SubModule
+        type: cloudshell.families.CS_SubModule
 
   cloudshell.firewall.nodes.GenericPort:
     properties:
@@ -168,7 +168,7 @@ node_types:
         description: The current auto negotiation configuration on the interface.
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Port
+        type: cloudshell.families.CS_Port
 
 
   cloudshell.firewall.nodes.GenericPortChannel:
@@ -189,4 +189,4 @@ node_types:
         default: 0
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.PortChannel
+        type: cloudshell.families.CS_PortChannel

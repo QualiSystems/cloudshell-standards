@@ -22,7 +22,7 @@ node_types:
     derived_from:  cloudshell.nodes.Shell
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.GenericResource
+        type: cloudshell.families.CS_GenericResource
 # ----------------- ------------------ -----------------#
 
 
@@ -99,7 +99,7 @@ node_types:
         type: string
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.PowerPort
+        type: cloudshell.families.CS_PowerPort
 
 
   cloudshell.resource.nodes.ResourcePort:
@@ -116,7 +116,7 @@ node_types:
         type: string
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Port
+        type: cloudshell.families.CS_Port
 
 
 capability_types:

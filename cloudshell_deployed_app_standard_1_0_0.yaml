@@ -19,7 +19,7 @@ node_types:
     derived_from:  cloudshell.apps.GenericDeployedApp
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.GenericAppFamily
+        type: cloudshell.families.CS_GenericAppFamily
 # ----------------- ------------------ -----------------#
 
   cloudshell.apps.GenericDeployedApp:

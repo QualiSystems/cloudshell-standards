@@ -20,7 +20,7 @@ node_types:
     derived_from:  cloudshell.pdu.GenericPDU
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.PDU
+        type: cloudshell.families.CS_PDU
 # ----------------- ------------------ -----------------#
 
   cloudshell.pdu.GenericPDU:
@@ -36,4 +36,4 @@ node_types:
   cloudshell.pdu.PowerSocket:
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.PowerSocket
+        type: cloudshell.families.CS_PowerSocket

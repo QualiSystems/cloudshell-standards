@@ -20,7 +20,7 @@ node_types:
     derived_from:  cloudshell.compute.ComputeDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.ComputeServer
+        type: cloudshell.families.CS_ComputeServer
 # ----------------- ------------------ -----------------#
 
   cloudshell.compute.ComputeDevice:

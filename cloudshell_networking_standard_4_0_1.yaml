@@ -23,19 +23,19 @@ node_types:
     derived_from:  cloudshell.networking.NetworkDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Switch
+        type: cloudshell.families.CS_Switch
 
   cloudshell.nodes.Router:
     derived_from:  cloudshell.networking.NetworkDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Router
+        type: cloudshell.families.CS_Router
 
   cloudshell.nodes.WirelessController:
     derived_from:  cloudshell.networking.NetworkDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Router
+        type: cloudshell.families.CS_Router
 # ----------------- ------------------ -----------------#
 
   cloudshell.networking.NetworkDevice:
@@ -104,7 +104,7 @@ node_types:
             occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Chassis
+        type: cloudshell.families.CS_Chassis
 
 
   cloudshell.networking.nodes.GenericModule:
@@ -132,7 +132,7 @@ node_types:
             occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Module
+        type: cloudshell.families.CS_Module
 
   cloudshell.networking.nodes.GenericSubModule:
     properties:
@@ -154,7 +154,7 @@ node_types:
           occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.SubModule
+        type: cloudshell.families.CS_SubModule
 
   cloudshell.networking.nodes.GenericPort:
     properties:
@@ -195,7 +195,7 @@ node_types:
         description: The current auto negotiation configuration on the interface.
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.Port
+        type: cloudshell.families.CS_Port
 
 
   cloudshell.networking.nodes.GenericPortChannel:
@@ -213,7 +213,7 @@ node_types:
       protocol_type:
         type: string
         description: Default values is Transparent (="0")
-        default: 0
+        default: 0s
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.PortChannel
+        type: cloudshell.families.CS_PortChannel

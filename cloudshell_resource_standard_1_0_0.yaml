@@ -133,6 +133,9 @@ capability_types:
         type: string
         default: ''
 
+  cloudshell.capabilities.SupportConcurrentCommands:
+    derived_from: tosca.capabilities.Root
+
   cloudshell.capabilities.SNMP:
     properties:
       SNMP_read_community:

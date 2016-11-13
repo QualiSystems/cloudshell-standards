@@ -192,7 +192,9 @@ capability_types:
       default_share_level:
         type: string
         default: exclusive
-
+      family_type:
+        type: string
+        default: Application
 
   cloudshell.families.CS_PDU:
     derived_from: cloudshell.families.Root

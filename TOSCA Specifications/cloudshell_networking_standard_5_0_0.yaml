@@ -1,73 +1,89 @@
-# CloudShell Firewall Standard
+# CloudShell Networking Standard
+# Suitable for modeling network devices
+# Supports both L2 (Switch) and L3 (Router)
+# More Info: https://support.qualisystems.com/entries/98793728--General-Networking-Shell-Standard
 
 tosca_definitions_version: tosca_simple_yaml_1_0
 
 metadata:
-  template_name: Firewall Standard
-  template_author: Meni Besso
-  template_version: 2.0.0
+  template_name: Networking
+  template_author: Quali
+  template_version: 5.0.0
 
-description: Suitable for modeling firewalls
+description: Suitable for modeling network devices, Supports both L2 (Switch) and L3 (Router)
 
 imports:
-  - cloudshell_standard: cloudshell_resource_standard_1_0_0.yaml
+  - cloudshell_standard: cloudshell_resource_standard_2_0_0.yaml
   - cloudshell_types: cloudshell_types_1_0_0.yaml
 
 node_types:
 
 # ----------------- CLOUDSHELL NODES -----------------#
-  cloudshell.nodes.Firewall:
-    derived_from:  cloudshell.firewall.FirewallDevice
+  cloudshell.nodes.Switch:
+    derived_from:  cloudshell.networking.NetworkDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.CS_Firewall
+        type: cloudshell.families.CS_Switch
+
+  cloudshell.nodes.Router:
+    derived_from:  cloudshell.networking.NetworkDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.CS_Router
+
+  cloudshell.nodes.WirelessController:
+    derived_from:  cloudshell.networking.NetworkDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.CS_WirelessController
 # ----------------- ------------------ -----------------#
 
-  cloudshell.firewall.FirewallDevice:
+  cloudshell.networking.NetworkDevice:
     derived_from: cloudshell.nodes.Shell
     properties:
-      contact_name:
+      Contact Name:
         description: The name of a contact registered in the device.
         type: string
-      OS_version:
+        tags: [setting, abstract_filter, read_only]
+      OS Version:
         description: Version of the Operating System.
         type: string
-      backup_location:
-        description: The location in which configuration files will be saved in case no backup location input is passed to the Save command.
-        type: string
-      vrf_management_name:
+        tags: [setting, abstract_filter, read_only]
+      VRF Management Name:
         description: The default VRF Management to use if configured in the network and no such input was passed to the Save or Restore command.
         type: string
+        tags: [configuration]
     requirements:
       - Chassis:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.firewall.GenericChassis
+            node: cloudshell.networking.GenericChassis
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - Port Channels:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.firewall.nodes.GenericPortChannel
+            node: cloudshell.networking.nodes.GenericPortChannel
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
 
-  cloudshell.firewall.GenericChassis:
+  cloudshell.networking.GenericChassis:
     properties:
-      model:
+      Model:
+        description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [configuration, setting, abstract_filter]
-      serial_number:
+        tags: [setting, abstract_filter]
+      Serial Number:
         type: string
-        default: ''
+        tags: [setting, abstract_filter, read_only]
     requirements:
       - modules:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.firewall.nodes.GenericModule
+            node: cloudshell.networking.nodes.GenericModule
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - ports:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.firewall.nodes.GenericPort
+            node: cloudshell.networking.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - power_ports:
@@ -80,113 +96,128 @@ node_types:
         type: cloudshell.families.CS_Chassis
 
 
-  cloudshell.firewall.nodes.GenericModule:
+  cloudshell.networking.nodes.GenericModule:
     properties:
-      model:
+      Model:
+        description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [configuration, setting, abstract_filter]
-      version:
+        tags: [setting, abstract_filter]
+      Version:
+        description: The firmware version of the resource.
         type: string
         default: ''
-      serial_number:
+        tags: [setting, abstract_filter, read_only]
+      Serial Number:
         type: string
         default: ''
+        tags: [setting, abstract_filter, read_only]
     requirements:
       - sub_modules:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.firewall.nodes.GenericSubModule
+            node: cloudshell.networking.nodes.GenericSubModule
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - ports:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.firewall.nodes.GenericPort
+            node: cloudshell.networking.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_Module
 
-  cloudshell.firewall.nodes.GenericSubModule:
+  cloudshell.networking.nodes.GenericSubModule:
     properties:
-      model:
+      Model:
+        description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [configuration, abstract_filter]
-      version:
+        tags: [setting, abstract_filter]
+      Version:
+        description: The firmware version of the resource.
         type: string
         default: ''
-      serial_number:
+        tags: [setting, abstract_filter, read_only]
+      Serial Number:
         type: string
         default: ''
+        tags: [setting, abstract_filter, read_only]
     requirements:
       - ports:
           capability: tosca.capabilities.Attachment
-          node: cloudshell.firewall.nodes.GenericPort
+          node: cloudshell.networking.nodes.GenericPort
           relationship: tosca.relationships.AttachesTo
           occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_SubModule
 
-  cloudshell.firewall.nodes.GenericPort:
+  cloudshell.networking.nodes.GenericPort:
     properties:
-      mac_address:
+      MAC Address:
         type: string
         default: ''
-      l2_protocol_type:
+        tags: [setting, abstract_filter, read_only]
+      L2 Protocol Type:
         description: The L2 protocol type configured on the interface. For example POS, Serial.
         type: string
         description: Such as POS, Serial
-      IPv4_address:
+        tags: [setting, abstract_filter, read_only]
+      IPv4 Address:
         type: string
-      IPv6_address:
+        tags: [setting, abstract_filter, read_only]
+      IPv6 Address:
         type: string
-      port_description:
+        tags: [setting, abstract_filter, read_only]
+      Port Description:
         description: The description of the port as configured in the device.
         type: string
-      bandwidth:
+        tags: [setting, abstract_filter, read_only]
+      Bandwidth:
         description: The current interface bandwidth, in MB.
         type: integer
-      mtu:
+        tags: [setting, abstract_filter, read_only]
+      MTU:
         description: The current MTU configured on the interface.
         type: integer
-      duplex:
+        tags: [setting, abstract_filter, read_only]
+      Duplex:
         description: The current duplex configuration on the interface. Possible values are Half or Full.
         type: string
+        default: Half
         constraints:
-          - valid_values: [ Half, Full]
-      adjacent:
+          - valid_values: [Half, Full]
+        tags: [setting, abstract_filter, read_only]
+      Adjacent:
         type: string
         description: The adjacent device (system name) and port, based on LLDP or CDP protocol.
-      protocol_type:
-        type: string
-        description: Default values is Transparent (="0")
-        default: 0
-      auto_negotiation:
+        tags: [setting, abstract_filter, read_only]
+      Auto Negotiation:
         type: boolean
         description: The current auto negotiation configuration on the interface.
+        tags: [setting, abstract_filter, read_only]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_Port
 
 
-  cloudshell.firewall.nodes.GenericPortChannel:
+  cloudshell.networking.nodes.GenericPortChannel:
     properties:
-      associated_ports:
+      Associated Ports:
         type: string
         description: Ports associated with this port channel. The value is in the format “[portResourceName],…”, for example “GE0-0-0-1,GE0-0-0-2”
-      IPv4_address:
+        tags: [setting, abstract_filter, read_only]
+      IPv4 Address:
         type: string
-      IPv6_address:
+        tags: [setting, abstract_filter, read_only]
+      IPv6 Address:
         type: string
-      port_description:
+        tags: [setting, abstract_filter, read_only]
+      Port Description:
         description: The description of the port as configured in the device.
         type: string
-      protocol_type:
-        type: string
-        description: Default values is Transparent (="0")
-        default: 0
+        tags: [setting, abstract_filter, read_only]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_PortChannel

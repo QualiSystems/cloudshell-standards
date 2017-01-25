@@ -3,13 +3,14 @@
 tosca_definitions_version: tosca_simple_yaml_1_0
 
 metadata:
-  template_name: CloudShell PDU Standard
-  template_author: Meni Besso
-  template_version: 1.0.0
+  template_name: PDU
+  template_author: Quali
+  template_version: 2.0.0
 
 description: Suitable for modeling Power Device Units
 
 imports:
+  - cloudshell_standard: cloudshell_resource_standard_2_0_0.yaml
   - cloudshell_types: cloudshell_types_1_0_0.yaml
 
 
@@ -25,7 +26,6 @@ node_types:
 
   cloudshell.pdu.GenericPDU:
     derived_from: cloudshell.nodes.Shell
-    properties:
     requirements:
       - PowerSockets:
             capability: tosca.capabilities.Attachment

@@ -5,11 +5,12 @@ tosca_definitions_version: tosca_simple_yaml_1_0
 description: Suitable for modeling deployed apps
 
 metadata:
-  template_name: Deployed App Standard
-  template_author: Meni Besso
+  template_name: Deployed App
+  template_author: Quali
   template_version: 1.0.0
 
 imports:
+  - cloudshell_standard: cloudshell_resource_standard_2_0_0.yaml
   - cloudshell_types: cloudshell_types_1_0_0.yaml
 
 node_types:
@@ -24,12 +25,10 @@ node_types:
 
   cloudshell.apps.GenericDeployedApp:
     properties:
-      user:
+      User:
         description: User with administrative privileges
         type: string
-      password:
+      Password:
         type: cloudshell.datatypes.Password
-      public_ip:
+      Public IP:
         type: string
-
-

@@ -1,6 +1,6 @@
 # Compute Server Shell Standard
 
-#### Version 1.0.0
+#### Version 2.0.0
 
 
 ## Introduction
@@ -13,6 +13,7 @@ The Compute Server Shell Standard defines a standard for all compute server shel
 
 Version | Date | Notes
 --- | --- | ---
+2.0.0 | 2017-01-31 | Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". Those changes are NOT backwards compatible
 1.0.0 | 2016-07-14 | First release of the Compute server Shell Standard
 
 

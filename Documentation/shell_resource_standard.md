@@ -1,6 +1,6 @@
 # Shell Resource Standard
 
-#### Version 1.0.0
+#### Version 2.0.0
 
 
 ## Introduction
@@ -13,6 +13,7 @@ This Shell Standard is a project used to define a standard for generic Shells th
 
 Version | Date | Notes
 --- | --- | ---
+2.0.0 | 2017-01-31 | Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". Those changes are NOT backwards compatible
 1.0.0 | 2016-07-24 | First release of the Shell Resource Standard
 
 

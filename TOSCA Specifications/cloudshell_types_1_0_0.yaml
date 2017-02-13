@@ -20,7 +20,7 @@ capability_types:
         default: This is a default description for a family
       attribute_list:
         type: list
-        default: [Vendor, Model, Location, System Name]
+        default: [Vendor, Model, Location, System Name, Contact Name]
       connectable:
         type: boolean
         default: false
@@ -36,7 +36,7 @@ capability_types:
         default: This is a default description for a family
       attribute_list:
         type: list
-        default: [Vendor, Model, Location, System Name, OS Version]
+        default: [Vendor, Model, Location, System Name, OS Version, Contact Name]
       connectable:
         type: boolean
         default: false
@@ -49,7 +49,7 @@ capability_types:
         default: This is a default description for a family
       attribute_list:
         type: list
-        default: [Vendor, Model, Location, System Name, OS Version]
+        default: [Vendor, Model, Location, System Name, OS Version, Contact Name]
       connectable:
         type: boolean
         default: false
@@ -62,7 +62,7 @@ capability_types:
         default: This is a default description for a family
       attribute_list:
         type: list
-        default: [Vendor, Model, Location, System Name, OS Version]
+        default: [Vendor, Model, Location, System Name, OS Version, Contact Name]
       connectable:
         type: boolean
         default: false
@@ -75,7 +75,7 @@ capability_types:
         default: This is a default description for a family
       attribute_list:
         type: list
-        default: [Vendor, Model, Location, System Name, OS Version]
+        default: [Vendor, Model, Location, System Name, OS Version, Contact Name]
       connectable:
         type: boolean
         default: false

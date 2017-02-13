@@ -26,10 +26,6 @@ node_types:
   cloudshell.firewall.FirewallDevice:
     derived_from: cloudshell.nodes.Shell
     properties:
-      Contact Name:
-        description: The name of a contact registered in the device.
-        type: string
-        tags: [setting, abstract_filter, read_only]
       OS Version:
         description: Version of the Operating System.
         type: string
@@ -56,7 +52,7 @@ node_types:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [setting, abstract_filter]
+        tags: [setting, abstract_filter, include_in_insight]
       Serial Number:
         type: string
         tags: [setting, abstract_filter, read_only]
@@ -87,7 +83,7 @@ node_types:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [setting, abstract_filter]
+        tags: [setting, abstract_filter, include_in_insight]
       Version:
         description: The firmware version of the resource.
         type: string
@@ -118,7 +114,7 @@ node_types:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [setting, abstract_filter]
+        tags: [setting, abstract_filter, include_in_insight]
       Version:
         description: The firmware version of the resource.
         type: string

@@ -1,6 +1,6 @@
 # CloudShell Resource Standard 1.0.0
 # TOSCA extension: tags for properties with the following values:
-# tags: configuration, setting, search_filter, abstract, insight, admin_only, diagram_display, read_only
+# tags: configuration, setting, search_filter, abstract, include_in_insight, admin_only, diagram_display, read_only
 
 tosca_definitions_version: tosca_simple_yaml_1_0
 
@@ -48,22 +48,26 @@ node_types:
       System Name:
         description: A unique identifier for the device, if exists in the device terminal/os.
         type: string
-        tags: [setting, abstract_filter, read_only]
+        tags: [setting, abstract_filter, read_only, include_in_insight]
       Vendor:
         description: The name of the device manufacture.
         type: string
         default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight]
+      Contact Name:
+        description: The name of a contact registered in the device.
+        type: string
         tags: [setting, abstract_filter, read_only]
       Location:
         description: The device physical location identifier. For example Lab1/Floor2/Row5/Slot4.
         type: string
         default: ''
-        tags: [setting, abstract_filter, read_only]
+        tags: [setting, abstract_filter, read_only, include_in_insight]
       Model:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [setting, abstract_filter]
+        tags: [setting, abstract_filter, include_in_insight]
       Sessions Concurrency Limit:
         description: The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency).
         type: integer
@@ -93,7 +97,7 @@ node_types:
       Model:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
-        tags: [setting, abstract_filter, read_only]
+        tags: [setting, abstract_filter, read_only, include_in_insight]
       Serial Number:
         type: string
         tags: [setting, abstract_filter, read_only]
@@ -125,7 +129,7 @@ node_types:
       Port Speed:
         description: The port speed (e.g 10Gb/s, 40Gb/s, 100Mb/s)
         type: string
-        tags: [setting, abstract_filter]
+        tags: [setting, abstract_filter, include_in_insight]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_Port

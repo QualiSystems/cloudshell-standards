@@ -4,7 +4,7 @@ tosca_definitions_version: tosca_simple_yaml_1_0
 metadata:
   template_name: CloudShell families
   template_author: Quali
-  template_version: 1.0.0
+  template_version: 1.0.1
 
 description: Suitable for modeling network devices, Supports both L2 (Switch) and L3 (Router)
 
@@ -12,6 +12,63 @@ description: Suitable for modeling network devices, Supports both L2 (Switch) an
 capability_types:
 
 # ----------------- CLOUDSHELL Families  -----------------#
+  cloudshell.families.CS_SoftwareAsset:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [Vendor, Model, Version, Location, Contact Name]
+      connectable:
+        type: boolean
+        default: false
+      default_share_level:
+        type: string
+        default: shared
+      family_type:
+        type: string
+        default: Application
+
+  cloudshell.families.CS_SoftwareServiceGroup:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [Vendor, Model, Version, Service Group Name]
+      connectable:
+        type: boolean
+        default: false
+      default_share_level:
+        type: string
+        default: shared
+      family_type:
+        type: string
+        default: Application
+
+  cloudshell.families.CS_SoftwareService:
+    derived_from: cloudshell.families.Root
+    properties:
+      description:
+        type: string
+        default: This is a default description for a family
+      attribute_list:
+        type: list
+        default: [Vendor, Model, Version, Location, Contact Name]
+      connectable:
+        type: boolean
+        default: false
+      default_share_level:
+        type: string
+        default: shared
+      family_type:
+        type: string
+        default: Application
+
   cloudshell.families.CS_GenericResource:
     derived_from: cloudshell.families.Root
     properties:

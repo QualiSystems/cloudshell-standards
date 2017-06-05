@@ -1,0 +1,204 @@
+# CloudShell On Prem App Standard 1.0.0
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+metadata:
+  template_name: Software asset
+  template_author: Quali
+  template_version: 1.0.0
+
+description: Application that is included in a sandbox but not deployed or managed by CloudShell
+
+imports:
+  - cloudshell_types: cloudshell_types_1_0_1.yaml
+
+
+node_types:
+
+# ----------------- CLOUDSHELL NODES -----------------#
+  cloudshell.nodes.SoftwareAsset:
+    properties:
+      User:
+        description: User with administrative privileges
+        type: string
+        tags: [configuration, setting]
+      Password:
+        type: cloudshell.datatypes.Password
+        tags: [configuration, setting]
+      Version:
+        description: The version of the application
+        type: string
+        tags: [configuration, setting, abstract_filter]
+      Vendor:
+        description: The name of the device manufacture.
+        type: string
+        default: ''
+        tags: [configuration, setting, abstract_filter, read_only]
+      Contact Name:
+        description: The name of a contact registered in the device.
+        type: string
+        tags: [configuration, setting, abstract_filter]
+      Location:
+        description: The device physical location identifier. For example Lab1/Floor2/Row5/Slot4.
+        type: string
+        default: ''
+        tags: [configuration, abstract_filter]
+      Model:
+        description: The device model. This information is typically used for abstract resource filtering.
+        type: string
+        default: ''
+        tags: [configuration, setting, abstract_filter]
+      Access Protocol:
+        description:
+        type: string
+        default: ''
+      Access Port:
+        description:
+        type: string
+        default: ''
+        tags: [configuration, setting]
+      Public IP:
+        type: string
+      Connected Assets:
+        description: A comma separated list of connected software assets (optional)
+        type: string
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.CS_SoftwareAsset
+      OS:
+        type: CloudShell.capabilities.OperatingSystem
+    requirements:
+      - service_groups:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.software_asset.nodes.ServiceGroup
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+      - services:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.software_asset.nodes.Service
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+# ----------------- ------------------ -----------------#
+
+
+
+  cloudshell.software_asset.nodes.ServiceGroup:
+    properties:
+      Service Group Name:
+        description: The name of the service group
+        type: string
+        tags: [setting, abstract_filter]
+      Version:
+        description: The version of the service group
+        type: string
+        tags: [setting, abstract_filter]
+      Vendor:
+        description: The name of the device manufacture.
+        type: string
+        default: ''
+        tags: [configuration, setting, abstract_filter]
+      Model:
+        description: The device model. This information is typically used for abstract resource filtering.
+        type: string
+        default: ''
+        tags: [configuration, setting, abstract_filter]
+      Connected Assets:
+        description: A comma separated list of connected software assets (optional)
+        type: string
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.CS_SoftwareServiceGroup
+      OS:
+        type: CloudShell.capabilities.OperatingSystem
+    requirements:
+     - services:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.software_asset.nodes.Service
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+
+
+  cloudshell.software_asset.nodes.Service:
+    properties:
+      User:
+        description: User with administrative privileges
+        type: string
+        tags: [configuration, setting]
+      Password:
+        type: cloudshell.datatypes.Password
+        tags: [configuration, setting]
+      Version:
+        description: The version of the service group
+        type: string
+        tags: [setting, abstract_filter]
+      Vendor:
+        description: The name of the device manufacture.
+        type: string
+        default: ''
+        tags: [configuration, setting, abstract_filter]
+      Contact Name:
+        description: The name of a contact registered in the device.
+        type: string
+        tags: [configuration, setting, abstract_filter]
+      Location:
+        description: The device physical location identifier. For example Lab1/Floor2/Row5/Slot4.
+        type: string
+        default: ''
+        tags: [configuration, abstract_filter]
+      Model:
+        description: The device model. This information is typically used for abstract resource filtering.
+        type: string
+        default: ''
+        tags: [configuration, setting, abstract_filter]
+      Access Protocol:
+        description:
+        type: string
+        default: ''
+      Access Port:
+        description:
+        type: string
+        default: ''
+      Public IP:
+        type: string
+        tags: [configuration]
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.CS_SoftwareService
+      OS:
+        type: CloudShell.capabilities.OperatingSystem
+
+
+capability_types:
+  CloudShell.capabilities.OperatingSystem:
+    derived_from: tosca.capabilities.Root
+    properties:
+      OS Architecture:
+        type: string
+        required: false
+        tags: [configuration]
+      OS Type:
+        type: string
+        required: false
+        tags: [configuration]
+      OS Distribution:
+        type: string
+        required: false
+        tags: [configuration]
+      OS Version:
+        type: string
+        required: false
+        tags: [configuration]
+
+  cloudshell.capabilities.AutoDiscovery:
+    derived_from: tosca.capabilities.Root
+    properties:
+      inventory_description:
+        type: string
+        default: ''
+      enable_auto_discovery:
+        type: boolean
+        default: true
+      auto_discovery_description:
+        type: string
+        default: ''
+

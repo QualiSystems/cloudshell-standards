@@ -1,44 +1,29 @@
-# CloudShell Networking Standard
-# Suitable for modeling network devices
-# Supports both L2 (Switch) and L3 (Router)
-# More Info: https://support.qualisystems.com/entries/98793728--General-Networking-Shell-Standard
+# CloudShell Firewall Standard
 
 tosca_definitions_version: tosca_simple_yaml_1_0
 
 metadata:
-  template_name: Networking
+  template_name: Firewall
   template_author: Quali
-  template_version: 5.0.0
+  template_version: 3.0.1
 
-description: Suitable for modeling network devices, Supports both L2 (Switch) and L3 (Router)
+description: Suitable for modeling firewalls
 
 imports:
-  - cloudshell_standard: cloudshell_resource_standard_2_0_0.yaml
-  - cloudshell_types: cloudshell_types_1_0_0.yaml
+  - cloudshell_standard: cloudshell_resource_standard_2_0_1.yaml
+  - cloudshell_types: cloudshell_types_1_0_2.yaml
 
 node_types:
 
 # ----------------- CLOUDSHELL NODES -----------------#
-  cloudshell.nodes.Switch:
-    derived_from:  cloudshell.networking.NetworkDevice
+  cloudshell.nodes.Firewall:
+    derived_from:  cloudshell.firewall.FirewallDevice
     capabilities:
       cloudshell_family:
-        type: cloudshell.families.CS_Switch
-
-  cloudshell.nodes.Router:
-    derived_from:  cloudshell.networking.NetworkDevice
-    capabilities:
-      cloudshell_family:
-        type: cloudshell.families.CS_Router
-
-  cloudshell.nodes.WirelessController:
-    derived_from:  cloudshell.networking.NetworkDevice
-    capabilities:
-      cloudshell_family:
-        type: cloudshell.families.CS_WirelessController
+        type: cloudshell.families.CS_Firewall
 # ----------------- ------------------ -----------------#
 
-  cloudshell.networking.NetworkDevice:
+  cloudshell.firewall.FirewallDevice:
     derived_from: cloudshell.nodes.Shell
     properties:
       OS Version:
@@ -52,34 +37,39 @@ node_types:
     requirements:
       - Chassis:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.networking.GenericChassis
+            node: cloudshell.firewall.GenericChassis
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - Port Channels:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.networking.nodes.GenericPortChannel
+            node: cloudshell.firewall.nodes.GenericPortChannel
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
 
-  cloudshell.networking.GenericChassis:
+  cloudshell.firewall.GenericChassis:
     properties:
       Model:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
         tags: [setting, abstract_filter, read_only, include_in_insight]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
       Serial Number:
         type: string
         tags: [setting, abstract_filter, read_only]
     requirements:
       - modules:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.networking.nodes.GenericModule
+            node: cloudshell.firewall.nodes.GenericModule
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - ports:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.networking.nodes.GenericPort
+            node: cloudshell.firewall.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - power_ports:
@@ -92,13 +82,18 @@ node_types:
         type: cloudshell.families.CS_Chassis
 
 
-  cloudshell.networking.nodes.GenericModule:
+  cloudshell.firewall.nodes.GenericModule:
     properties:
       Model:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
         tags: [setting, abstract_filter, read_only, include_in_insight]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
       Version:
         description: The firmware version of the resource.
         type: string
@@ -111,25 +106,30 @@ node_types:
     requirements:
       - sub_modules:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.networking.nodes.GenericSubModule
+            node: cloudshell.firewall.nodes.GenericSubModule
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
       - ports:
             capability: tosca.capabilities.Attachment
-            node: cloudshell.networking.nodes.GenericPort
+            node: cloudshell.firewall.nodes.GenericPort
             relationship: tosca.relationships.AttachesTo
             occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_Module
 
-  cloudshell.networking.nodes.GenericSubModule:
+  cloudshell.firewall.nodes.GenericSubModule:
     properties:
       Model:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
         tags: [setting, abstract_filter, read_only, include_in_insight]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
       Version:
         description: The firmware version of the resource.
         type: string
@@ -142,14 +142,15 @@ node_types:
     requirements:
       - ports:
           capability: tosca.capabilities.Attachment
-          node: cloudshell.networking.nodes.GenericPort
+          node: cloudshell.firewall.nodes.GenericPort
           relationship: tosca.relationships.AttachesTo
           occurrences: [0, UNBOUNDED]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_SubModule
 
-  cloudshell.networking.nodes.GenericPort:
+  cloudshell.firewall.nodes.GenericPort:
+    properties:
     properties:
       MAC Address:
         type: string
@@ -193,12 +194,17 @@ node_types:
         type: boolean
         description: The current auto negotiation configuration on the interface.
         tags: [setting, abstract_filter, read_only]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_Port
 
 
-  cloudshell.networking.nodes.GenericPortChannel:
+  cloudshell.firewall.nodes.GenericPortChannel:
     properties:
       Associated Ports:
         type: string
@@ -214,6 +220,11 @@ node_types:
         description: The description of the port as configured in the device.
         type: string
         tags: [setting, abstract_filter, read_only]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_PortChannel

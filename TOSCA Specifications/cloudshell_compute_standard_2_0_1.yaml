@@ -1,0 +1,62 @@
+# CloudShell Compute Standard
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+description: Suitable for modeling Compute nodes
+
+metadata:
+  template_name: Compute
+  template_author: Quali
+  template_version: 2.0.1
+
+imports:
+  - cloudshell_standard: cloudshell_resource_standard_2_0_1.yaml
+  - cloudshell_types: cloudshell_types_1_0_2.yaml
+
+node_types:
+
+# ----------------- CLOUDSHELL NODES -----------------#
+  cloudshell.nodes.Compute:
+    derived_from:  cloudshell.compute.ComputeDevice
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.CS_ComputeServer
+# ----------------- ------------------ -----------------#
+
+  cloudshell.compute.ComputeDevice:
+    derived_from: cloudshell.nodes.Shell
+    properties:
+      Storage Capacity:
+        type: string
+    requirements:
+     - ports:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.resource.nodes.ResourcePort
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+     - power_ports:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.resource.nodes.GenericPowerPort
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+    capabilities:
+      OS:
+        type: CloudShell.capabilities.OperatingSystem
+
+
+capability_types:
+  CloudShell.capabilities.OperatingSystem:
+    derived_from: tosca.capabilities.Root
+    properties:
+      OS Architecture:
+        type: string
+        required: false
+      OS Type:
+        type: string
+        required: false
+      OS Distribution:
+        type: string
+        required: false
+      OS Version:
+        type: string
+        required: false

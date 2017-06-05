@@ -8,13 +8,13 @@ tosca_definitions_version: tosca_simple_yaml_1_0
 metadata:
   template_name: Networking
   template_author: Quali
-  template_version: 5.0.0
+  template_version: 5.0.1
 
 description: Suitable for modeling network devices, Supports both L2 (Switch) and L3 (Router)
 
 imports:
-  - cloudshell_standard: cloudshell_resource_standard_2_0_0.yaml
-  - cloudshell_types: cloudshell_types_1_0_0.yaml
+  - cloudshell_standard: cloudshell_resource_standard_2_0_1.yaml
+  - cloudshell_types: cloudshell_types_1_0_2.yaml
 
 node_types:
 
@@ -68,6 +68,11 @@ node_types:
         type: string
         default: ''
         tags: [setting, abstract_filter, read_only, include_in_insight]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
       Serial Number:
         type: string
         tags: [setting, abstract_filter, read_only]
@@ -99,6 +104,11 @@ node_types:
         type: string
         default: ''
         tags: [setting, abstract_filter, read_only, include_in_insight]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
       Version:
         description: The firmware version of the resource.
         type: string
@@ -130,6 +140,11 @@ node_types:
         type: string
         default: ''
         tags: [setting, abstract_filter, read_only, include_in_insight]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
       Version:
         description: The firmware version of the resource.
         type: string
@@ -193,6 +208,11 @@ node_types:
         type: boolean
         description: The current auto negotiation configuration on the interface.
         tags: [setting, abstract_filter, read_only]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_Port
@@ -214,6 +234,11 @@ node_types:
         description: The description of the port as configured in the device.
         type: string
         tags: [setting, abstract_filter, read_only]
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_PortChannel

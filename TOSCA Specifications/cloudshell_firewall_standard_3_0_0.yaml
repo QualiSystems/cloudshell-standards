@@ -52,7 +52,7 @@ node_types:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [setting, abstract_filter, include_in_insight]
+        tags: [setting, abstract_filter, read_only, include_in_insight]
       Serial Number:
         type: string
         tags: [setting, abstract_filter, read_only]
@@ -83,7 +83,7 @@ node_types:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [setting, abstract_filter, include_in_insight]
+        tags: [setting, abstract_filter, read_only, include_in_insight]
       Version:
         description: The firmware version of the resource.
         type: string
@@ -114,7 +114,7 @@ node_types:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [setting, abstract_filter, include_in_insight]
+        tags: [setting, abstract_filter, read_only, include_in_insight]
       Version:
         description: The firmware version of the resource.
         type: string

@@ -1,0 +1,45 @@
+# CloudShell PDU Standard
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+metadata:
+  template_name: PDU
+  template_author: Quali
+  template_version: 2.0.1
+
+description: Suitable for modeling Power Device Units
+
+imports:
+  - cloudshell_standard: cloudshell_resource_standard_2_0_1.yaml
+  - cloudshell_types: cloudshell_types_1_0_2.yaml
+
+
+node_types:
+
+# ----------------- CLOUDSHELL NODES -----------------#
+  cloudshell.nodes.PDU:
+    derived_from:  cloudshell.pdu.GenericPDU
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.CS_PDU
+# ----------------- ------------------ -----------------#
+
+  cloudshell.pdu.GenericPDU:
+    derived_from: cloudshell.nodes.Shell
+    requirements:
+      - PowerSockets:
+            capability: tosca.capabilities.Attachment
+            node: cloudshell.pdu.PowerSocket
+            relationship: tosca.relationships.AttachesTo
+            occurrences: [0, UNBOUNDED]
+
+  cloudshell.pdu.PowerSocket:
+    properties:
+      Model Name:
+        description: The catalog name of the device model. This attribute will be displayed in CloudShell instead of the CloudShell model.
+        type: string
+        default: ''
+        tags: [setting, abstract_filter, read_only, include_in_insight, search_filter]
+    capabilities:
+      cloudshell_family:
+        type: cloudshell.families.CS_PowerSocket

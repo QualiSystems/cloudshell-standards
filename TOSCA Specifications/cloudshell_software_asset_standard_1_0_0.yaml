@@ -21,44 +21,46 @@ node_types:
       User:
         description: User with administrative privileges
         type: string
-        tags: [configuration, setting]
+        tags: [configuration, setting, admin_only]
       Password:
         type: cloudshell.datatypes.Password
-        tags: [configuration, setting]
+        tags: [configuration, setting, admin_only]
       Version:
         description: The version of the application
         type: string
-        tags: [configuration, setting, abstract_filter]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Vendor:
         description: The name of the device manufacture.
         type: string
         default: ''
-        tags: [configuration, setting, abstract_filter, read_only]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Contact Name:
         description: The name of a contact registered in the device.
         type: string
-        tags: [configuration, setting, abstract_filter]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Location:
         description: The device physical location identifier. For example Lab1/Floor2/Row5/Slot4.
         type: string
         default: ''
-        tags: [configuration, abstract_filter]
+        tags: [configuration, abstract_filter, admin_only]
       Model:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [configuration, setting, abstract_filter]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Access Protocol:
         description:
         type: string
         default: ''
+        tags: [configuration, setting, admin_only]
       Access Port:
         description:
         type: string
         default: ''
-        tags: [configuration, setting]
+        tags: [configuration, setting, admin_only]
       Public IP:
         type: string
+        tags: [configuration, setting, admin_only]
       Connected Assets:
         description: A comma separated list of connected software assets (optional)
         type: string
@@ -87,21 +89,21 @@ node_types:
       Service Group Name:
         description: The name of the service group
         type: string
-        tags: [setting, abstract_filter]
+        tags: [setting, abstract_filter, admin_only]
       Version:
         description: The version of the service group
         type: string
-        tags: [setting, abstract_filter]
+        tags: [setting, abstract_filter, admin_only]
       Vendor:
         description: The name of the device manufacture.
         type: string
         default: ''
-        tags: [configuration, setting, abstract_filter]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Model:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [configuration, setting, abstract_filter]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Connected Assets:
         description: A comma separated list of connected software assets (optional)
         type: string
@@ -123,44 +125,46 @@ node_types:
       User:
         description: User with administrative privileges
         type: string
-        tags: [configuration, setting]
+        tags: [configuration, setting, admin_only]
       Password:
         type: cloudshell.datatypes.Password
-        tags: [configuration, setting]
+        tags: [configuration, setting, admin_only]
       Version:
         description: The version of the service group
         type: string
-        tags: [setting, abstract_filter]
+        tags: [setting, abstract_filter, admin_only]
       Vendor:
         description: The name of the device manufacture.
         type: string
         default: ''
-        tags: [configuration, setting, abstract_filter]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Contact Name:
         description: The name of a contact registered in the device.
         type: string
-        tags: [configuration, setting, abstract_filter]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Location:
         description: The device physical location identifier. For example Lab1/Floor2/Row5/Slot4.
         type: string
         default: ''
-        tags: [configuration, abstract_filter]
+        tags: [configuration, abstract_filter, admin_only]
       Model:
         description: The device model. This information is typically used for abstract resource filtering.
         type: string
         default: ''
-        tags: [configuration, setting, abstract_filter]
+        tags: [configuration, setting, abstract_filter, admin_only]
       Access Protocol:
         description:
         type: string
         default: ''
+        tags: [configuration, setting, admin_only]
       Access Port:
         description:
         type: string
         default: ''
+        tags: [configuration, setting, admin_only]
       Public IP:
         type: string
-        tags: [configuration]
+        tags: [configuration, Setting, admin_only]
     capabilities:
       cloudshell_family:
         type: cloudshell.families.CS_SoftwareService

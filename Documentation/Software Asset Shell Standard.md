@@ -62,16 +62,16 @@ SoftwareServiceGroup | Searchable, Shared By Default, Application
 
 Attribute Name | Details | User input? | Rules
 --- | --- | --- | ---
-User | User with administrative privileges | No | Configuration, Setting
-Password | Attribute of type Password | No | Configuration, Setting
-Version | The version of the application | No | Setting, Available for Abstract Resources
-Vendor | The name of the device manufacture. | No | Configuration, Setting, Available for Abstract Resources
-Contact Name | The name of a contact registered in the device. | No | Configuration, Setting, Available for Abstract Resources
-Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No | Configuration, Available for Abstract Resources
-Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources
-Access Protocol | | No | Configuration, Setting
-Access Port | | No | Configuration, Setting
-Public IP | | No | Configuration, Setting
+User | User with administrative privileges | No | Configuration, Setting, Admin Only
+Password | Attribute of type Password | No | Configuration, Setting, Admin Only
+Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only
+Vendor | The name of the device manufacture. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
+Contact Name | The name of a contact registered in the device. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
+Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No | Configuration, Available for Abstract Resources, Admin Only
+Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
+Access Protocol | | No | Configuration, Setting, Admin Only
+Access Port | | No | Configuration, Setting, Admin Only
+Public IP | | No | Configuration, Setting, Admin Only
 Connected Assets | A comma separated list of connected software assets (optional) | No | Configuration, Setting
 OS Architecture | | No | Configuration
 OS Type | | No | Configuration
@@ -83,16 +83,16 @@ OS Version | | No | Configuration
 
 Attribute Name | Details | User input? | Rules
 --- | --- | --- | ---
-User | User with administrative privileges | No | Configuration, Setting
-Password | Attribute of type Password | No | Configuration, Setting
-Version | The version of the application | No | Setting, Available for Abstract Resources
-Vendor | The name of the device manufacture. | No | Configuration, Setting, Avilable for Abstract Resources
-Contact Name | The name of a contact registered in the device. | No | Configuration, Setting, Avilable for Abstract Resources
-Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No | Configuration, Avilable for Abstract Resources
-Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources
-Access Protocol | | No | Configuration, Setting
-Access Port | | No | Configuration, Setting
-Public IP | | No | Configuration
+User | User with administrative privileges | No | Configuration, Setting, Admin Only
+Password | Attribute of type Password | No | Configuration, Setting, Admin Only
+Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only
+Vendor | The name of the device manufacture. | No | Configuration, Setting, Avilable for Abstract Resources, Admin Only
+Contact Name | The name of a contact registered in the device. | No | Configuration, Setting, Avilable for Abstract Resources, Admin Only
+Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No | Configuration, Avilable for Abstract Resources, Admin Only
+Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
+Access Protocol | | No | Configuration, Setting, Admin Only
+Access Port | | No | Configuration, Setting, Admin Only
+Public IP | | No | Configuration, Setting, Admin Only
 OS Architecture | | No | Configuration
 OS Type | | No | Configuration
 OS Distribution | | No | Configuration
@@ -102,10 +102,10 @@ OS Version | | No | Configuration
 
 Attribute Name | Details | User input? | Rules
 --- | --- | --- | ---
-Service Group Name | | No | Setting, Available for Abstract Resources
-Version | The version of the application | No | Setting, Available for Abstract Resources
-Vendor | The name of the device manufacture. | No | Configuration, Setting, Available for Abstract Resources
-Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources
+Service Group Name | | No | Setting, Available for Abstract Resources, Admin Only
+Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only
+Vendor | The name of the device manufacture. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
+Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
 Connected Assets | A comma separated list of connected software assets (optional) | No | Settings, Configuration
 OS Architecture | | No | Configuration
 OS Type | | No | Configuration

@@ -1,6 +1,6 @@
 # Compute Server Shell Standard
 
-#### Version 2.0.0
+#### Version 2.0.1
 
 
 ## Introduction
@@ -13,6 +13,7 @@ The Compute Server Shell Standard defines a standard for all compute server shel
 
 Version | Date | Notes
 --- | --- | ---
+2.0.1 | 2017-07-03 | Added a "Model Name" attribute on the root resource
 2.0.0 | 2017-01-31 | Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". Those changes are NOT backwards compatible
 1.0.0 | 2016-07-14 | First release of the Compute server Shell Standard
 
@@ -97,6 +98,7 @@ OS Type | The Operating System (OS) type - i.e: linux, aix, mac, windows, etc.  
 OS Distribution | The Operating System (OS) distribution. i.e: linux distributions: debian, fedora, rhel and ubuntu | No
 OS Version | The Operating System version | No
 Storage Capacity | The storage size in MB.  | No
+Model Name | Attribute of type String. Automatically populated model name that will be presented in the Sandbox diagram | No
 
 
 #####  Generic Power Port

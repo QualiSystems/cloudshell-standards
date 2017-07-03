@@ -13,6 +13,7 @@ The standard defines the Shell’s data model, commands and a set of guidelines 
 
 Version | Date | Notes
 --- | --- | ---
+5.0.1 | 2017-07-03 | Added a "Model Name" attribute on the root resource
 5.0.0 | 2017-01-23 | 1) Added letters to resources address. 2) Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". Those changes are NOT backwards compatible
 4.0.2 | 2017-01-12 | fixed the following minor bugs: 158339, 158329, 158328, 158327, 158326, 158325158325, 158324, 158323.
 4.0.1 | 2016-08-30 | 1) Added the attributes "Backup Type", "Backup User" and "Backup Password" on the root model. Those attributes are used by the orchestration_save and orchestration_restore commands. 2) Behavior of orchestration_save and orchestration_restore commands has been clarified in the commands' notes and examples.
@@ -194,6 +195,7 @@ Disable SNMP | Boolean | Yes | If set to True SNMP will be disabled automaticall
 Backup Type | String | Yes | Supported protocols for saving and restoring of configuration and firmware files. Possible values are "File System", "FTP" and "TFTP". Default value is "File System".
 Backup User | String | Yes | Username for the storage server used for saving and restoring of configuration and firmware files.
 Backup Password | Password | Yes | Password for the storage server used for saving and restoring of configuration and firmware files.
+Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram
 
 #####  Generic Chassis
 

@@ -513,7 +513,7 @@ def orchestration_restore(self, context, saved_artifact_info, custom_params = nu
 
 ###### Notes
 Based on the Orchestration Save and Restore Standard - https://github.com/QualiSystems/sandbox_orchestration_standard/blob/master/save%20%26%20restore/save%20%26%20restore%20standard.md
-The command wraps the Restore command with a standard interface that will be used by the Sandbox orchestration. This command will call the Save command which will create a configuration file.
+The command wraps the Restore command with a standard interface that will be used by the Sandbox orchestration. This command will call the Restore command which will restore a configuration file.
 The command should be hidden from the UI.
 In case the saved artifact type is FTP the FTP credentials should be available in the attributes "Backup User" and "Backup Password" on the root resource.
 

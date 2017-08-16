@@ -14,7 +14,7 @@ This standard is dedicated for cloud services, such as AWS CloudFront service, A
 
 Version | Date | Notes
 --- | --- | ---
-1.0.0 | 2017-01-09 | First release of the Cloud Service Shell Standard
+1.0.0 | 2017-16-08 | First release of the Cloud Service Shell Standard
 
 
 ## Definitions

@@ -14,7 +14,7 @@ This standard is dedicated for custom work. There are other service shell standa
 
 Version | Date | Notes
 --- | --- | ---
-1.0.0 | 2017-16-08 | First release of the Custom Service Shell Standard
+1.0.0 | 2017-08-16 | First release of the Custom Service Shell Standard
 
 
 ## Definitions

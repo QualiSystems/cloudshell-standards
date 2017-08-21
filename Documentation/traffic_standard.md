@@ -221,7 +221,7 @@ elow is a list of all the commands associated with the Traffic Controller root r
 
 #### Load Configuration
 ```python
-def load_configuration(config_file_location, self, context)
+def load_configuration(self, context, config_file_location)
 ```
 ###### Description
 Load the test configuration file.
@@ -243,7 +243,7 @@ Send ARP
 
 #### Start Emulation
 ```python
-def load_configuration(self, context)
+def start_emulation(self, context)
 ```
 ###### Description
 Start device/protocls emulations
@@ -252,7 +252,7 @@ Start Emulation
 
 #### Stop Emulation
 ```python
-def load_configuration(self, context)
+def stop_emulation(self, context)
 ```
 ###### Description
 stop device/protocls emulations

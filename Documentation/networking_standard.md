@@ -115,7 +115,7 @@ Port | Searchable, Connectable, Locked By Default
 Port Channel | Searchable, Connectable, Locked By Default
 Power Port | Searchable, Connectable, Locked By Default
 
-##### Swicth Rules
+##### Switch Rules
 
 Rule | Value
 --- | ---

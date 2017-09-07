@@ -48,7 +48,7 @@ Cloud Services
 
 ## Attributes
 #### Guidelines
-- Attributes which aren’t relevant to the specific virtual network won’t be populated by the driver.
+- Attributes which aren’t relevant to the specific cloud service won’t be populated by the driver.
 - All attributes which aren't user-input are "read only"
 - Attributes shouldn’t be removed.
 - Custom attributes should be added only to the root level model.
@@ -64,11 +64,11 @@ Password | Password | Yes |
 Cloud Provider | String | Yes | Cloud provider resource name
 
 ## Commands
-The following chapter describes the list of commands that needs to be supported by the shell. It includes command name, parameters and description of the functionality. Each virtual networking shell that will be released by Quali's engineering will include implementation for all those commands.
+The following chapter describes the list of commands that needs to be supported by the shell. It includes command name, parameters and description of the functionality. Each cloud service shell that will be released by Quali's engineering will include implementation for all those commands.
 
 **Interface Implementation** - When creating a new shell according to the standard it is OK not to implement all commands and/or implement additional command, but a command with a functionality that fits one of the predefined list commands should be implemented according to the standard.
 
-**Error Handling**: Command outputs: On failure an exception containing the error will be thrown and the command will be shown as failed. A failure is defined as any scenario in which the command didn’t complete its expected behavior, regardless if the issue originates from the command’s input, device or the command infrastructure itself. On success the command will just return as passed with no output.
+**Error Handling**: Command outputs: On failure an exception containing the error will be thrown and the command will be shown as failed. A failure is defined as any scenario in which the command didn’t complete its expected behavior, regardless if the issue originates from the command’s input, cloud service or the command infrastructure itself. On success the command will just return as passed with no output.
 
 
 ### Cloud Service

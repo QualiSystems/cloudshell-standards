@@ -4,7 +4,7 @@
 
 
 ## Introduction
-The Cloud Service Shell standard defines how a cloud service integrates with CloudShell. A cloud service can be anything that needs to be represented in the Sandbox diagram and has some automation associated with it. A service is not managed in the inventory and can't be connected to other entities in the Sandbox using CloudShell's L1/L2/L3 connectivity.
+The Cloud Service Shell standard defines how a cloud service integrates with CloudShell. A service can be anything that needs to be represented in the Sandbox diagram and has some automation associated with it. A service is not managed in the inventory and can't be connected to other entities in the Sandbox using CloudShell's L1/L2/L3 connectivity.
 
 Once a service shell is loaded into CloudShell it should be associated with a category in order to be published to the Services catalog of the relevant domain.
 

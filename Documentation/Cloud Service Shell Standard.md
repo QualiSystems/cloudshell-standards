@@ -1,4 +1,4 @@
-# Custom Service Shell Standard
+# Cloud Service Shell Standard
 
 #### Version 1.0.0
 

@@ -115,6 +115,7 @@ TR069 Password | Password | Yes |
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
 Model | String | No | The device model. This information is typically used for abstract resource filtering.
+Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram
 Serial Number | String | No |
 Version | String | No | The firmware version of the resource.
 Port Description | String | No | The description of the port as configured in the device.

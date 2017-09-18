@@ -1,6 +1,6 @@
 # Broadband Media Appliance Shell Standard
 
-#### Version 1.0.0
+#### Version 1.0.1
 
 
 ## Introduction
@@ -10,6 +10,7 @@ The Broadband Media Appliance Shell standard defines a broadband media appliance
 
 Version | Date | Notes
 --- | --- | ---
+1.0.1 | 2017-09-14 | Added the attribute "Model Name" to the power port level.
 1.0.0 | 2017-09-01 | First release of the Broadband Media Appliance Standard
 
 

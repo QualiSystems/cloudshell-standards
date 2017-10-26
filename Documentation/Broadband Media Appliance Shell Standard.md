@@ -1,6 +1,6 @@
 # Broadband Media Appliance Shell Standard
 
-#### Version 1.0.1
+#### Version 1.0.2
 
 
 ## Introduction
@@ -10,6 +10,7 @@ The Broadband Media Appliance Shell standard defines a broadband media appliance
 
 Version | Date | Notes
 --- | --- | ---
+1.0.2 | 2017-10-26 | removed the "read only" rule from the attribute "Telephone Number" on the Media Port level, as this is a user input attribute (won't be populated on Autoload).
 1.0.1 | 2017-09-14 | Added the attribute "Model Name" to the power port level.
 1.0.0 | 2017-09-01 | First release of the Broadband Media Appliance Standard
 
@@ -135,7 +136,7 @@ Bandwidth | Numeric | No | The current interface bandwidth, in MB.
 Class of Service | String | No | The current Class (or type) of Service to this device; Programs, Package or Contract names acceptable
 Public IP | String | No | Public facing IP Address (vs. internal network IP)
 Core Platform | String | No | The core services platform the port is currently provisioned for.
-Telephone Number | String | No | Current phone number assigned to this port, relevant for a phone port.
+Telephone Number | String | Yes | Current phone number assigned to this port, relevant for a phone port.
 
 
 ##### WiFi Card

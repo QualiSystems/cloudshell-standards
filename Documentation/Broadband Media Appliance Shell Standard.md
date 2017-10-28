@@ -10,7 +10,7 @@ The Broadband Media Appliance Shell standard defines a broadband media appliance
 
 Version | Date | Notes
 --- | --- | ---
-1.0.2 | 2017-10-26 | removed the "read only" rule from the attribute "Telephone Number" on the Media Port level, as this is a user input attribute (won't be populated on Autoload).
+1.0.2 | 2017-10-26 | removed the "read only" rule from the attributes "Telephone Number" "Transport Technology" on the Media Port level, as this is a user input attribute (won't be populated on Autoload).
 1.0.1 | 2017-09-14 | Added the attribute "Model Name" to the power port level.
 1.0.0 | 2017-09-01 | First release of the Broadband Media Appliance Standard
 
@@ -128,7 +128,7 @@ Port Description | String | No | The description of the port as configured in th
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
 Media Type | String | No | Values can be "Ethernet", "Coax", "Phone", "Firewire" or "HDMI".
-Transport Technology | String | No | Voice Packet Transmistion Type (e.g. SIP/MGCP)
+Transport Technology | String | Yes | Voice Packet Transmistion Type (e.g. SIP/MGCP)
 MAC Address | String | No | 
 IPv4 Address | String | No | 
 IPv6 Address | String | No | 

@@ -224,7 +224,11 @@ elow is a list of all the commands associated with the Traffic Controller root r
 
 #### Load Configuration
 ```python
+<<<<<<< HEAD
 def load_configuration(self, context, config_file_location, get_data_from_config)
+=======
+def load_configuration(self, context, config_file_location)
+>>>>>>> origin/master
 ```
 ###### Description
 Load the test configuration file.

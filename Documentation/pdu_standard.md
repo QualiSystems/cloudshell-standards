@@ -1,6 +1,6 @@
 # PDU Shell Standard
 
-#### Version 2.0.0
+#### Version 2.0.1
 
 
 ## Introduction
@@ -12,6 +12,7 @@ The PDU Shell Standard is a project used to define a standard for all PDU Shells
 
 Version | Date | Notes
 --- | --- | ---
+2.0.1 | 2017-07-03 | Added a "Model Name" attribute on the root resource
 2.0.0 | 2017-01-23 | Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". This change is NOT backwards compatible
 1.1.0 | 2016-08-25 | 1. Removed the Power Managed Device family from the standard. For a generic resource with a power port please refer to the Resource standard (generic Shell). 2. Attributes which aren't user-input changed from being read-only to having the rule "Admin only" enabled. 3. Behavior of setting the resource live status on poewr on/off/cycle was clarified in the commands notes section.
 1.0.0 | 2016-07-04 | First release of the PDU Shell Standard
@@ -103,6 +104,7 @@ Console Port | Attributes of type Numeric | Yes
 Console Password | Attribute of type Password | Yes
 CLI Connection Type | Attribute of type Lookup. Possible values – Auto, Console, SSH, Telnet, TCP | Yes
 Sessions Concurrency Limit | Numeric, default is 1 (no concurrency) | Yes
+Model Name | Attribute of type String. Automatically populated model name that will be presented in the Sandbox diagram | No
 
 
 #####  Generic Power Socket

@@ -1,6 +1,10 @@
 # Networking Shell Standard
 
+<<<<<<< HEAD
 #### Version 5.0.2
+=======
+#### Version 5.0.1
+>>>>>>> origin/master
 
 
 ## Introduction
@@ -13,8 +17,12 @@ The standard defines the Shell’s data model, commands and a set of guidelines 
 
 Version | Date | Notes
 --- | --- | ---
+<<<<<<< HEAD
 5.0.2 | 2017-10-06 | 1) Added SNMP V3 Authentication Protocol attribute. 2) Added SNMP V3 Privacy Protocol attribute.
 5.0.1 | 2017-01-28 |  Added model name attribute.
+=======
+5.0.1 | 2017-07-03 | Added a "Model Name" attribute on the root resource
+>>>>>>> origin/master
 5.0.0 | 2017-01-23 | 1) Added letters to resources address. 2) Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". Those changes are NOT backwards compatible
 4.0.2 | 2017-01-12 | fixed the following minor bugs: 158339, 158329, 158328, 158327, 158326, 158325158325, 158324, 158323.
 4.0.1 | 2016-08-30 | 1) Added the attributes "Backup Type", "Backup User" and "Backup Password" on the root model. Those attributes are used by the orchestration_save and orchestration_restore commands. 2) Behavior of orchestration_save and orchestration_restore commands has been clarified in the commands' notes and examples.
@@ -116,7 +124,7 @@ Port | Searchable, Connectable, Locked By Default
 Port Channel | Searchable, Connectable, Locked By Default
 Power Port | Searchable, Connectable, Locked By Default
 
-##### Swicth Rules
+##### Switch Rules
 
 Rule | Value
 --- | ---
@@ -199,6 +207,7 @@ Disable SNMP | Boolean | Yes | If set to True SNMP will be disabled automaticall
 Backup Type | String | Yes | Supported protocols for saving and restoring of configuration and firmware files. Possible values are "File System", "FTP" and "TFTP". Default value is "File System".
 Backup User | String | Yes | Username for the storage server used for saving and restoring of configuration and firmware files.
 Backup Password | Password | Yes | Password for the storage server used for saving and restoring of configuration and firmware files.
+Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram
 
 #####  Generic Chassis
 
@@ -516,7 +525,7 @@ def orchestration_restore(self, context, saved_artifact_info, custom_params = nu
 
 ###### Notes
 Based on the Orchestration Save and Restore Standard - https://github.com/QualiSystems/sandbox_orchestration_standard/blob/master/save%20%26%20restore/save%20%26%20restore%20standard.md
-The command wraps the Restore command with a standard interface that will be used by the Sandbox orchestration. This command will call the Save command which will create a configuration file.
+The command wraps the Restore command with a standard interface that will be used by the Sandbox orchestration. This command will call the Restore command which will restore a configuration file.
 The command should be hidden from the UI.
 In case the saved artifact type is FTP the FTP credentials should be available in the attributes "Backup User" and "Backup Password" on the root resource.
 

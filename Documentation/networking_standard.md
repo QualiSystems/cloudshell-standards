@@ -1,6 +1,6 @@
 # Networking Shell Standard
 
-#### Version 5.0.0
+#### Version 5.0.2
 
 
 ## Introduction
@@ -13,6 +13,8 @@ The standard defines the Shell’s data model, commands and a set of guidelines 
 
 Version | Date | Notes
 --- | --- | ---
+5.0.2 | 2017-10-06 | 1) Added SNMP V3 Authentication Protocol attribute. 2) Added SNMP V3 Privacy Protocol attribute.
+5.0.1 | 2017-01-28 |  Added model name attribute.
 5.0.0 | 2017-01-23 | 1) Added letters to resources address. 2) Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". Those changes are NOT backwards compatible
 4.0.2 | 2017-01-12 | fixed the following minor bugs: 158339, 158329, 158328, 158327, 158326, 158325158325, 158324, 158323.
 4.0.1 | 2016-08-30 | 1) Added the attributes "Backup Type", "Backup User" and "Backup Password" on the root model. Those attributes are used by the orchestration_save and orchestration_restore commands. 2) Behavior of orchestration_save and orchestration_restore commands has been clarified in the commands' notes and examples.
@@ -173,17 +175,20 @@ OS Version | String | No | Version of the Operating System.
 Vendor | String | No | The name of the device manufacture.
 Location | String | No | The device physical location identifier. For example Lab1/Floor2/Row5/Slot4.
 Model | String | No | The device model. This information is typically used for abstract resource filtering.
+Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering.
 SNMP Read Community | Password | Yes | The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device.
 SNMP Write Community | Password | Yes | The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values.
 SNMP V3 User | String | Yes | Relevant only in case SNMP V3 is in use.
 SNMP V3 Password | Password | Yes | Relevant only in case SNMP V3 is in use.
 SNMP V3 Private Key | String | Yes | Relevant only in case SNMP V3 is in use.
 SNMP Version | String | Yes | The version of SNMP to use. Possible values are v1, v2c and v3.
+SNMP V3 Authentication Protocol | String | Yes | Possible 3 optionS are: No Authentication Protocol, MD5, SHA.
+SNMP V3 Privacy Protocol | String | Yes | Possible 6 options: No Privacy Protocol, DES, 3DES-EDE, AES-128, AES-192, AES-256.
 Console Server IP Address | String | Yes | The IP address of the console server, in IPv4 format.
 Console User | String | Yes |
 Console Port | Numeric | Yes | The port on the console server, usually TCP port, which the device is associated with. Default is 0.
 Console Password | Password | Yes |
-CLI Connection Type | Lookup | Yes | The CLI connection type that will be used by the driver. Possible values are Auto, Console, SSH, Telnet and TCP. If Auto is selected the driver will choose the available connection type automatically. Default value is Auto.
+CLI Connection Type | String | Yes | The CLI connection type that will be used by the driver. Possible values are Auto, Console, SSH, Telnet and TCP. If Auto is selected the driver will choose the available connection type automatically. Default value is Auto.
 Power Management | Boolean | Yes | Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status. Enabled by default.
 Backup Location | String | Yes | The location in which configuration files will be saved in case no backup location input is passed to the Save command.
 Sessions Concurrency Limit | Numeric | Yes | The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency).

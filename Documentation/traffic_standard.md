@@ -59,6 +59,8 @@ Only one controller servcie should be defined per application per serevr. For ex
  - Port
  - Port Group
    - Port
+   
+#### 
 
 #### Traffic Controller Data Model
 - Traffic Controller
@@ -146,8 +148,9 @@ Version | String | No | The firmware version of the resource.
 Model | String | No | The device model. This information is typically used for abstract resource filtering.
 Power Management | Boolean | Yes | Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status. Enabled by default.
 Server Description | String | No | The full description of the server. Usually includes the OS, exact firmware version and additional characteritics of the device.
-Supported Applications | String | Yes | Comma-separated list of traffic applications supported by this traffic generator. For example "IxLoad,IxNetwork".
 Client Install Path | String | Yes | The path in which the traffic client is installed on the Execution Server. For example "C:/Program Files (x86)/Ixia/IxLoad/5.10-GA".
+User | String | Yes | User to connect to the chassis (optional)
+Password | Password | Yes | Password to connect to the chassis (optional)
 
 ##### Generic Traffic Controller (physical or virtual)
 
@@ -196,7 +199,7 @@ When creating a new shell according to the standard it is OK not to implement al
 
 Command outputs: On failure an exception containing the error will be thrown and the command will be shown as failed. A failure is defined as any scenario in which the command didn’t complete its expected behavior, regardless if the issue originates from the command’s input, device or the command infrastructure itself. On success the command will just return as passed with no output. The “Autoload” command has a special output on success that CloudShell reads when building the resource hierarchy.
 
-### Traffic Generator Commands
+### Traffic Generator Chassis Commands
 Below is a list of all the commands associated with the Traffic Generator root resource (Family = Server).
 
 #### Autoload
@@ -216,12 +219,12 @@ Input / Output | Parameter | Alias | Data Type | Required | Description
 Input | context | - | object | system parameter | object of type AutoLoadCommandContext which includes API connectivity details and the details of the resource including attributes that the user entered during the resource creation. | - | -
 Output | AutoLoadDetails | - | object | Yes | object of type AutoLoadDetails with the discovered resource structure and attributes. | - | -
 
-### Traffic Controller Commands
+### Traffic Generator Controller Commands
 elow is a list of all the commands associated with the Traffic Controller root resource (Family = Traffic Controller).
 
 #### Load Configuration
 ```python
-def load_configuration(config_file_location, self, context)
+def load_configuration(self, context, config_file_location, get_data_from_config)
 ```
 ###### Description
 Load the test configuration file.
@@ -230,7 +233,8 @@ Load Configuration
 ###### Parameters
 Input / Output | Parameter | Alias | Data Type | Required | Description
 --- | --- | --- | --- | --- | ---
-Input | config_file_location | Config File Location | string | Yes | The full path in which the configuration file exist. Should include the file name.
+Input | config_file_location | Config File Location | String | Yes | The full path in which the configuration file exist. Should include the file name.
+Input | get_data_from_config | Get Data From Config | Boolean | Yes | True - reserve physical ports based on the configuration file logical to physical ports mapping. False - reserve physical ports based on the "Logical Name" attribute on the ports.
 
 #### Send ARP
 ```python
@@ -243,7 +247,7 @@ Send ARP
 
 #### Start Emulation
 ```python
-def load_configuration(self, context)
+def start_emulation(self, context)
 ```
 ###### Description
 Start device/protocls emulations
@@ -252,7 +256,7 @@ Start Emulation
 
 #### Stop Emulation
 ```python
-def load_configuration(self, context)
+def stop_emulation(self, context)
 ```
 ###### Description
 stop device/protocls emulations
@@ -261,7 +265,7 @@ Stop Emulation
 
 #### Start Traffic
 ```python
-def start_traffic(blocking, self, context)
+def start_traffic(self, context, blocking)
 ```
 ###### Description
 Start to run traffic
@@ -283,7 +287,7 @@ Stop Traffic
 
 #### Get Statistics
 ```python
-def get_statistics(view_name, output_type, self, context)
+def get_statistics(self, context, view_name, output_type)
 ```
 ###### Description
 Get the test/traffic statistics

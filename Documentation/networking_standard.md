@@ -55,7 +55,7 @@ The networking shell standard supports both L2 (Switch), L3 (Router) and Wireles
 
 #### Switch Data Model
 - Switch
- - Chassis
+  - Chassis
     - Module
        - Port
        - Sub Module
@@ -67,7 +67,7 @@ The networking shell standard supports both L2 (Switch), L3 (Router) and Wireles
 
 #### Router Data Model
  - Router
-  - Chassis
+   - Chassis
      - Module
         - Port
         - Sub Module

@@ -79,7 +79,7 @@ The networking shell standard supports both L2 (Switch), L3 (Router) and Wireles
 
 #### Wireless Controller Data Model
   - Router
-   - Chassis
+    - Chassis
       - Module
          - Port
          - Sub Module

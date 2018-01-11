@@ -1,6 +1,6 @@
 # Custom Service Shell Standard
 
-#### Version 1.0.0
+#### Version 1.1.0
 
 
 ## Introduction
@@ -14,6 +14,7 @@ This standard is dedicated for custom work. There are other service shell standa
 
 Version | Date | Notes
 --- | --- | ---
+1.1.0 | 2018-01-11 | Adding association to Custom Services category. The category association can be overridden in the shell itself.
 1.0.0 | 2017-08-16 | First release of the Custom Service Shell Standard
 
 
@@ -42,7 +43,9 @@ Generic Service | Service Template
 
 ### Category
 
-No default category association.
+Importing this shell will associate the Generic Service family with the following category:
+
+Custom Services
 
 
 ## Attributes

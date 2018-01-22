@@ -5,7 +5,7 @@
 
 ## Introduction
 The SDN Controller Shell Standard is a project used to define a standard for all SDN Controller Shells that integrate with CloudShell.
-The standard defines the Shellís data model, commands and a set of guidelines that should be followed in SDN Controller Shells development and customization.
+The standard defines the Shell‚Äôs data model, commands and a set of guidelines that should be followed in SDN Controller Shells development and customization.
 
 
 ## Revision History
@@ -20,19 +20,19 @@ Version | Date | Notes
 The SDN Controller Shelll will be implemented for each type of controller. example "SDN ODL Shell". 
 
 ### Specific Versions Certification
-Each released Shell should have a list of certified versions. Version certification can be done only by Qualiís engineering, and it includes validatation that all the Shellís capabilities are working for a specific version.
+Each released Shell should have a list of certified versions. Version certification can be done only by Quali‚Äôs engineering, and it includes validatation that all the Shell‚Äôs capabilities are working for a specific version.
 The Shell should also work for non-certified versions unless specified differently in the Shell's release notes, and in case some gaps are found a new version of the Shell will be released with the gaps addressed and the version certified.
 
 ### Generic Data Model
-All SDN Controller Shells share the same generic data model, except the model of the root level which is different per each Shell. The data model shouldnít be modified.
-The attributes associated with those generic models are also shared by all SDN Controller Shells and their values are populated by the driver. It is allowed to add custom attributes only to the root level model, and it isnít allowed to remove attributes from any level.
+All SDN Controller Shells share the same generic data model, except the model of the root level which is different per each Shell. The data model shouldn‚Äôt be modified.
+The attributes associated with those generic models are also shared by all SDN Controller Shells and their values are populated by the driver. It is allowed to add custom attributes only to the root level model, and it isn‚Äôt allowed to remove attributes from any level.
 
 ### Versioning
-The SDN Controller Shell version follows Semantic Versioning Guidelines (see details in http://semver.org). In short, the version structure is Major.Minor.Patch, for example ì1.0.2î. A Patch version is promoted when making backward-compatibile bug fixes, a Minor version is promoted when adding functionality in a backwards-compatible manner and a  Major version is promoted when making any backwards incompatible change. The standard itself follows the same guidelines.
+The SDN Controller Shell version follows Semantic Versioning Guidelines (see details in http://semver.org). In short, the version structure is Major.Minor.Patch, for example ‚Äú1.0.2‚Äù. A Patch version is promoted when making backward-compatibile bug fixes, a Minor version is promoted when adding functionality in a backwards-compatible manner and a  Major version is promoted when making any backwards incompatible change. The standard itself follows the same guidelines.
 
 ### Dependencies
-In case the SDN Controller Shell is written in Python and has dependencies to Python packages (that follow Semantic Versioning Guidelines) the dependency should be to a range of Patch versions, for example to ìcloudshell-traffic-ixia 2.1.Xî.
-The dependency to cloudshell-automation-api should be to the latest Patch version (cloudshell-automation-api package version is of the format ìCloudShell_Version.Xî, for example 7.0.Xî).
+In case the SDN Controller Shell is written in Python and has dependencies to Python packages (that follow Semantic Versioning Guidelines) the dependency should be to a range of Patch versions, for example to ‚Äúcloudshell-traffic-ixia 2.1.X‚Äù.
+The dependency to cloudshell-automation-api should be to the latest Patch version (cloudshell-automation-api package version is of the format ‚ÄúCloudShell_Version.X‚Äù, for example 7.0.X‚Äù).
 
 
 
@@ -81,19 +81,19 @@ isPowerSwitch | False
 Family | Model | Resource Name | Resource Address
 --- | --- | --- | ---
 Controller | SDN [Vendor] Controller | (user defined) | (user defined - IP)
-Switch | Generic SDN Chassis | openflow:[ID] | [ID]
-Port | Generic SDN Port | The name of the interface as appears in the device. Any ì/î character is replaced with ì-ì, spaces trimmed.] | [ID]
+Switch | Generic SDN Switch | openflow:[ID] | [ID]
+Port | Generic SDN Port | The name of the interface as appears in the device. Any ‚Äú/‚Äù character is replaced with ‚Äú-‚Äú, spaces trimmed.] | [ID]
 
 Note: The [ID] for each sub-resource is taken from the controller itself.
 
 
 ### Attributes
 #### Guidelines
-- Attributes which arenít relevant to a device wonít be populated by the driver.
+- Attributes which aren‚Äôt relevant to a device won‚Äôt be populated by the driver.
 - All attributes which aren't user-input should have the rule "Admin only" enabled.
 - The attribute rules are as follows - all attributes which are user input should have the rule "Configuration" enabled, all attributes which aren't user input should have the rules "Settings" and "Available For Abstract Resources" enabled.
 - It is possible to customize the attribute rules selection after importing the Shell to CloudShell.
-- Attributes shouldnít be removed.
+- Attributes shouldn‚Äôt be removed.
 - Custom attributes should be added only to the root level model.
 - All attributes are of type String unless mentioned otherwise
 
@@ -124,11 +124,11 @@ Adjacent | String | No | The adjacent device (system name) and port, based on LL
 
 
 ## Commands
-Below is a list of all the commands that will be part of the standard Shell, their names and interfaces. Each SDN Controller Shell that will be released by Qualiís engineering will include implementation for all those commands.
+Below is a list of all the commands that will be part of the standard Shell, their names and interfaces. Each SDN Controller Shell that will be released by Quali‚Äôs engineering will include implementation for all those commands.
 
 When creating a new shell according to the standard it is OK not to implement all commands and/or implement additional command, but a command with a functionality that fits one of the predefined list commands should be implemented according to the standard.
 
-Command outputs: On failure an exception containing the error will be thrown and the command will be shown as failed. A failure is defined as any scenario in which the command didnít complete its expected behavior, regardless if the issue originates from the commandís input, device or the command infrastructure itself. On success the command will just return as passed with no output. The ìAutoloadî command has a special output on success that CloudShell reads when building the resource hierarchy.
+Command outputs: On failure an exception containing the error will be thrown and the command will be shown as failed. A failure is defined as any scenario in which the command didn‚Äôt complete its expected behavior, regardless if the issue originates from the command‚Äôs input, device or the command infrastructure itself. On success the command will just return as passed with no output. The ‚ÄúAutoload‚Äù command has a special output on success that CloudShell reads when building the resource hierarchy.
 
 ### SDN Controller Commands
 Below is a list of all the commands associated with the Traffic Generator root resource (Family = Server).
@@ -161,7 +161,7 @@ def ApplyConnectivityChanges(self, context, request)
 Configures flows with VLANs as match cretiria.
 
 ###### Notes
-The standard doesnít support different VLAN request to the same Switch/Router/Wireless-Controller port at the same time. For example, connecting the same port to multiple VLAN services each with a different VLAN ID/range. When configuring VLAN ID/range on a port the assumption is that there is no other VLAN configured on it. 
+The standard doesn‚Äôt support different VLAN request to the same Switch/Router/Wireless-Controller port at the same time. For example, connecting the same port to multiple VLAN services each with a different VLAN ID/range. When configuring VLAN ID/range on a port the assumption is that there is no other VLAN configured on it. 
 This command should be hidden from the UI.
 The controller will get 2 requests. each request will contain a port and a vlan id. a flow will be created between those 2 ports with the vlan ID as match criteria
 If valn service will be used in order to connect more port - those ports will be added to the flow with the same vlan ID as match criteria.
@@ -180,5 +180,5 @@ ApplyConnectivityChanges
 ###### Parameters
 Input / Output | Parameter | Alias | Data Type | Required | Description
 --- | --- | --- | --- | --- | ---
-Input | request | request | string | Yes | a JSON with bulk ìadd_vlanî or ìremove_vlanî request. The request includes the list of ports and VLANs that should be configured or cleared on those ports. See separate article with the JSON schema and an example.
-Output | | | string | Yes | a JSON with the commandís response, should include success/fail per each connection request.
+Input | request | request | string | Yes | a JSON with bulk ‚Äúadd_vlan‚Äù or ‚Äúremove_vlan‚Äù request. The request includes the list of ports and VLANs that should be configured or cleared on those ports. See separate article with the JSON schema and an example.
+Output | | | string | Yes | a JSON with the command‚Äôs response, should include success/fail per each connection request.

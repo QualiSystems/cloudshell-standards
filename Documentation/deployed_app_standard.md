@@ -1,6 +1,6 @@
 # Deployed App Shell Standard
 
-#### Version 1.0.0
+#### Version 1.0.2
 
 
 ## Introduction
@@ -11,6 +11,7 @@ The deployed App Shell Standard defines a standard for all deployed App shells t
 
 Version | Date | Notes
 --- | --- | ---
+1.0.2 | 2018-02-20 | Added a vPort optional sub-level
 1.0.0 | 2016-07-14 | First release of the Compute server Shell Standard
 
 
@@ -25,12 +26,14 @@ The compute Shell version follows Semantic Versioning Guidelines (see details in
 ** Deployed App Data Model **
 
 - Family: Generic App Family
+   - Family: Generic Port, Model: Generic vPort
 
 #### Family Rules
 
 Family | Rules
 --- | ---
 Generic App Family | Searchable, Locked By Default
+Generic Port | Searchable, Locked By Default, Connectable
 
 ### Attributes
 #### Guidelines
@@ -39,8 +42,18 @@ Generic App Family | Searchable, Locked By Default
 - Attributes shouldn’t be removed.
 - All attributes are of type String unless mentioned otherwise
 
+#### Generic App
+
 Attribute Name | Details | User input?
 --- | --- | ---
 User | | Yes
 Password | | Yes
 Public IP | | No
+
+####  Generic VPort
+Attribute Name | Details | User input?
+--- | --- | ---
+Request vNIC | | No
+Module Name | | No
+IP Address | | No
+MAC Address | | No

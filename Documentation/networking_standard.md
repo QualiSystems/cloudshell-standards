@@ -161,106 +161,112 @@ Note: The [ID] for each sub-resource is taken from the device itself (correspond
 - Attributes shouldn’t be removed.
 - Custom attributes should be added only to the root level model.
 - All attributes are of type String unless mentioned otherwise
+- Attributes associated with the family level can't be changed in the shelldefinition.yaml and are commonly used in abstract resources.
 
 ##### [Vendor] [OS] Switch or [Vendor] [OS] Router or [Vendor] [OS] Wireless Controller
 
-Attribute Name | Data Type | User input? | Description
+Attribute Name | Data Type | User input? | Description | Family Attribute?
 --- | --- | --- | ---
-User | String | Yes |
-Password | Password | Yes |
-Enable Password | Password | Yes | The enable password is required by some CLI protocols such as Telnet and is required according to the device configuration.
-System Name | String | No | A unique identifier for the device, if exists in the device terminal/os.
-Contact Name | String | No | The name of a contact registered in the device.
-OS Version | String | No | Version of the Operating System.
-Vendor | String | No | The name of the device manufacture.
-Location | String | No | The device physical location identifier. For example Lab1/Floor2/Row5/Slot4.
-Model | String | No | The device model. This information is typically used for abstract resource filtering.
-Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering.
-SNMP Read Community | Password | Yes | The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device.
-SNMP Write Community | Password | Yes | The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values.
-SNMP V3 User | String | Yes | Relevant only in case SNMP V3 is in use.
-SNMP V3 Password | Password | Yes | Relevant only in case SNMP V3 is in use.
-SNMP V3 Private Key | String | Yes | Relevant only in case SNMP V3 is in use.
-SNMP Version | String | Yes | The version of SNMP to use. Possible values are v1, v2c and v3.
-SNMP V3 Authentication Protocol | String | Yes | Possible 3 optionS are: No Authentication Protocol, MD5, SHA.
-SNMP V3 Privacy Protocol | String | Yes | Possible 6 options: No Privacy Protocol, DES, 3DES-EDE, AES-128, AES-192, AES-256.
-Console Server IP Address | String | Yes | The IP address of the console server, in IPv4 format.
-Console User | String | Yes |
-Console Port | Numeric | Yes | The port on the console server, usually TCP port, which the device is associated with. Default is 0.
-Console Password | Password | Yes |
-CLI Connection Type | String | Yes | The CLI connection type that will be used by the driver. Possible values are Auto, Console, SSH, Telnet and TCP. If Auto is selected the driver will choose the available connection type automatically. Default value is Auto.
-Power Management | Boolean | Yes | Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status. Enabled by default.
-Backup Location | String | Yes | The location in which configuration files will be saved in case no backup location input is passed to the Save command.
-Sessions Concurrency Limit | Numeric | Yes | The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency).
-VRF Management Name | String | Yes | The default VRF Management to use if configured in the network and no such input was passed to the Save or Restore command.
-CLI TCP Port | Numeric | Yes | TCP Port to user for CLI connection. If kept empty a default CLI port will be used based on the chosen protocol, for example Telnet will use port 23.
-Enable SNMP | Boolean | Yes | If set to True and SNMP isn’t enabled yet in the device the Shell will automatically enable SNMP in the device when Autoload command is called, using the SNMP Read Community value. If Value is empty, relevant error will be raised. SNMP must be enabled on the device for the Autoload command to run successfully. True by default.
-Disable SNMP | Boolean | Yes | If set to True SNMP will be disabled automatically by the Shell after the Autoload command execution is completed. False by default.
-Backup Type | String | Yes | Supported protocols for saving and restoring of configuration and firmware files. Possible values are "File System", "FTP" and "TFTP". Default value is "File System".
-Backup User | String | Yes | Username for the storage server used for saving and restoring of configuration and firmware files.
-Backup Password | Password | Yes | Password for the storage server used for saving and restoring of configuration and firmware files.
-Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram
+User | String | Yes | | No
+Password | Password | Yes | | No
+Enable Password | Password | Yes | The enable password is required by some CLI protocols such as Telnet and is required according to the device configuration. | No
+System Name | String | No | A unique identifier for the device, if exists in the device terminal/os. | Yes
+Contact Name | String | No | The name of a contact registered in the device. | Yes
+OS Version | String | No | Version of the Operating System. | Yes
+Vendor | String | No | The name of the device manufacture. | Yes
+Location | String | No | The device physical location identifier. For example Lab1/Floor2/Row5/Slot4. | Yes
+Model | String | No | The device model. This information is typically used for abstract resource filtering. | Yes
+Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
+SNMP Read Community | Password | Yes | The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device. | No
+SNMP Write Community | Password | Yes | The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values. | No
+SNMP V3 User | String | Yes | Relevant only in case SNMP V3 is in use. | No
+SNMP V3 Password | Password | Yes | Relevant only in case SNMP V3 is in use. | No
+SNMP V3 Private Key | String | Yes | Relevant only in case SNMP V3 is in use. | No
+SNMP Version | String | Yes | The version of SNMP to use. Possible values are v1, v2c and v3. | No
+SNMP V3 Authentication Protocol | String | Yes | Possible 3 optionS are: No Authentication Protocol, MD5, SHA. | No
+SNMP V3 Privacy Protocol | String | Yes | Possible 6 options: No Privacy Protocol, DES, 3DES-EDE, AES-128, AES-192, AES-256. | No
+Console Server IP Address | String | Yes | The IP address of the console server, in IPv4 format. | No
+Console User | String | Yes | | No
+Console Port | Numeric | Yes | The port on the console server, usually TCP port, which the device is associated with. Default is 0. | No
+Console Password | Password | Yes | | No
+CLI Connection Type | String | Yes | The CLI connection type that will be used by the driver. Possible values are Auto, Console, SSH, Telnet and TCP. If Auto is selected the driver will choose the available connection type automatically. Default value is Auto. | No
+Power Management | Boolean | Yes | Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status. Enabled by default. | No
+Backup Location | String | Yes | The location in which configuration files will be saved in case no backup location input is passed to the Save command. | No
+Sessions Concurrency Limit | Numeric | Yes | The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency). | No
+VRF Management Name | String | Yes | The default VRF Management to use if configured in the network and no such input was passed to the Save or Restore command. | No
+CLI TCP Port | Numeric | Yes | TCP Port to user for CLI connection. If kept empty a default CLI port will be used based on the chosen protocol, for example Telnet will use port 23. | No
+Enable SNMP | Boolean | Yes | If set to True and SNMP isn’t enabled yet in the device the Shell will automatically enable SNMP in the device when Autoload command is called, using the SNMP Read Community value. If Value is empty, relevant error will be raised. SNMP must be enabled on the device for the Autoload command to run successfully. True by default. | No
+Disable SNMP | Boolean | Yes | If set to True SNMP will be disabled automatically by the Shell after the Autoload command execution is completed. False by default. | No
+Backup Type | String | Yes | Supported protocols for saving and restoring of configuration and firmware files. Possible values are "File System", "FTP" and "TFTP". Default value is "File System". | No
+Backup User | String | Yes | Username for the storage server used for saving and restoring of configuration and firmware files. | No
+Backup Password | Password | Yes | Password for the storage server used for saving and restoring of configuration and firmware files. | No
 
 #####  Generic Chassis
 
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
-Model | String | No | The device model. This information is typically used for abstract resource filtering.
-Serial Number | String | No |
+Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
+Serial Number | String | No | | No
+Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
 
 
 #####  Generic Module
 
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
-Model | String | No | The device model. This information is typically used for abstract resource filtering.
-Version | String | No | The firmware version of the resource.
-Serial Number | String | No |
+Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
+Version | String | No | The firmware version of the resource. | No
+Serial Number | String | No | | No
+Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
 
 
 ##### Generic Sub Module
 
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
-Model | String | No | The device model. This information is typically used for abstract resource filtering.
-Version | String | No | The firmware version of the resource.
-Serial Number | String | No |
+Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
+Version | String | No | The firmware version of the resource. | No
+Serial Number | String | No | | No
+Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
 
 
 ##### Generic Port
 
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
-MAC Address | String | No |
-L2 Protocol Type | String | No | The L2 protocol type configured on the interface. For example POS, Serial.
-IPv4 Address | String | No |
-IPv6 Address | String | No |
-Port Description | String | No | The description of the port as configured in the device.
-Bandwidth | Numeric | No | The current interface bandwidth, in MB.
-MTU | Numeric | No | The current MTU configured on the interface.
-Duplex | Lookup | No | The current duplex configuration on the interface. Possible values are Half or Full.
-Adjacent | String | No | The adjacent device (system name) and port, based on LLDP or CDP protocol.
-Auto Negotiation | Boolean | No | The current auto negotiation configuration on the interface.
+MAC Address | String | No | | No
+L2 Protocol Type | String | No | The L2 protocol type configured on the interface. For example POS, Serial. | No
+IPv4 Address | String | No | | No
+IPv6 Address | String | No | | No
+Port Description | String | No | The description of the port as configured in the device. | No
+Bandwidth | Numeric | No | The current interface bandwidth, in MB. | No
+MTU | Numeric | No | The current MTU configured on the interface. | No
+Duplex | Lookup | No | The current duplex configuration on the interface. Possible values are Half or Full. | No
+Adjacent | String | No | The adjacent device (system name) and port, based on LLDP or CDP protocol. | No
+Auto Negotiation | Boolean | No | The current auto negotiation configuration on the interface. | No
+Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
 
 
 #####  Generic Port Channel
 
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
-Associated Ports | String | No | Ports associated with this port channel. The value is in the format “[portResourceName],…”, for example “GE0-0-0-1,GE0-0-0-2”
-IPv4 Address | String | No |
-IPv6 Address | String | No |
-Port Description | String | No | The description of the port as configured in the device.
+Associated Ports | String | No | Ports associated with this port channel. The value is in the format “[portResourceName],…”, for example “GE0-0-0-1,GE0-0-0-2” | No
+IPv4 Address | String | No | | No
+IPv6 Address | String | No | | No
+Port Description | String | No | The description of the port as configured in the device. | No
+Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
 
 
 #####  Generic Power Port
 
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
-Model | String | No | The device model. This information is typically used for abstract resource filtering.
-Serial Number | String | No |
-Version | String | No | The firmware version of the resource.
-Port Description | String | No | The description of the port as configured in the device.
+Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
+Serial Number | String | No | | No
+Version | String | No | The firmware version of the resource. | No
+Port Description | String | No | The description of the port as configured in the device. | No
+Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
 
 
 ## Commands

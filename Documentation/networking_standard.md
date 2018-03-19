@@ -166,7 +166,7 @@ Note: The [ID] for each sub-resource is taken from the device itself (correspond
 ##### [Vendor] [OS] Switch or [Vendor] [OS] Router or [Vendor] [OS] Wireless Controller
 
 Attribute Name | Data Type | User input? | Description | Family Attribute?
---- | --- | --- | ---
+--- | --- | --- | --- | ---
 User | String | Yes | | No
 Password | Password | Yes | | No
 Enable Password | Password | Yes | The enable password is required by some CLI protocols such as Telnet and is required according to the device configuration. | No
@@ -203,8 +203,8 @@ Backup Password | Password | Yes | Password for the storage server used for savi
 
 #####  Generic Chassis
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
 Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
 Serial Number | String | No | | No
 Model Name | String | No | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
@@ -212,8 +212,8 @@ Model Name | String | No | The device model in a readable format (used by the GU
 
 #####  Generic Module
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
 Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
 Version | String | No | The firmware version of the resource. | No
 Serial Number | String | No | | No
@@ -222,8 +222,8 @@ Model Name | String | No | The device model in a readable format (used by the GU
 
 ##### Generic Sub Module
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
 Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
 Version | String | No | The firmware version of the resource. | No
 Serial Number | String | No | | No
@@ -232,8 +232,8 @@ Model Name | String | No | The device model in a readable format (used by the GU
 
 ##### Generic Port
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
 MAC Address | String | No | | No
 L2 Protocol Type | String | No | The L2 protocol type configured on the interface. For example POS, Serial. | No
 IPv4 Address | String | No | | No
@@ -249,8 +249,8 @@ Model Name | String | No | The device model in a readable format (used by the GU
 
 #####  Generic Port Channel
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
 Associated Ports | String | No | Ports associated with this port channel. The value is in the format “[portResourceName],…”, for example “GE0-0-0-1,GE0-0-0-2” | No
 IPv4 Address | String | No | | No
 IPv6 Address | String | No | | No
@@ -260,8 +260,8 @@ Model Name | String | No | The device model in a readable format (used by the GU
 
 #####  Generic Power Port
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
 Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
 Serial Number | String | No | | No
 Version | String | No | The firmware version of the resource. | No

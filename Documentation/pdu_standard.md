@@ -82,29 +82,30 @@ Power Socket | Generic Power Socket | (name in device) | (name in device)
 - Attributes shouldn’t be removed.
 - Custom attributes should be added only to the root level model.
 - All attributes are of type String unless mentioned otherwise
+- Attributes associated with the family level can't be changed in the shelldefinition.yaml of the shell and are commonly used in abstract resources.
 
 ##### [Vendor] PDU
 
-Attribute Name | Details | User input?
---- | --- | ---
-User | User with administrative privileges | Yes
-Password | Attribute of type Password | Yes
-Firmware Version | | No
-Vendor | | No
-Model | | No
-SNMP Read Community | Attribute of type Password | Yes
-SNMP Write Community | Attribute of type Password | Yes
-SNMP V3 User | | Yes
-SNMP V3 Password | Attribute of type Password | Yes
-SNMP V3 Private Key | | Yes
-SNMP Version | Possible values – v1, v2c, v3 | Yes
-Console Server IP Address | | Yes
-Console User | | Yes
-Console Port | Attributes of type Numeric | Yes
-Console Password | Attribute of type Password | Yes
-CLI Connection Type | Attribute of type Lookup. Possible values – Auto, Console, SSH, Telnet, TCP | Yes
-Sessions Concurrency Limit | Numeric, default is 1 (no concurrency) | Yes
-Model Name | Attribute of type String. Automatically populated model name that will be presented in the Sandbox diagram | No
+Attribute Name | Details | User input? | Family Attribute?
+--- | --- | --- | ---
+User | User with administrative privileges | Yes | No
+Password | Attribute of type Password | Yes | No
+Firmware Version | | No | No
+Vendor | | No | Yes
+Model | | No | Yes
+SNMP Read Community | Attribute of type Password | Yes | No
+SNMP Write Community | Attribute of type Password | Yes | No
+SNMP V3 User | | Yes | No
+SNMP V3 Password | Attribute of type Password | Yes | No
+SNMP V3 Private Key | | Yes | No
+SNMP Version | Possible values – v1, v2c, v3 | Yes | No
+Console Server IP Address | | Yes | No
+Console User | | Yes | No
+Console Port | Attributes of type Numeric | Yes | No
+Console Password | Attribute of type Password | Yes | No
+CLI Connection Type | Attribute of type Lookup. Possible values – Auto, Console, SSH, Telnet, TCP | Yes | No
+Sessions Concurrency Limit | Numeric, default is 1 (no concurrency) | Yes | No
+Model Name | Attribute of type String. Automatically populated model name that will be presented in the Sandbox diagram | No | Yes
 
 
 #####  Generic Power Socket

@@ -57,60 +57,61 @@ SoftwareServiceGroup | Searchable, Shared By Default, Application
 - Attributes shouldn’t be removed.
 - Custom attributes should be added only to the root level model.
 - All attributes are of type String unless mentioned otherwise
+- Attributes associated with the family level can't be changed in the shelldefinition.yaml of the shell and are commonly used in abstract resources.
 
 ##### Software Asset
 
-Attribute Name | Details | User input? | Rules
---- | --- | --- | ---
-User | User with administrative privileges | No | Configuration, Setting, Admin Only
-Password | Attribute of type Password | No | Configuration, Setting, Admin Only
-Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only
-Vendor | The name of the device manufacture. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
-Contact Name | The name of a contact registered in the device. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
-Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No | Configuration, Available for Abstract Resources, Admin Only
-Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
-Access Protocol | | No | Configuration, Setting, Admin Only
-Access Port | | No | Configuration, Setting, Admin Only
-Public IP | | No | Configuration, Setting, Admin Only
-Connected Assets | A comma separated list of connected software assets (optional) | No | Configuration, Setting
-OS Architecture | | No | Configuration
-OS Type | | No | Configuration
-OS Distribution | | No | Configuration
-OS Version | | No | Configuration
+Attribute Name | Details | User input? | Rules | Family Attribute?
+--- | --- | --- | --- | ---
+User | User with administrative privileges | No | Configuration, Setting, Admin Only | No
+Password | Attribute of type Password | No | Configuration, Setting, Admin Only | No
+Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only | Yes
+Vendor | The name of the device manufacture. | No | Configuration, Setting, Available for Abstract Resources, Admin Only | Yes
+Contact Name | The name of a contact registered in the device. | No | Configuration, Setting, Available for Abstract Resources, Admin Only | Yes
+Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No | Configuration, Available for Abstract Resources, Admin Only | Yes
+Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only | Yes
+Access Protocol | | No | Configuration, Setting, Admin Only | No
+Access Port | | No | Configuration, Setting, Admin Only | No
+Public IP | | No | Configuration, Setting, Admin Only | No
+Connected Assets | A comma separated list of connected software assets (optional) | No | Configuration, Setting | No
+OS Architecture | | No | Configuration | No
+OS Type | | No | Configuration | No
+OS Distribution | | No | Configuration | No
+OS Version | | No | Configuration | No
 
 
 ##### Service
 
-Attribute Name | Details | User input? | Rules
---- | --- | --- | ---
-User | User with administrative privileges | No | Configuration, Setting, Admin Only
-Password | Attribute of type Password | No | Configuration, Setting, Admin Only
-Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only
-Vendor | The name of the device manufacture. | No | Configuration, Setting, Avilable for Abstract Resources, Admin Only
-Contact Name | The name of a contact registered in the device. | No | Configuration, Setting, Avilable for Abstract Resources, Admin Only
-Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No | Configuration, Avilable for Abstract Resources, Admin Only
-Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
-Access Protocol | | No | Configuration, Setting, Admin Only
-Access Port | | No | Configuration, Setting, Admin Only
-Public IP | | No | Configuration, Setting, Admin Only
-OS Architecture | | No | Configuration
-OS Type | | No | Configuration
-OS Distribution | | No | Configuration
-OS Version | | No | Configuration
+Attribute Name | Details | User input? | Rules | Family Attribute?
+--- | --- | --- | --- | ---
+User | User with administrative privileges | No | Configuration, Setting, Admin Only | No
+Password | Attribute of type Password | No | Configuration, Setting, Admin Only | No
+Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only | Yes
+Vendor | The name of the device manufacture. | No | Configuration, Setting, Avilable for Abstract Resources, Admin Only | Yes
+Contact Name | The name of a contact registered in the device. | No | Configuration, Setting, Avilable for Abstract Resources, Admin Only | Yes
+Location | The device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | No | Configuration, Avilable for Abstract Resources, Admin Only | Yes
+Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only | Yes
+Access Protocol | | No | Configuration, Setting, Admin Only | No
+Access Port | | No | Configuration, Setting, Admin Only | No
+Public IP | | No | Configuration, Setting, Admin Only | No
+OS Architecture | | No | Configuration | No
+OS Type | | No | Configuration | No
+OS Distribution | | No | Configuration | No
+OS Version | | No | Configuration | No
 
 #####  Service Group
 
-Attribute Name | Details | User input? | Rules
---- | --- | --- | ---
-Service Group Name | | No | Setting, Available for Abstract Resources, Admin Only
-Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only
-Vendor | The name of the device manufacture. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
-Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only
-Connected Assets | A comma separated list of connected software assets (optional) | No | Settings, Configuration
-OS Architecture | | No | Configuration
-OS Type | | No | Configuration
-OS Distribution | | No | Configuration
-OS Version | | No | Configuration
+Attribute Name | Details | User input? | Rules | Family Attribute?
+--- | --- | --- | --- | ---
+Service Group Name | | No | Setting, Available for Abstract Resources, Admin Only | Yes
+Version | The version of the application | No | Setting, Available for Abstract Resources, Admin Only | Yes
+Vendor | The name of the device manufacture. | No | Configuration, Setting, Available for Abstract Resources, Admin Only | Yes
+Model | The device model. This information is typically used for abstract resource filtering. | No | Configuration, Setting, Available for Abstract Resources, Admin Only | Yes
+Connected Assets | A comma separated list of connected software assets (optional) | No | Settings, Configuration | No
+OS Architecture | | No | Configuration | No
+OS Type | | No | Configuration | No
+OS Distribution | | No | Configuration | No
+OS Version | | No | Configuration | No
 
 
 ## Commands

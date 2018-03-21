@@ -69,84 +69,86 @@ Note: The [ID] for each sub-resource is taken from the device itself (correspond
 - Attributes shouldn’t be removed.
 - Custom attributes should be added only to the root level model.
 - All attributes are of type String unless mentioned otherwise
+- Attributes associated with the family level can't be changed in the shelldefinition.yaml of the shell and are commonly used in abstract resources.
 
 ##### Broadband Media Chassis
 
-Attribute Name | Data Type | User Input? | Description
---- | --- | --- | --- 
-Chipset | String | No | Description of the chipset used by this broadband media appliance
-Subscriber ID | String | No |
-Account Number | String | No | 
-User | String | Yes | User with administrative privileges
-Password | Password | Yes | 
-Enable Password | Password | Yes | The enable password is required by some CLI protocols such as Telnet and is required according to the device configuration.
-Power Management | Boolean | Yes | Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status
-System Name | String | No | A unique identifier for the device, if exists in the device terminal/os.
-Vendor | String | No | 
-Contact Name | String | No | The name of a contact registered in the device.
-Location | String | No | he device physical location identifier. For example: Lab1/Floor2/Row5/Slot4
-Model | String | No | The device model. This information is typically used for abstract resource filtering.
-Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram
-Sessions Concurrency Limit | Numeric | Yes | The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency).
-Version | String | No | 
-Serial Number | String | No | 
-OS Version | String | No | Version of the Operating System.
-SNMP Read Community | Password | Yes | The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device.
-SNMP Write Community | Password | Yes | The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values.
-SNMP V3 User | String | Yes | Relevant only in case SNMP V3 is in use.
-SNMP V3 Password | Password | Yes | Relevant only in case SNMP V3 is in use.
-SNMP V3 Private Key | String | Yes | Relevant only in case SNMP V3 is in use.
-SNMP Version | String | Yes | The version of SNMP to use. Possible values are v1, v2c and v3.
-Enable SNMP | Boolean | Yes | If set to True and SNMP isn’t enabled yet in the device the Shell will automatically enable SNMP in the device when Autoload command is called. SNMP must be enabled on the device for the Autoload command to run successfully. True by default.
-Disable SNMP | Boolean | Yes | If set to True SNMP will be disabled automatically by the Shell after the Autoload command execution is completed. False by default.
-Console Server IP Address | String | Yes | The IP address of the console server, in IPv4 format.
-Console User | String | Yes | 
-Console Port | Numeric | Yes | The port on the console server, usually TCP port, which the device is associated with. Default is 0.
-Console Password | Password | Yes
-CLI Connection Type | Lookup | Yes | The CLI connection type that will be used by the driver. Possible values are Auto, Console, SSH, Telnet and TCP. If Auto is selected the driver will choose the available connection type automatically. Default value is Auto.
-CLI TCP Port | Numeric | Yes | TCP Port to user for CLI connection. If kept empty a default CLI port will be used based on the chosen protocol, for example Telnet will use port 23.
-Backup Type | String | Yes | Supported protocols for saving and restoring of configuration and firmware files. Possible values are "File System", "FTP" and "TFTP". Default value is "File System".
-Backup User | String | Yes | Username for the storage server used for saving and restoring of configuration and firmware files.
-Backup Password | Password | Yes | Password for the storage server used for saving and restoring of configuration and firmware files.
-Backup Location | String | Yes | The location in which configuration files will be saved in case no backup location input is passed to the Save command.
-TR069 User | String | Yes |
-TR069 Password | Password | Yes | 
+Attribute Name | Data Type | User Input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
+Chipset | String | No | Description of the chipset used by this broadband media appliance | No
+Subscriber ID | String | No | | No
+Account Number | String | No | | No
+User | String | Yes | User with administrative privileges | No
+Password | Password | Yes | | No
+Enable Password | Password | Yes | The enable password is required by some CLI protocols such as Telnet and is required according to the device configuration. | No
+Power Management | Boolean | Yes | Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status | No
+System Name | String | No | A unique identifier for the device, if exists in the device terminal/os. | Yes
+Vendor | String | No | | Yes
+Contact Name | String | No | The name of a contact registered in the device. | Yes
+Location | String | No | he device physical location identifier. For example: Lab1/Floor2/Row5/Slot4 | Yes
+Model | String | No | The device model. This information is typically used for abstract resource filtering. | Yes
+Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram | Yes
+Sessions Concurrency Limit | Numeric | Yes | The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency). | No
+Version | String | No | | No
+Serial Number | String | No | | No
+OS Version | String | No | Version of the Operating System. | Yes
+SNMP Read Community | Password | Yes | The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device. | No
+SNMP Write Community | Password | Yes | The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values. | No
+SNMP V3 User | String | Yes | Relevant only in case SNMP V3 is in use. | No
+SNMP V3 Password | Password | Yes | Relevant only in case SNMP V3 is in use. | No
+SNMP V3 Private Key | String | Yes | Relevant only in case SNMP V3 is in use. | No
+SNMP Version | String | Yes | The version of SNMP to use. Possible values are v1, v2c and v3. | No
+Enable SNMP | Boolean | Yes | If set to True and SNMP isn’t enabled yet in the device the Shell will automatically enable SNMP in the device when Autoload command is called. SNMP must be enabled on the device for the Autoload command to run successfully. True by default. | No
+Disable SNMP | Boolean | Yes | If set to True SNMP will be disabled automatically by the Shell after the Autoload command execution is completed. False by default. | No
+Console Server IP Address | String | Yes | The IP address of the console server, in IPv4 format. | No
+Console User | String | Yes |  | No
+Console Port | Numeric | Yes | The port on the console server, usually TCP port, which the device is associated with. Default is 0. | No
+Console Password | Password | Yes | | No
+CLI Connection Type | Lookup | Yes | The CLI connection type that will be used by the driver. Possible values are Auto, Console, SSH, Telnet and TCP. If Auto is selected the driver will choose the available connection type automatically. Default value is Auto. | No
+CLI TCP Port | Numeric | Yes | TCP Port to user for CLI connection. If kept empty a default CLI port will be used based on the chosen protocol, for example Telnet will use port 23. | No
+Backup Type | String | Yes | Supported protocols for saving and restoring of configuration and firmware files. Possible values are "File System", "FTP" and "TFTP". Default value is "File System". | No
+Backup User | String | Yes | Username for the storage server used for saving and restoring of configuration and firmware files. | No
+Backup Password | Password | Yes | Password for the storage server used for saving and restoring of configuration and firmware files. | No
+Backup Location | String | Yes | The location in which configuration files will be saved in case no backup location input is passed to the Save command. | No
+TR069 User | String | Yes | | No
+TR069 Password | Password | Yes |  | No
 
 ##### Generic Power Port
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
-Model | String | No | The device model. This information is typically used for abstract resource filtering.
-Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram
-Serial Number | String | No |
-Version | String | No | The firmware version of the resource.
-Port Description | String | No | The description of the port as configured in the device.
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
+Model | String | No | The device model. This information is typically used for abstract resource filtering. | No
+Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram | Yes
+Serial Number | String | No | | No
+Version | String | No | The firmware version of the resource. | No
+Port Description | String | No | The description of the port as configured in the device. | No
 
 
 ##### Generic Media Port
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
-Media Type | String | No | Values can be "Ethernet", "Coax", "Phone", "Firewire" or "HDMI".
-Transport Technology | String | Yes | Voice Packet Transmistion Type (e.g. SIP/MGCP)
-MAC Address | String | No | 
-IPv4 Address | String | No | 
-IPv6 Address | String | No | 
-Bandwidth | Numeric | No | The current interface bandwidth, in MB.
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
+Media Type | String | No | Values can be "Ethernet", "Coax", "Phone", "Firewire" or "HDMI". | No
+Transport Technology | String | Yes | Voice Packet Transmistion Type (e.g. SIP/MGCP) | No
+MAC Address | String | No | | No
+IPv4 Address | String | No | | No
+IPv6 Address | String | No | | No
+Bandwidth | Numeric | No | The current interface bandwidth, in MB. | No
 Class of Service | String | No | The current Class (or type) of Service to this device; Programs, Package or Contract names acceptable
-Public IP | String | No | Public facing IP Address (vs. internal network IP)
-Core Platform | String | No | The core services platform the port is currently provisioned for.
-Telephone Number | String | Yes | Current phone number assigned to this port, relevant for a phone port.
+Public IP | String | No | Public facing IP Address (vs. internal network IP) | No
+Core Platform | String | No | The core services platform the port is currently provisioned for. | No
+Telephone Number | String | Yes | Current phone number assigned to this port, relevant for a phone port. | No
+Model Name | String | No | Automatically populated model name that will be presented in the Sandbox diagram | Yes
 
 
 ##### WiFi Card
 
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
-MAC Address | String | No | 
-WiFi Protocol | String | No | Wi-Fi protocol type (e.g. 802.11n, 802.11ac)
-Chipset | String | No | Description of the chipset used by this broadband media appliance
-Frequency | String | No | Values can be "2.5 GHz" or "5 GHz"
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
+MAC Address | String | No | | No 
+WiFi Protocol | String | No | Wi-Fi protocol type (e.g. 802.11n, 802.11ac) | Yes
+Chipset | String | No | Description of the chipset used by this broadband media appliance | No
+Frequency | String | No | Values can be "2.5 GHz" or "5 GHz" | Yes
 
 
 ## Commands

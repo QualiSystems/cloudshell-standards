@@ -96,31 +96,33 @@ Note: The [ID] for each sub-resource is taken from the controller itself.
 - Attributes shouldn’t be removed.
 - Custom attributes should be added only to the root level model.
 - All attributes are of type String unless mentioned otherwise
+- Attributes associated with the family level can't be changed in the shelldefinition.yaml of the shell and are commonly used in abstract resources.
 
 #### SDN [Vendor] Controller
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
-User | String | Yes |
-Password | Password | Yes |
-Model Name | String | No | The Controller model/vendor in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering.
-Controller TCP Port | Integer | Yes |  default is 8181.
-Scheme | String | Yes | two options: HTTP, HTTPS
-Enable Full Trunk Ports | String | Yes | Optional. in case need to configure a full trunk port to be accessible for all flows (example: ports that private cloud provider are connected to), the ports should be listed in format: openflow:1::eth1;openflow:1:eth2
-Disable Full Trunk Ports | String | Yes | Optional. in case need to remove a full trunk port , the ports should be listed in format: openflow:1::eth1;openflow:1:eth2
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
+User | String | Yes | | No
+Password | Password | Yes | | No
+Model Name | String | No | The Controller model/vendor in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
+Controller TCP Port | Integer | Yes |  default is 8181. | No
+Scheme | String | Yes | two options: HTTP, HTTPS | No
+Enable Full Trunk Ports | String | Yes | Optional. in case need to configure a full trunk port to be accessible for all flows (example: ports that private cloud provider are connected to), the ports should be listed in format: openflow:1::eth1;openflow:1:eth2 | No
+Disable Full Trunk Ports | String | Yes | Optional. in case need to remove a full trunk port , the ports should be listed in format: openflow:1::eth1;openflow:1:eth2 | No
 
 ##### Generic SDN Switch
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
-Model Name | String | No | The switch model/Vendor. This information is typically used for abstract resource filtering.
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
+Model Name | String | No | The switch model/Vendor. This information is typically used for abstract resource filtering. | Yes
 
 ##### Generic SDN Port
-Attribute Name | Data Type | User input? | Description
---- | --- | --- | ---
-MAC Address | String | No |
-IPv4 Address | String | No |
-IPv6 Address | String | No |
-Port Description | String | No | The description of the port as configured in the device.
-Adjacent | String | No | The adjacent device (system name) and port, based on LLDP or CDP protocol.
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
+MAC Address | String | No | | No
+IPv4 Address | String | No | | No
+IPv6 Address | String | No | | No
+Port Description | String | No | The description of the port as configured in the device. | No
+Adjacent | String | No | The adjacent device (system name) and port, based on LLDP or CDP protocol. | No
+Model Name | String | No | The switch model/Vendor. This information is typically used for abstract resource filtering. | Yes
 
 
 ## Commands

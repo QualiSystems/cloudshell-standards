@@ -41,19 +41,20 @@ Generic Port | Searchable, Locked By Default, Connectable
 - It is possible to customize the attribute rules selection after importing the Shell to CloudShell.
 - Attributes shouldn’t be removed.
 - All attributes are of type String unless mentioned otherwise
+- Attributes associated with the family level can't be changed in the shelldefinition.yaml of the shell and are commonly used in abstract resources.
 
 #### Generic App
 
-Attribute Name | Details | User input?
---- | --- | ---
-User | | Yes
-Password | | Yes
-Public IP | | No
+Attribute Name | Details | User input? | Family Attribute?
+--- | --- | --- | ---
+User | | Yes | No
+Password | | Yes | No
+Public IP | | No | No
 
 ####  Generic VPort
-Attribute Name | Details | User input?
---- | --- | ---
-Request vNIC | | No
-Module Name | | No
-IP Address | | No
-MAC Address | | No
+Attribute Name | Details | User input? | Family Attribute?
+--- | --- | --- | ---
+Request vNIC | | No | No
+Module Name | | No | No
+IP Address | | No | No
+MAC Address | | No | No

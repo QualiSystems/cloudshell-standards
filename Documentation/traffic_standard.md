@@ -51,14 +51,14 @@ Only one controller servcie should be defined per application per serevr. For ex
 
 #### Traffic Generator Data Model
 - Traffic Generator Chassis
- - Module
+  - Module
+     - Port
+     - Port Group
+       - Port
+  - Power Port
+  - Port
+  - Port Group
     - Port
-    - Port Group
-      - Port
- - Power Port
- - Port
- - Port Group
-   - Port
    
 #### 
 
@@ -93,9 +93,9 @@ Physical:
 
 Virtual:
 - Family: Generic App Family, Model: Virtual BreakingPoint
- - Family: Module, Model: Generic Traffic Module
-    - Family: Port, Model: Generic Virtual Traffic Generator Port
-  - Family: Port , Model: Generic Virtual Traffic Generator Port
+  - Family: Module, Model: Generic Traffic Module
+     - Family: Port, Model: Generic Virtual Traffic Generator Port
+   - Family: Port , Model: Generic Virtual Traffic Generator Port
 
 - Family: Generic App Family, Model: BreakingPoint Traffic Controller
 

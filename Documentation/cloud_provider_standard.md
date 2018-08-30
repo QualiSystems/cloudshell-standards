@@ -126,7 +126,7 @@ System command, it has no display name
 #### Parameters
 Input / Output | Parameter | Alias | Data Type | Required | Description
 --- | --- | --- | --- | --- | ---
-Input | context | - | ResourceCommandContext | system parameter | | - | -
+Input | context | - | AutoLoadCommandContext  | system parameter | | - | -
 Output | | - | AutoLoadDetails | Yes |  | - | -
 
 ### Deploy
@@ -254,7 +254,7 @@ Input | ports | - | NA | system parameter | Legacy parameter, may be disregarded
 
 ### GetVmDetails
 ```python
-def GetVmDetails(self, context, cancellation_context, requests)
+def GetVmDetails(self, context, requests, cancellation_context):
 ```
 
 #### Description
@@ -300,7 +300,7 @@ Output | | - | str (JSON str) | Yes |  | - | -
 
 ### remote_refresh_ip
 ```python
-def remote_refresh_ip(self, context, cancellation_context, ports)
+def remote_refresh_ip(self, context, ports, cancellation_context)
 ```
 
 #### Description

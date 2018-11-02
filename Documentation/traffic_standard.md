@@ -170,7 +170,7 @@ Model | String | No | The device model. This information is typically used for a
 Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
 Media Type | String | No | Interface media type. Possible values are Fiber and/or Copper (comma-separated).
-Supported Speed | String | No | Speed supported by the interface, comma-separated.
+Max Speed | String | No | Maximum speed supported by the interface
 Logical Name | String | Yes | The port's logical name in the test configuration. If kept emtpy - allocation will applied in the blue print.
 
 ##### Generic Virtual Traffic Generator Port

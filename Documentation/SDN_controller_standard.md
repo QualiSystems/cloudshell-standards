@@ -25,7 +25,7 @@ The Shell should also work for non-certified versions unless specified different
 
 ### Generic Data Model
 All SDN Controller Shells share the same generic data model, except the model of the root level which is different per each Shell. The data model shouldn’t be modified.
-The attributes associated with those generic models are also shared by all SDN Controller Shells and their values are populated by the driver. It is allowed to add custom attributes only to the root level model, and it isn’t allowed to remove attributes from any level.
+The attributes associated with those generic models are also shared by all SDN Controller Shells and their values are populated by the driver. It is allowed to add custom attributes to any resource level, and it isn’t allowed to remove attributes from any level.
 
 ### Versioning
 The SDN Controller Shell version follows Semantic Versioning Guidelines (see details in http://semver.org). In short, the version structure is Major.Minor.Patch, for example “1.0.2”. A Patch version is promoted when making backward-compatibile bug fixes, a Minor version is promoted when adding functionality in a backwards-compatible manner and a  Major version is promoted when making any backwards incompatible change. The standard itself follows the same guidelines.

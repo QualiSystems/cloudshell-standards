@@ -106,7 +106,7 @@ Note: The [ID] for each sub-resource is taken from the device itself (correspond
 - The attribute rules are as follows - all attributes which are user input should have the rule "Configuration" enabled, all attributes which aren't user input should have the rules "Settings" and "Available For Abstract Resources" enabled.
 - It is possible to customize the attribute rules selection after importing the Shell to CloudShell.
 - Attributes shouldn’t be removed.
-- Custom attributes should be added only to the root level model.
+- Custom attributes can be added to any resource level.
 - All attributes are of type String unless mentioned otherwise
 
 ##### [Vendor] [OS] Load Balancer

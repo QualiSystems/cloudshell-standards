@@ -67,7 +67,7 @@ Note: The [ID] for each sub-resource is taken from the device itself (correspond
 - Attributes which aren’t relevant to the specific virtual network won’t be populated by the driver.
 - All attributes which aren't user-input are "read only"
 - Attributes shouldn’t be removed.
-- Custom attributes should be added only to the root level model.
+- Custom attributes can be added to any resource level.
 - All attributes are of type String unless mentioned otherwise
 - Attributes associated with the family level can't be changed in the shelldefinition.yaml of the shell and are commonly used in abstract resources.
 

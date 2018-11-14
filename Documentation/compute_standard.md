@@ -53,6 +53,7 @@ Power Port | Searchable, Connectable, Locked By Default
 Family | Model | Resource Name | Resource Address
 --- | --- | --- | ---
 Compute | [Vendor] [Series] Server | (user defined) | (user defined - IP)
+Port | Resource Port | 	The name of the interface as appears in the device. Any “/” character is replaced with “-“, spaces trimmed.] | 	The name of the interface as appears in the device. Any “/” character is replaced with “-“, spaces trimmed.]
 Power Port | Generic Power Port | PP[ContainerID][ID] | PP[ContainerID][ID]
 
 Note: The [ID] for each sub-resource is taken from the device itself (corresponds to the names defined in the device).
@@ -100,6 +101,17 @@ OS Distribution | The Operating System (OS) distribution. i.e: linux distributio
 OS Version | The Operating System version | No | No
 Storage Capacity | The storage size in MB.  | No | No
 Model Name | Attribute of type String. Automatically populated model name that will be presented in the Sandbox diagram | No | Yes
+
+#####  Resource Port
+
+Attribute Name | Data Type | User input? | Description | Family Attribute?
+--- | --- | --- | --- | ---
+IPv4 Address | String | No | | No
+IPv6 Address | String | No | | No
+MAC Address | String | No | | No
+Port Speed | String | Yes | | No
+Bandwidth | Numeric | No | The current interface bandwidth, in MB. | No
+Model Name | String | Yes | The device model in a readable format (used by the GUI for display). This information is typically used for abstract resource filtering. | Yes
 
 
 #####  Generic Power Port

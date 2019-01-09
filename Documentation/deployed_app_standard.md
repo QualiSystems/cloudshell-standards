@@ -11,6 +11,7 @@ The deployed App Shell Standard defines a standard for all deployed App shells t
 
 Version | Date | Notes
 --- | --- | ---
+1.0.3 | 2018-05-08 | Added the attribute Bandwidth to the vPort level sub-level
 1.0.2 | 2018-02-20 | Added a vPort optional sub-level
 1.0.0 | 2016-07-14 | First release of the Compute server Shell Standard
 
@@ -25,19 +26,19 @@ The compute Shell version follows Semantic Versioning Guidelines (see details in
 
 ** Deployed App Data Model **
 
-- Family: Generic App Family
-   - Family: Generic Port, Model: Generic vPort
+- Family: CS_GenericAppFamily, Model: Generic Deployed App
+   - Family: CS_Port, Model: Generic vPort
 
 #### Family Rules
 
 Family | Rules
 --- | ---
 Generic App Family | Searchable, Locked By Default
-Generic Port | Searchable, Locked By Default, Connectable
+CS_Port | Searchable, Locked By Default, Connectable
 
 ### Attributes
 #### Guidelines
-- The attribute rules are as follows - all attributes which are user input should have the rule "Configuration" enabled, all attributes which aren't user input should have the rules "Settings" and "Available For Abstract Resources" enabled.
+- The attribute rules are as follows - all attributes which are user input should have the rule "Configuration" enabled, all attributes which aren't user input should have the rules "Settings", "Read only" and "Available For Abstract Resources" enabled.
 - It is possible to customize the attribute rules selection after importing the Shell to CloudShell.
 - Attributes shouldn’t be removed.
 - All attributes are of type String unless mentioned otherwise
@@ -54,7 +55,8 @@ Public IP | | No | No
 ####  Generic VPort
 Attribute Name | Details | User input? | Family Attribute?
 --- | --- | --- | ---
-Request vNIC | | No | No
-Module Name | | No | No
-IP Address | | No | No
-MAC Address | | No | No
+Bandwidth | The current interface bandwidth, in MB. Integer. | No | No
+Request vNIC Name | VNic to be associated with the vPort. | Yes | No
+Model Name | | Yes | Yes
+IP Address | | Yes | No
+MAC Address | | Yes | No

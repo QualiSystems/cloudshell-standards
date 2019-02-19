@@ -6,20 +6,20 @@ The following standards are available in CloudShell:
 
 Standard | Latest version | Details
 --- | --- | ---
-Networking | 5.0.4 | Used for modeling Routers, Switches and Wireless Controllers. Relevant both for infrastructure devices and DUTs.
-Resource | 2.0.3 | Generic resource standard. Includes an optional port and power port levels.
-Broadband Media Appliance | 1.0.3 | 
-Firewall | 3.0.2 |
-Traffic Generator Chassis | 1.0.3 |
-Traffic Generator Controller | 2.0.0 | 
+[Networking](Documentation/networking_standard.md) | 5.0.4 | Used for modeling Routers, Switches and Wireless Controllers. Relevant both for infrastructure devices and DUTs.
+[Resource](Documentation/shell_resource_standard.md) | 2.0.3 | Generic resource standard. Includes an optional port and power port levels.
+[Broadband Media Appliance](Documentation/Broadband%20Media%20Appliance%20Shell%20Standard.md) | 1.0.3 | 
+[Firewall](Documentation/firewall_standard.md) | 3.0.2 |
+[Traffic Generator Chassis](Documentation/Traffic%20Generator%20Chassis%20Standard.md) | 1.0.3 |
+[Traffic Generator Controller](Documentation/Traffic%20Generator%20Controller%20Shell%20Standard.md) | 2.0.0 | 
 Virtual Traffic Generator | 1.0.0 |
-Load Balancer | 1.0.0 |
-PDU | 2.0.1 | 
-SDN Controller | 1.0.1 |
-Software Asset | 1.0.0 | 
-Deployed App | 1.0.3 | Generic deployed app standard. Used to model appliactions deployed by CloudShell.
-Cloud Provider | 1.0.0 | The standard for modeling the integration of private or public Cloud Providers with CloudShell
-Custom Service | 1.0.0 | Generic service standard
+[Load Balancer](Documentation/Load%20Balancer%20Shell%20Standard.md) | 1.0.0 |
+[PDU](Documentation/pdu_standard.md) | 2.0.1 | 
+[SDN Controller](Documentation/SDN_controller_standard.md) | 1.0.1 |
+[Software Asset](Documentation/Software%20Asset%20Shell%20Standard.md) | 1.0.0 | 
+[Deployed App](Documentation/deployed_app_standard.md) | 1.0.3 | Generic deployed app standard. Used to model appliactions deployed by CloudShell.
+[Cloud Provider](Documentation/cloud_provider_standard.md) | 1.0.0 | The standard for modeling the integration of private or public Cloud Providers with CloudShell
+[Custom Service](Documentation/Custom%20Service%20Shell%20Standard.md) | 1.0.0 | Generic service standard
 Admin Only Custom Service | 1.0.0 | Generic service standard for admin-only services
-Cloud Service | 1.0.0 |
+[Cloud Service](Cloud%20Service%20Shell%20Standard.md) | 1.0.0 |
 Cisco ACI | 1.0.0 |

@@ -1,6 +1,6 @@
 # Shell Resource Standard
 
-#### Version 2.0.1
+#### Version 2.0.3
 
 
 ## Introduction
@@ -13,6 +13,8 @@ This Shell Standard is a project used to define a standard for generic Shells th
 
 Version | Date | Notes
 --- | --- | ---
+2.0.3 | 2018-04-15 | Updated the dependency on CloudShell Types (CloudShell Families) from types 1.0.2 to types 1.1.0.
+2.0.2 | 2017-11-01 | Added attributes "SNMP V3 Authentication Protocol" and "SNMP V3 Privacy Protocol" to the root level.
 2.0.1 | 2017-07-03 | Added a "Model Name" attribute on the root resource
 2.0.0 | 2017-01-31 | Changed the type of the following attributes to "Password": "SNMP Read Community", "SNMP Write Community" and "SNMP V3 Password". Those changes are NOT backwards compatible
 1.0.0 | 2016-07-24 | First release of the Shell Resource Standard
@@ -87,6 +89,8 @@ SNMP Write Community | | Yes | No
 SNMP V3 User | | Yes | No
 SNMP V3 Password | | Yes | No
 SNMP V3 Private Key | | Yes | No
+SNMP V3 Authentication Protocol | Relevant only in case SNMP V3 is in use. Possible values are "No Authentication Protocol" (default), "MD5", "SHA". | Yes | No
+SNMP V3 Privacy Protocol | Relevant only in case SNMP V3 is in use. Possible values are "No Privacy Protocol" (default), "DES", "3DES-EDE", "AES-128", "AES-192", "AES-256" | Yes | No
 SNMP Version | Possible values – v1, v2c, v3 | Yes | No
 Sessions Concurrency Limit | Attributes of type Numeric. Default is 1 (no concurrency) | Yes | No
 Console Server IP Address | | Yes | No

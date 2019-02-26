@@ -8,6 +8,8 @@ Standard | Latest version | Details
 --- | --- | ---
 [Networking](Documentation/networking_standard.md) | 5.0.4 | Used for modeling Routers, Switches and Wireless Controllers. Relevant both for infrastructure devices and DUTs.
 [Resource](Documentation/shell_resource_standard.md) | 2.0.3 | Generic resource standard. Includes an optional port and power port levels.
+Resource with Connected Commands | 1.0.0 | Similar to the generic resource standard. The root resource family supports connected commands (resources that are physically connected to this resource's ports will get commands that are tagged as remote commands).
+Connectable Resource | 1.0.0 | Generic resource standard for root only connectable resources (no sub resources). Can be used to model simple devices such as mobile phones.
 [Broadband Media Appliance](Documentation/Broadband%20Media%20Appliance%20Shell%20Standard.md) | 1.0.3 | 
 [Firewall](Documentation/firewall_standard.md) | 3.0.2 |
 [Traffic Generator Chassis](Documentation/Traffic%20Generator%20Chassis%20Standard.md) | 1.0.3 |

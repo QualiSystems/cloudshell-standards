@@ -196,3 +196,13 @@ Input / Output | Parameter | Alias | Data Type | Required | Description
 --- | --- | --- | --- | --- | ---
 Input | context | - | object | system parameter | Object of type AutoLoadCommandContext which includes API connectivity details and resource details, including attributes the user entered during the resource creation. | - | -
 Output | AutoLoadDetails | - | object | Yes | Object of type AutoLoadDetails, containing the discovered resource structure and attributes. | - | -
+
+## Typical Workflows
+
+#### Workflow 1 - Running a traffic test in CloudShell
+
+See the CloudShell help's [Traffic Generators Overview](https://help.quali.com/Online%20Help/0.0/Portal/Content/CSP/LAB-MNG/Traffic-Gens.htm) article.
+
+#### Workflow 2 - Using traffic generator ports as abstract resources in CloudShell
+
+See the CloudShell help's [Using Traffic Generator Ports as Abstract Resources](https://help.quali.com/Online%20Help/0.0/Portal/Content/CSP/LAB-MNG/Traffic-Gens-Abst.htm?Highlight=traffic) article.

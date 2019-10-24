@@ -86,7 +86,7 @@ The address of a physical Traffic Generator Controller should be the IP of the s
 
 Attribute Name | Data Type | User input? | Description | Family Attribute?
 --- | --- | --- | --- | ---
-Client Install Path | String | Yes | The path in which the traffic client is installed on the Execution Server. For example "C:/Program Files (x86)/Ixia/IxLoad/5.10-GA". | No
+Client Install Path | String | Yes | The path in which the traffic client is installed on the Execution Server. For example "C:\Program Files (x86)\Ixia\IxLoad\5.10-GA". | No
 Address | String | Yes | | No
 Controller TCP Port | String | Yes | The TCP port of the traffic server. Relevant only in case an external server is configured. Default TCP port should be used if kept empty. | No
 User | String | Yes | | No

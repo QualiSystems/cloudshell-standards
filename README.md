@@ -23,5 +23,5 @@ Virtual Traffic Generator | 1.0.0 |
 [Cloud Provider](Documentation/cloud_provider_standard.md) | 1.0.0 | The standard for modeling the integration of private or public Cloud Providers with CloudShell
 [Custom Service](Documentation/Custom%20Service%20Shell%20Standard.md) | 1.0.0 | Generic service standard
 Admin Only Custom Service | 1.0.0 | Generic service standard for admin-only services
-[Cloud Service](Cloud%20Service%20Shell%20Standard.md) | 1.0.0 |
+[Cloud Service](Documentation/Cloud%20Service%20Shell%20Standard.md) | 1.0.0 |
 Cisco ACI | 1.0.0 |

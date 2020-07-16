@@ -1,4 +1,4 @@
-# SDN Contorller Shell Standard
+# SDN Controller Shell Standard
 
 #### Version 1.0.0
 
@@ -17,10 +17,10 @@ Version | Date | Notes
 
 ## Definitions
 ### Granularity
-The SDN Controller Shelll will be implemented for each type of controller. example "SDN ODL Shell". 
+The SDN Controller Shell will be implemented for each type of controller. example "SDN ODL Shell". 
 
 ### Specific Versions Certification
-Each released Shell should have a list of certified versions. Version certification can be done only by Quali’s engineering, and it includes validatation that all the Shell’s capabilities are working for a specific version.
+Each released Shell should have a list of certified versions. Version certification can be done only by Quali’s engineering, and it includes validation that all the Shell’s capabilities are working for a specific version.
 The Shell should also work for non-certified versions unless specified differently in the Shell's release notes, and in case some gaps are found a new version of the Shell will be released with the gaps addressed and the version certified.
 
 ### Generic Data Model
@@ -28,7 +28,7 @@ All SDN Controller Shells share the same generic data model, except the model of
 The attributes associated with those generic models are also shared by all SDN Controller Shells and their values are populated by the driver. It is allowed to add custom attributes to any resource level, and it isn’t allowed to remove attributes from any level.
 
 ### Versioning
-The SDN Controller Shell version follows Semantic Versioning Guidelines (see details in http://semver.org). In short, the version structure is Major.Minor.Patch, for example “1.0.2”. A Patch version is promoted when making backward-compatibile bug fixes, a Minor version is promoted when adding functionality in a backwards-compatible manner and a  Major version is promoted when making any backwards incompatible change. The standard itself follows the same guidelines.
+The SDN Controller Shell version follows Semantic Versioning Guidelines (see details in http://semver.org). In short, the version structure is Major.Minor.Patch, for example “1.0.2”. A Patch version is promoted when making backward-compatible bug fixes, a Minor version is promoted when adding functionality in a backward-compatible manner and a  Major version is promoted when making any backward-incompatible change. The standard itself follows the same guidelines.
 
 ### Dependencies
 In case the SDN Controller Shell is written in Python and has dependencies to Python packages (that follow Semantic Versioning Guidelines) the dependency should be to a range of Patch versions, for example to “cloudshell-traffic-ixia 2.1.X”.
@@ -39,13 +39,13 @@ The dependency to cloudshell-automation-api should be to the latest Patch versio
 ## Data Model
 ### Families & Models
 
-The SDN Controller is modeled per type; for example a open daylight server will be modeled as "SDN ODL Controller".
+The SDN Controller is modeled per type; for example, an open daylight server will be modeled as "SDN ODL Controller".
 
 ### User flows and Shell configuration
 
 The SDN controller will act as a "Giant" switch providing l2 connectivity.
-The main use case is to have the SDN act as the infra structure (not as DUT).
-Once autuoload is done, the admin will add the relevenat physical connections and thus have capabilities to do logical connections.
+The main use case is to have the SDN act as the infrastructure (not as DUT).
+Once the autu-load is done, the admin will add the relevant physical connections and thus have capabilities to do logical connections.
 
 #### SDN Controller Data Model
 - SDN Controller
@@ -89,7 +89,7 @@ Note: The [ID] for each sub-resource is taken from the controller itself.
 
 ### Attributes
 #### Guidelines
-- Attributes which aren’t relevant to a device won’t be populated by the driver.
+- Attributes that aren’t relevant to a device won’t be populated by the driver.
 - All attributes which aren't user-input should have the rule "Admin only" enabled.
 - The attribute rules are as follows - all attributes which are user input should have the rule "Configuration" enabled, all attributes which aren't user input should have the rules "Settings" and "Available For Abstract Resources" enabled.
 - It is possible to customize the attribute rules selection after importing the Shell to CloudShell.
@@ -107,7 +107,7 @@ Model Name | String | No | The Controller model/vendor in a readable format (use
 Controller TCP Port | Integer | Yes |  default is 8181. | No
 Scheme | String | Yes | two options: HTTP, HTTPS | No
 Enable Full Trunk Ports | String | Yes | Optional. in case need to configure a full trunk port to be accessible for all flows (example: ports that private cloud provider are connected to), the ports should be listed in format: openflow:1::eth1;openflow:1:eth2 | No
-Disable Full Trunk Ports | String | Yes | Optional. in case need to remove a full trunk port , the ports should be listed in format: openflow:1::eth1;openflow:1:eth2 | No
+Disable Full Trunk Ports | String | Yes | Optional. in case need to remove a full trunk port, the ports should be listed in format: openflow:1::eth1;openflow:1:eth2 | No
 
 ##### Generic SDN Switch
 Attribute Name | Data Type | User input? | Description | Family Attribute?
@@ -128,9 +128,9 @@ Model Name | String | No | The switch model/Vendor. This information is typicall
 ## Commands
 Below is a list of all the commands that will be part of the standard Shell, their names and interfaces. Each SDN Controller Shell that will be released by Quali’s engineering will include implementation for all those commands.
 
-When creating a new shell according to the standard it is OK not to implement all commands and/or implement additional command, but a command with a functionality that fits one of the predefined list commands should be implemented according to the standard.
+When creating a new shell according to the standard it is OK not to implement all commands and/or implement additional commands, but a command with functionality that fits one of the predefined list commands should be implemented according to the standard.
 
-Command outputs: On failure an exception containing the error will be thrown and the command will be shown as failed. A failure is defined as any scenario in which the command didn’t complete its expected behavior, regardless if the issue originates from the command’s input, device or the command infrastructure itself. On success the command will just return as passed with no output. The “Autoload” command has a special output on success that CloudShell reads when building the resource hierarchy.
+Command outputs: On failure, an exception containing the error will be thrown and the command will be shown as failed. A failure is defined as any scenario in which the command didn’t complete its expected behavior, regardless if the issue originates from the command’s input, device or the command infrastructure itself. On success, the command will just return as passed with no output. The “Autoload” command has a special output on success that CloudShell reads when building the resource hierarchy.
 
 ### SDN Controller Commands
 Below is a list of all the commands associated with the Traffic Generator root resource (Family = Server).
@@ -141,9 +141,9 @@ def get_inventory (self, context)
 ```
 
 ###### Description
-This function queries the controller, discovers it's specification and structure and autoload it into CloudShell. When new resource is created Cloudshell asks the user to specify some user input (i.e address and credentials if needed) and then it calls the get_inventory function.
-The autoload should retrive only the leaf ports, and not ports that are part of the spine or facing it (core).
-During autoload, if there is an input in the Enable Full Trunk Ports or Disable Full Trunk Ports attribute, the autload command will also configure those ports accordingly.
+This function queries the controller, discovers it's specification and structure and autoload it into CloudShell. When a new resource is created Cloudshell asks the user to specify some user input (i.e address and credentials if needed) and then it calls the get_inventory function.
+The autoload should retrieve only the leaf ports, and not ports that are part of the spine or facing it (core).
+During autoload, if there is an input in the Enable Full Trunk Ports or Disable Full Trunk Ports attribute, the autoload command will also configure those ports accordingly.
 
 ###### Display Name
 System command, it has no display name
@@ -160,21 +160,21 @@ def ApplyConnectivityChanges(self, context, request)
 ```
 
 ###### Description
-Configures flows with VLANs as match cretiria.
+Configures flows with VLANs as match criteria.
 
 ###### Notes
-The standard doesn’t support different VLAN request to the same Switch/Router/Wireless-Controller port at the same time. For example, connecting the same port to multiple VLAN services each with a different VLAN ID/range. When configuring VLAN ID/range on a port the assumption is that there is no other VLAN configured on it. 
+The standard doesn’t support different VLAN requests to the same Switch/Router/Wireless-Controller port at the same time. For example, connecting the same port to multiple VLAN services each with a different VLAN ID/range. When configuring VLAN ID/range on a port the assumption is that there is no other VLAN configured on it. 
 This command should be hidden from the UI.
-The controller will get 2 requests. each request will contain a port and a vlan id. a flow will be created between those 2 ports with the vlan ID as match criteria
-If valn service will be used in order to connect more port - those ports will be added to the flow with the same vlan ID as match criteria.
-The controller will be able to handle getting only one request. This port will be added to a flow with the same vlan ID (if exist) and/or to trunk port pre configured (see vcenter section below). In case none of them exist it will get configured with out any dest flow until a new request will arrive with the same vlan id or a trunk port.
+The controller will get 2 requests. each request will contain a port and a VLAN ID. a flow will be created between those 2 ports with the VLAN ID as match criteria
+If a VLAN service will be used in order to connect more port - those ports will be added to the flow with the same VLAN ID as match criteria.
+The controller will be able to handle getting only one request. This port will be added to a flow with the same VLAN ID (if exist) and/or to a trunk port pre-configured (see vCenter section below). In case none of them exist it will get configured without any dest flow until a new request will arrive with the same VLAN ID or a trunk port.
 In case of QinQ connectivity, those flows will not include the fully trunked port as we need a matching configuration in all ends of the flow.
 
   
-Private cloudsa:
-The Admin should specifying the port/ports that the private cloud is connect to in the "Enable Full Trunk Ports" before the autload. Those ports will be configured as fully trunked port during autoload (same as required regardless of SDN).
-Any flow that will be defined by cloud shell will automatically include those trunk port thus getting the same behavior as we have in a regular l2 fabric.
-In case of app to app connectivity nothing will be executed on the controller.
+Private cloud:
+The Admin should specify the port/ports that the private cloud is connected to in the "Enable Full Trunk Ports" before the autoload. Those ports will be configured as fully trunked port during autoload (same as required regardless of SDN).
+Any flow that will be defined by CloudShell will automatically include those trunk port thus getting the same behavior as we have in a regular L2 fabric.
+In case of an app-to-app connectivity, nothing will be executed on the controller.
 
 ###### Display Name
 ApplyConnectivityChanges

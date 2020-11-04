@@ -1,6 +1,6 @@
 # Cloud Provider Standard
 
-#### Version 1.0.0
+#### Version 1.0.1
 
 
 ## Introduction
@@ -13,6 +13,7 @@ A cloud provider shell may include more than one deployment type, allowing a var
 
 Version | Date | Notes
 --- | --- | ---
+1.0.1 | 2020-10-01 | Added Private IP attribute to the Deployment Option
 1.0.0 | 2018-09-01 | First release of the Cloud Provider Shell Standard
 
 
@@ -84,6 +85,7 @@ Attribute Name | Data Type | User input? | Description
 --- | --- | --- | ---
 Autoload | boolean | Yes | Whether to call the autoload command during Sandbox setup (defaults to "true")
 Wait for IP | boolean | Yes | if set to false the deployment will not wait for the VM to get an IP address (defaults to "true")
+Private IP | string | Yes | Custom private IPs to be allocated to the VM's vNICs. IPs must be within the Subnet range. For example, "10.0.0.2,10.0.0.3-4;10.0.1.2,10.0.1.5,10.0.1.9."
 
 ## Commands
 Below is a list of all the commands that need to be implemented in order to have a working custom cloud provider.

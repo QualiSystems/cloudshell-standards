@@ -20,7 +20,7 @@ Virtual Traffic Generator | 1.0.0 |
 [SDN Controller](Documentation/SDN_controller_standard.md) | 1.0.1 |
 [Software Asset](Documentation/Software%20Asset%20Shell%20Standard.md) | 1.0.0 | 
 [Deployed App](Documentation/deployed_app_standard.md) | 1.0.3 | Generic deployed app standard. Used to model appliactions deployed by CloudShell.
-[Cloud Provider](Documentation/cloud_provider_standard.md) | 1.0.0 | The standard for modeling the integration of private or public Cloud Providers with CloudShell
+[Cloud Provider](Documentation/cloud_provider_standard.md) | 1.0.1 | The standard for modeling the integration of private or public Cloud Providers with CloudShell
 [Custom Service](Documentation/Custom%20Service%20Shell%20Standard.md) | 1.0.0 | Generic service standard
 Admin Only Custom Service | 1.0.0 | Generic service standard for admin-only services
 [Cloud Service](Documentation/Cloud%20Service%20Shell%20Standard.md) | 1.0.0 |

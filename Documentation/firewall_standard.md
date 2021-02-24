@@ -131,6 +131,8 @@ SNMP V3 User | String | Yes | Relevant only in case SNMP V3 is in use. | No
 SNMP V3 Password | Password | Yes | Relevant only in case SNMP V3 is in use. | No
 SNMP V3 Private Key | String | Yes | Relevant only in case SNMP V3 is in use. | No
 SNMP Version | String | Yes | The version of SNMP to use. Possible values are v1, v2c and v3. | No
+SNMP V3 Authentication Protocol | String | Yes | Possible 3 optionS are: No Authentication Protocol, MD5, SHA. | No
+SNMP V3 Privacy Protocol | String | Yes | Possible 6 options: No Privacy Protocol, DES, 3DES-EDE, AES-128, AES-192, AES-256. | No
 Console Server IP Address | String | Yes | The IP address of the console server, in IPv4 format. | No
 Console User | String | Yes | | No
 Console Port | Numeric | Yes | The port on the console server, usually TCP port, which the device is associated with. | No

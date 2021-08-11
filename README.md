@@ -12,7 +12,7 @@ Standard | Latest version | Details
 [Connectable Resource](Documentation/Generic%20Connectable%20Resource.md) | 1.0.0 | Generic resource standard for root only connectable resources (no sub resources). Can be used to model simple devices such as mobile phones.
 [Broadband Media Appliance](Documentation/Broadband%20Media%20Appliance%20Shell%20Standard.md) | 1.0.3 | 
 [Firewall](Documentation/firewall_standard.md) | 3.0.2 |
-[Traffic Generator Chassis](Documentation/Traffic%20Generator%20Chassis%20Standard.md) | 1.0.3 |
+[Traffic Generator Chassis](Documentation/Traffic%20Generator%20Chassis%20Standard.md) | 1.0.5 |
 [Traffic Generator Controller](Documentation/Traffic%20Generator%20Controller%20Shell%20Standard.md) | 2.0.0 | 
 Virtual Traffic Generator | 1.0.0 |
 [Load Balancer](Documentation/Load%20Balancer%20Shell%20Standard.md) | 1.0.0 |

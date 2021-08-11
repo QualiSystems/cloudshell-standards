@@ -162,10 +162,11 @@ Configured Controllers | String | No | specifies what controller can be used wit
 
 Attribute Name | Data Type | User input? | Description | Possible Values
 --- | --- | --- | --- | ---
-Max Speed | String | Yes | Max speed supported by the interface (default units - MB) | 
-Media Type | String | No | Interface media type. Possible values are Fiber and/or Copper (comma-separated). | 
-Logical Name | String | Yes | The port's logical name in the test configuration. If kept emtpy - allocation will applied in the blueprint. |
-Configured Controllers | String | No | specifies what controller can be used with the ports (IxLoad controller, BP controller etc...) | IxLoad, BreakingPoint, Ixload and IxNetwork, STC, TRex, TeraVM, Avalanche, Xena
+Version | String | No | The OS and client version of the endpoint. | 
+Address | String | No | The IP address of the endpoint. | 
+Logical Name | String | Yes | The endpoints's logical name in the test configuration. If kept emtpy - allocation will applied in the blue print. |
+Identifier | String | No | The unique ID of the endpoint. |
+SSID | String | Yes | The endpoints's SSID. If kept emtpy - allocation will applied in the blue print. |
 
 #####  Generic Power Port
 

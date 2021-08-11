@@ -1,6 +1,6 @@
 # Traffic Generator Chassis Shell Standard
 
-#### Version 1.0.3
+#### Version 1.0.5
 
 
 ## Introduction
@@ -15,6 +15,7 @@ The standard defines the shell’s data model, commands, and a set of guidelines
 
 Version | Date | Notes
 --- | --- | ---
+1.0.5 | 2021-08-09 | Added Generic Traffic Generator EndPoint Entity.
 1.0.3 | 2018-07-24 | 1) Separated the controller and chassis standards into two separate standards. 2) Revised the chassis stanadrd.
 1.0.2 | 2018-03-19 | Added port level directly under the chassis level.
 1.0.1 | 2017-01-03 | 1) The controller shell is now a service. 2) Added load configuration command to the controller. 3) Added ARP command to the controller (when applicable, for up to layer 3). 4) Added start emulation command to the controller. 5) added start/stop traffic commands to the controller. 6) added get stats command to the controller. 7) The family name  of the chassis shell is changed to "Traffic Generator Chassis" and the model changed to "<Vendor> Chassis" like "Ixia Chassis". 8) The model name for virtual chassis is changed to "Virtual Ixia". 9) The model of the port was changed to "Generic Traffic Generator Port". 10) Added "Client Install Path" attribute also to the chassis. 11) The driver name changed to "<vendor> Chassis Driver". 12) Model attribute was removed from the port. 13) Removed the "Controller Group" attribute from both the chassis and controller.
@@ -72,6 +73,7 @@ Notes:
 #### Traffic Generator Chassis Data Model
 - Traffic Generator Chassis
   - Generic Traffic Generator Module
+     - Generic Traffic Generator EndPoint
      - Generic Traffic Generator Port
      - Generic Traffic Generator Port Group
        - Generic Traffic Generator Port
@@ -82,6 +84,7 @@ Notes:
 - Family: CS_TrafficGeneratorChassis, Model: Ixia Traffic Generator Chassis
  - Family: CS_TrafficGeneratorModule, Model: Generic Traffic Generator Module
     - Family: CS_TrafficGeneratorPort, Model: Generic Traffic Generator Port
+    - Family: CS_TrafficGeneratorEndPoint, Model: Generic Traffic Generator EndPoint
     - Family: CS_PortGeneratorPortGroup, Model: Generic Port Group
       - Family: CS_TrafficGeneratorPort, Model: Generic Traffic Generator Port
  - Family: CS_PowerPort, Model: Generic Power Port
@@ -92,6 +95,7 @@ Family | Rules
 Traffic Generator Chassis | Searchable, Shared By Default, Allow Remote Connection
 Traffic Generator Module | Searchable
 Traffic Generator Port | Searchable, Connectable, Locked By Default
+Traffic Generator EndPoint | Searchable, Connectable, Locked By Default
 Power Port | Searchable, Connectable, Locked By Default
 Traffic Generator Port Group | Searchable
 
@@ -100,6 +104,7 @@ Family | Model | Resource Name | Resource Address
 --- | --- | --- | ---
 Traffic Generator Chassis | [Vendor/OS] Traffic Geneartor Chassis | (user defined) | (user defined - IP)
 Traffic Geneartor Module | Generic Traffic Generator Module | Module[ID] | M[ID]
+Traffic Generator EndPoint | Generic Traffic Generator EndPoint | The name of the port as appears in the device. Any “/” character is replaced with “-“, spaces trimmed. | E[ID]
 Traffic Generator Port | Generic Traffic Generator Port | The name of the port as appears in the device. Any “/” character is replaced with “-“, spaces trimmed. | P[ID]
 Power Port | Generic Power Port | PP[ContainerID][ID] | PP[ContainerID][ID]
 Port Group | Generic Traffic Generator Port Group | PG[ID] | PG[ID]
@@ -152,6 +157,16 @@ Max Speed | String | Yes | Max speed supported by the interface (default units -
 Media Type | String | No | Interface media type. Possible values are Fiber and/or Copper (comma-separated). | 
 Logical Name | String | Yes | The port's logical name in the test configuration. If kept emtpy - allocation will applied in the blueprint. |
 Configured Controllers | String | No | specifies what controller can be used with the ports (IxLoad controller, BP controller etc...) | IxLoad, BreakingPoint, Ixload and IxNetwork, STC, TRex, TeraVM, Avalanche, Xena
+
+##### Generic Traffic Generator EndPoint
+
+Attribute Name | Data Type | User input? | Description | Possible Values
+--- | --- | --- | --- | ---
+Version | String | No | The OS and client version of the endpoint. | 
+Address | String | No | The IP address of the endpoint. | 
+Logical Name | String | Yes | The endpoints's logical name in the test configuration. If kept emtpy - allocation will applied in the blue print. |
+Identifier | String | No | The unique ID of the endpoint. |
+SSID | String | Yes | The endpoints's SSID. If kept emtpy - allocation will applied in the blue print. |
 
 #####  Generic Power Port
 

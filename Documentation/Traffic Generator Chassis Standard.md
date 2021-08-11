@@ -73,6 +73,7 @@ Notes:
 #### Traffic Generator Chassis Data Model
 - Traffic Generator Chassis
   - Generic Traffic Generator Module
+     - Generic Traffic Generator EndPoint
      - Generic Traffic Generator Port
      - Generic Traffic Generator Port Group
        - Generic Traffic Generator Port
@@ -103,6 +104,7 @@ Family | Model | Resource Name | Resource Address
 --- | --- | --- | ---
 Traffic Generator Chassis | [Vendor/OS] Traffic Geneartor Chassis | (user defined) | (user defined - IP)
 Traffic Geneartor Module | Generic Traffic Generator Module | Module[ID] | M[ID]
+Traffic Generator EndPoint | Generic Traffic Generator EndPoint | The name of the port as appears in the device. Any “/” character is replaced with “-“, spaces trimmed. | E[ID]
 Traffic Generator Port | Generic Traffic Generator Port | The name of the port as appears in the device. Any “/” character is replaced with “-“, spaces trimmed. | P[ID]
 Power Port | Generic Power Port | PP[ContainerID][ID] | PP[ContainerID][ID]
 Port Group | Generic Traffic Generator Port Group | PG[ID] | PG[ID]

@@ -7,6 +7,7 @@ The following standards are available in CloudShell:
 Standard | Latest version | Details
 --- | --- | ---
 [Networking](Documentation/networking_standard.md) | 5.0.4 | Used for modeling Routers, Switches and Wireless Controllers. Relevant both for infrastructure devices and DUTs.
+[Compute](Documentation/compute_standard.md) | 2.0.1 | Used for modeling Servers and other compute resources. Mostly designed to used as DUT.
 [Resource](Documentation/shell_resource_standard.md) | 2.0.3 | Generic resource standard. Includes an optional port and power port levels.
 [Resource with Connected Commands](Documentation/Generic%20Resource%20with%20Connected%20Commands.md) | 1.0.0 | Similar to the generic resource standard. The root resource family supports connected commands (resources that are physically connected to this resource's ports will get commands that are tagged as remote commands).
 [Connectable Resource](Documentation/Generic%20Connectable%20Resource.md) | 1.0.0 | Generic resource standard for root only connectable resources (no sub resources). Can be used to model simple devices such as mobile phones.

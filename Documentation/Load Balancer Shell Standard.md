@@ -466,3 +466,43 @@ An example for the "saved_artifact_info" input:
 
 The artifact types supported by Load Balancer orchestration_restore command are "ftp", "tftp" and "filesystem".
 The "requires_same_resource" restore rule for Load Balancer devices is always True.
+
+## Typical Workflows 
+
+#### **Workflow 1** - *Save configuration* 
+1. In CloudShell Portal, reserve the **F5 BIG-IP LoadBalancer** resource.
+
+2. Run the **Save** resource command.
+
+3. In the command inputs field, enter the following information:
+	* **Folder Path**: For example, *tftp://ipaddress/shared folder*.
+	* **Configuration Type**: **Startup** or **Running**.
+	* **VRF Management Name**: Provide the VRF Management name, if relevant.
+	
+4. Click **Run**.
+
+The Startup or Running configuration is saved to a file named *<ResourceName>-<startup/running-config>-<timestamp>*, which will be stored in the folder path you entered above.
+
+#### **Workflow 2** - *Restore configuration* 
+1. In CloudShell Portal, reserve the **F5 BIG-IP LoadBalancer** resource.
+
+2. Run the **Restore** resource command.
+
+3. In the command inputs field, enter the following information:
+	* **Path**: (Mandatory) Enter the full path of the configuration file. 
+	* **Restore Method**: (Optional) Possible values are **Override** or **Append**. If left empty, the **Override** method is used. 
+	* **Configuration Type**: (Mandatory) Possible values are **Startup** or **Running**.
+	* **VRF Management Name**: (Optional) Provide the VRF Management name, if relevant.
+	
+4. Click **Run**.
+
+#### **Workflow 3** - *Load firmware* 
+1. In CloudShell portal, reserve the **F5 BIG-IP LoadBalancer** resource.
+
+2. Run the **Load Firmware** resource command. 
+
+3. In the command inputs field, enter the following information:
+	* **Path** (Mandatory). Enter the full path to the firmware file on the remote host, for example: *tftp://10.1.1.1/BIGIP12.SE1-smp-k8.bin*.
+	* **VRF Management Name** (Optional): Destination filename on the device itself, for example: *bootflash:/BIGIP12.SE1-smp-k8.bin*.
+	
+4. Click **Run**.
